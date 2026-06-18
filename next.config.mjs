@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // If you switch the team headshots from <img> to next/image, allow the host here:
-  // images: { remotePatterns: [{ protocol: "https", hostname: "www.qai37.com" }] },
+  output: "export",
+  // GitHub Pages serves the site under /qai37-site — remove this if you add a custom domain.
+  basePath: "/qai37-site",
+  trailingSlash: true,
+  // Required for static export when using next/image (safe to keep even with plain <img>).
+  images: { unoptimized: true },
 };
 
 export default nextConfig;
