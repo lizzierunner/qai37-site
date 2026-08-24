@@ -8,6 +8,7 @@ const LINKS = [
   { href: "/", label: "Home" },
   { href: "/mission", label: "Mission" },
   { href: "/team", label: "Team" },
+  { href: "/careers", label: "Careers" },
 ];
 
 export default function SiteHeader() {

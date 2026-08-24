@@ -7,7 +7,7 @@ export default function SiteFooter() {
         <span className="logo" style={{ fontSize: 18 }}>qAI<b>37</b></span>
         <span className="mono">© {new Date().getFullYear()} qAI37 — All rights reserved</span>
         <span>
-          <Link href="/">Home</Link> · <Link href="/mission">Mission</Link> · <Link href="/team">Team</Link>
+          <Link href="/">Home</Link> · <Link href="/mission">Mission</Link> · <Link href="/team">Team</Link> · <Link href="/careers">Careers</Link>
         </span>
       </div>
     </footer>
