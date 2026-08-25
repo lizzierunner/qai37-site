@@ -179,7 +179,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px}
 .p-team2 .bio-row{display:grid;grid-template-columns:260px 1fr;gap:48px;padding:44px 0;border-bottom:1px solid var(--line)}
 .p-team2 .bio-left{display:flex;flex-direction:column;gap:16px}
 .p-team2 .bio-photo{width:140px;height:140px;border-radius:2px;overflow:hidden;background:var(--surface);border:1px solid var(--line);position:relative;flex-shrink:0}
-.p-team2 .bio-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.p-team2 .bio-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
 .p-team2 .bio-photo.noimg img{display:none}
 .p-team2 .bio-photo.noimg::after{content:attr(data-initials);position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-display);font-weight:600;font-size:1.4em;color:var(--muted)}
 .p-team2 .bio-meta{padding-top:2px}
