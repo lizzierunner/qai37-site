@@ -29,6 +29,70 @@ export default function Home() {
         </div>
       </section>
 
+      {/* THESIS */}
+      <section className="thesis">
+        <div className="wrap">
+          <span className="eyebrow reveal">The thesis</span>
+          <div className="thesis-list">
+            <div className="thesis-item reveal">
+              <span className="thesis-n" aria-hidden="true">01</span>
+              <div>
+                <p className="thesis-head">A different kind of AI on a different kind of machine.</p>
+                <p className="thesis-body">Not a faster chip — a fundamentally different execution path. The software interface stays familiar; the execution changes beneath it.</p>
+              </div>
+            </div>
+            <div className="thesis-item reveal s1">
+              <span className="thesis-n" aria-hidden="true">02</span>
+              <div>
+                <p className="thesis-head">It remembers, so every response improves with context.</p>
+                <p className="thesis-body">The machine holds working memory the way a person does, instead of re-reading the entire history before every answer.</p>
+              </div>
+            </div>
+            <div className="thesis-item reveal s2">
+              <span className="thesis-n" aria-hidden="true">03</span>
+              <div>
+                <p className="thesis-head">A proven idea that is, for the first time, applicable.</p>
+                <p className="thesis-body">The scientific foundation is decades old and peer-reviewed. The hardware that makes it work now exists.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PIPELINE */}
+      <section className="pipeline">
+        <div className="wrap">
+          <span className="sec-eyebrow reveal">What the product does</span>
+          <h2 className="reveal s1">The interface stays familiar.<br />The execution path changes beneath it.</h2>
+          <div className="pipeline-steps reveal s2">
+            <div className="pipeline-step">
+              <span className="pipeline-num">01</span>
+              <p className="pipeline-label">Intercept</p>
+              <p className="pipeline-desc">Capture a supported inference call through the existing application interface.</p>
+            </div>
+            <div className="pipeline-connector" aria-hidden="true" />
+            <div className="pipeline-step">
+              <span className="pipeline-num">02</span>
+              <p className="pipeline-label">Qualify</p>
+              <p className="pipeline-desc">Determine whether the selected operation and target backend are eligible.</p>
+            </div>
+            <div className="pipeline-connector" aria-hidden="true" />
+            <div className="pipeline-step">
+              <span className="pipeline-num">03</span>
+              <p className="pipeline-label">Translate</p>
+              <p className="pipeline-desc">Map the operation into inspectable, vendor-targeted instructions.</p>
+            </div>
+            <div className="pipeline-connector" aria-hidden="true" />
+            <div className="pipeline-step">
+              <span className="pipeline-num">04</span>
+              <p className="pipeline-label">Return</p>
+              <p className="pipeline-desc">Bring the result back into the conventional application and fallback path.</p>
+            </div>
+          </div>
+          <p className="pipeline-note reveal s3">One application integration · multiple target formats · classical fallback intact</p>
+        </div>
+      </section>
+
       {/* TEAM ROSTER */}
       <section className="roster-section" id="team">
         <div className="wrap">

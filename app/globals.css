@@ -115,6 +115,41 @@ footer{border-top:1px solid var(--line);padding:36px 0}
 .ic,.mark{width:38px;height:38px;border-radius:4px;background:var(--cyan-soft);border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;transition:box-shadow .25s}
 .ic svg,.mark svg{width:18px;height:18px;stroke:var(--cyan);fill:none;stroke-width:2}
 
+/* ======================== THESIS ======================== */
+.p-home .thesis{border-top:1px solid var(--line);padding:100px 0}
+.p-home .thesis-list{margin-top:52px}
+.p-home .thesis-item{display:grid;grid-template-columns:140px 1fr;gap:32px;padding:44px 0;border-bottom:1px solid var(--line);align-items:start;transition:opacity .3s}
+.p-home .thesis-item:hover{opacity:.85}
+.p-home .thesis-n{font-family:var(--font-display);font-weight:700;font-size:clamp(72px,10vw,120px);line-height:.88;letter-spacing:-.05em;color:var(--cyan);opacity:.18;user-select:none;transition:opacity .4s}
+.p-home .thesis-item:hover .thesis-n{opacity:.32}
+.p-home .thesis-head{font-family:var(--font-display);font-style:italic;font-size:clamp(26px,3.2vw,40px);font-weight:500;line-height:1.2;color:var(--text);margin-bottom:14px;letter-spacing:-.015em}
+.p-home .thesis-body{font-size:16px;color:var(--muted);max-width:58ch;line-height:1.75}
+@media(max-width:640px){.p-home .thesis-item{grid-template-columns:60px 1fr;gap:16px}}
+
+/* ======================== PIPELINE ======================== */
+.p-home .pipeline{border-top:1px solid var(--line);padding:100px 0}
+.p-home .pipeline h2{max-width:28ch;margin-bottom:60px}
+.p-home .pipeline-steps{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr 40px 1fr;align-items:start;position:relative;margin-bottom:40px}
+/* animated teal line that draws across when section enters viewport */
+.p-home .pipeline-steps::before{content:"";position:absolute;top:15px;left:12%;right:12%;height:1px;background:var(--cyan);transform:scaleX(0);transform-origin:left;opacity:.35}
+.p-home .pipeline-steps.in::before{animation:pipe-draw 1.6s cubic-bezier(.22,1,.36,1) forwards .3s}
+@keyframes pipe-draw{to{transform:scaleX(1)}}
+.p-home .pipeline-step{text-align:center;padding:0 8px;position:relative}
+.p-home .pipeline-num{display:block;width:32px;height:32px;border-radius:50%;border:1px solid var(--cyan);color:var(--cyan);font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;display:grid;place-items:center;margin:0 auto 20px;background:var(--ink);position:relative;z-index:1;transition:background .3s,color .3s}
+.p-home .pipeline-step:hover .pipeline-num{background:var(--cyan);color:var(--ink)}
+.p-home .pipeline-label{font-family:var(--font-display);font-size:clamp(18px,2.2vw,24px);font-weight:600;color:var(--text);margin-bottom:10px}
+.p-home .pipeline-desc{font-size:13.5px;color:var(--muted);line-height:1.65}
+.p-home .pipeline-connector{display:flex;align-items:flex-start;justify-content:center;padding-top:10px;color:rgba(46,217,184,.4);font-family:var(--font-mono);font-size:16px}
+.p-home .pipeline-note{font-family:var(--font-mono);font-size:11px;color:var(--muted-2);letter-spacing:.16em;text-transform:uppercase;text-align:center}
+@media(max-width:800px){
+  .p-home .pipeline-steps{grid-template-columns:1fr;gap:0}
+  .p-home .pipeline-steps::before{display:none}
+  .p-home .pipeline-step{text-align:left;padding:24px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:start}
+  .p-home .pipeline-num{margin:0;width:28px;height:28px}
+  .p-home .pipeline-step>*:not(.pipeline-num){grid-column:2}
+  .p-home .pipeline-connector{display:none}
+}
+
 /* ======================== HOMEPAGE ROSTER ======================== */
 .p-home .roster-section{border-top:1px solid var(--line);padding:80px 0}
 .p-home .roster{display:grid;grid-template-columns:repeat(2,1fr);margin-top:36px;border-top:1px solid var(--line)}
