@@ -8,7 +8,7 @@ export default function SiteFooter() {
         <img src="/qai37-site/images/qai37_logo_transparent.jpg" alt="qAI37" className="logo-img" style={{ height: 36 }} />
         <span className="mono">© {new Date().getFullYear()} qAI37 — All rights reserved</span>
         <span>
-          <Link href="/">Home</Link> · <Link href="/mission">Mission</Link> · <Link href="/team">Team</Link>
+          <Link href="/">Home</Link> · <Link href="/team">Team</Link> · <Link href="/news">News</Link> · <Link href="/contact">Contact</Link>
         </span>
       </div>
     </footer>

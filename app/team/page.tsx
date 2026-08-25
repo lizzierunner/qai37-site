@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import TeamAvatar from "@/components/TeamAvatar";
 
 export const metadata: Metadata = {
   title: "Team",
@@ -91,23 +92,6 @@ function LinkedInIcon() {
   );
 }
 
-function Avatar({ m }: { m: Member }) {
-  return (
-    <div className="bio-photo" data-initials={m.initials}>
-      {m.img && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={m.img}
-          alt={m.name}
-          onError={(e) =>
-            (e.currentTarget.parentElement as HTMLElement).classList.add("noimg")
-          }
-        />
-      )}
-    </div>
-  );
-}
-
 export default function Team() {
   return (
     <div className="p-team2">
@@ -123,7 +107,7 @@ export default function Team() {
           {TEAM.map((m) => (
             <div key={m.name} className="bio-row reveal">
               <div className="bio-left">
-                <Avatar m={m} />
+                <TeamAvatar img={m.img} name={m.name} initials={m.initials} />
                 <div className="bio-meta">
                   <p className="bio-name">{m.name}</p>
                   <p className="bio-role">{m.role}</p>
