@@ -23,7 +23,7 @@ const TEAM: Member[] = [
     role: "Founder & CEO",
     initials: "TS",
     img: "/qai37-site/images/team/ted-stockwell.jpg",
-    bio: "Ted spent his career at Microsoft turning hard infrastructure problems into platform businesses, including building Bing as a Platform. He founded qAI37 to do the same for AI compute.",
+    bio: "Former General Manager of Microsoft's Online Services Division. Created Bing as a Platform, transforming search into a programmable infrastructure layer across Microsoft. Ted has spent his career turning hard infrastructure problems into platform businesses — that is exactly the commercial motion qAI37 needs to execute.",
     li: "https://www.linkedin.com/in/jtedstockwell/",
   },
   {
@@ -31,21 +31,21 @@ const TEAM: Member[] = [
     role: "President & Chief Strategy Officer",
     initials: "MH",
     img: "/qai37-site/images/team/michelle-holtmann.jpg",
-    bio: "Michelle spent 25 years at Microsoft building infrastructure products at billions-of-devices scale, including Windows Genuine Advantage, its successor the Software Protection Platform, and the technical foundation behind Windows Defender. She joined qAI37 after extensive study of whether the approach was actually buildable, and designed the roadmap to prove it.",
+    bio: "Michelle started her career as a software engineer at Boeing, then spent 25 years at Microsoft designing and building infrastructure products that hundreds of millions of people depend on every day — including Windows Genuine Advantage, the Software Protection Platform, and the technical foundation behind Windows Defender. She joined qAI37 after extensive study of whether the approach was actually buildable, and designed the roadmap to prove it.",
   },
   {
     name: "Steve Jahnke",
     role: "Chief Technical Officer",
     initials: "SJ",
     img: "/qai37-site/images/team/steve-jahnke.jpg",
-    bio: "Steve spent 30 years at Intel, Altera, and TI building processor architecture and systems software. He leads qAI37's technical architecture.",
+    bio: "Steve spent 30 years at Intel, Altera, and TI building processor architecture and systems software engineered to never go down. The translation-layer problem qAI37 is solving is the same class of problem Steve has spent his career solving in silicon.",
   },
   {
     name: "Laverne Masaki",
     role: "Chief People Officer",
     initials: "LM",
     img: "/qai37-site/images/team/laverne-masaki.jpg",
-    bio: "Laverne spent her career as an executive recruiter at Microsoft and Google, building senior technical teams for complex programs. She leads people and organizational strategy at qAI37.",
+    bio: "Former executive recruiter at Microsoft and Google, specializing in building senior technical teams for complex, high-stakes programs. Laverne's network and judgment are a core operational asset at a company whose execution depends entirely on assembling the right people at the right moment.",
     li: "https://www.linkedin.com/in/laverne-masaki/",
   },
   {
@@ -62,10 +62,10 @@ const TEAM: Member[] = [
   },
   {
     name: "Vicki Mitchell",
-    role: "Chief Engineering Advisor",
+    role: "Chief Engineering Officer",
     initials: "VM",
     img: "/qai37-site/images/team/vicki-mitchell.jpg",
-    bio: "Vicki has spent her career at the intersection of hardware and software as an engineering leader at Google, ARM, and Altera.",
+    bio: "Former VP of Engineering at Google, ARM, and Altera, where she led large-scale silicon, systems, and infrastructure engineering programs across global organizations. Vicki has spent her career at the intersection of hardware and software — the precise boundary qAI37 is built to manage.",
     li: "https://www.linkedin.com/in/vickibmitchell/",
   },
   {
@@ -73,7 +73,7 @@ const TEAM: Member[] = [
     role: "Chief Quantum Advisor",
     initials: "VE",
     img: "/qai37-site/images/team/vincent-elfving.jpg",
-    bio: "Vincent was Head of Algorithms at Pasqal, where he led a team of researchers building AI workflows for neutral atom hardware. He's a Google Quantum AI alumnus.",
+    bio: "Former Head of Algorithms at Pasqal, where he led a team of over 40 researchers developing AI workflows for neutral atom hardware. Google Quantum AI alumnus and co-founder of Qu & Co (merged with Pasqal). PhD in Quantum Information Processing.",
   },
 ];
 
