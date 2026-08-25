@@ -8,6 +8,9 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--ink);color:var(--text);font-family:var(--font-body),system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+/* film grain overlay — gives premium tactile depth to the black background */
+body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.038;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px;animation:grain .45s steps(1) infinite}
+@keyframes grain{0%,100%{background-position:0 0}20%{background-position:20% -30%}40%{background-position:-10% 20%}60%{background-position:30% 10%}80%{background-position:-20% -10%}}
 .mono{font-family:var(--font-mono),monospace}
 a{color:inherit;text-decoration:none}
 ::selection{background:var(--cyan);color:var(--ink)}
@@ -111,6 +114,34 @@ footer{border-top:1px solid var(--line);padding:36px 0}
 /* icon squares */
 .ic,.mark{width:38px;height:38px;border-radius:4px;background:var(--cyan-soft);border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;transition:box-shadow .25s}
 .ic svg,.mark svg{width:18px;height:18px;stroke:var(--cyan);fill:none;stroke-width:2}
+
+/* =========================== TICKER =========================== */
+.ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 0;position:relative;z-index:2}
+.ticker-track{display:inline-flex;white-space:nowrap;animation:ticker-scroll 50s linear infinite}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);padding:0 20px}
+.ticker-dot{color:var(--muted-2);margin-left:20px}
+@keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* =========================== PULL QUOTE =========================== */
+.pull-quote{border-top:1px solid var(--line);padding:112px 0;text-align:center}
+.pull-quote blockquote{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:clamp(30px,5.5vw,66px);line-height:1.18;letter-spacing:-.025em;color:var(--text);max-width:24ch;margin:0 auto}
+.pull-quote blockquote p{margin:0}
+
+/* =========================== NEWS =========================== */
+.p-news .intro{padding:84px 0 56px}
+.p-news .news-list{padding:0 0 100px;border-top:1px solid var(--line)}
+.p-news .news-status{color:var(--muted);font-family:var(--font-mono);font-size:13px;padding:60px 0}
+.p-news .news-item{display:flex;align-items:baseline;gap:24px;padding:28px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:opacity .2s;color:var(--text)}
+.p-news .news-item:hover{opacity:.6}
+.p-news .news-item:hover .news-arrow{transform:translateX(5px)}
+.p-news .news-n{font-family:var(--font-mono);font-size:11px;color:var(--muted-2);min-width:26px;letter-spacing:.1em;flex-shrink:0;padding-top:3px}
+.p-news .news-body{flex:1;min-width:0}
+.p-news .news-title{font-family:var(--font-display);font-size:clamp(18px,2.4vw,24px);font-weight:500;color:var(--text);line-height:1.28;margin-bottom:8px}
+.p-news .news-meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--font-mono);font-size:10px;color:var(--muted-2);letter-spacing:.1em;text-transform:uppercase}
+.p-news .news-src{color:var(--muted)}
+.p-news .news-arrow{font-family:var(--font-mono);font-size:15px;color:var(--muted-2);transition:transform .2s;flex-shrink:0}
+@media(max-width:600px){.p-news .news-item{gap:14px}.p-news .news-n{display:none}}
 
 /* =========================== HOME =========================== */
 .p-home .hero{padding:84px 0 60px}

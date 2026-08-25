@@ -1,5 +1,7 @@
 import SignupForm from "@/components/SignupForm";
 import DivergenceChart from "@/components/DivergenceChart";
+import Ticker from "@/components/Ticker";
+import CountUp from "@/components/CountUp";
 
 export default function Home() {
   return (
@@ -20,15 +22,17 @@ export default function Home() {
         </div>
       </section>
 
+      <Ticker />
+
       {/* GAP BAND */}
       <section className="band" aria-label="The scale of the gap">
         <div className="wrap">
           <div className="huge reveal">13×</div>
           <div className="sub reveal s1">Demand is compounding. The grid is not.</div>
           <div className="stats">
-            <div className="stat reveal s1"><div className="n a">+26%</div><div className="l">Compute demand / yr</div></div>
-            <div className="stat reveal s2"><div className="n c">+2%</div><div className="l">Energy supply / yr</div></div>
-            <div className="stat reveal s3"><div className="n">2034</div><div className="l">When it breaks</div></div>
+            <div className="stat reveal s1"><div className="n a"><CountUp to={26} prefix="+" suffix="%" /></div><div className="l">Compute demand / yr</div></div>
+            <div className="stat reveal s2"><div className="n c"><CountUp to={2} prefix="+" suffix="%" /></div><div className="l">Energy supply / yr</div></div>
+            <div className="stat reveal s3"><div className="n"><CountUp to={2034} duration={2000} /></div><div className="l">When it breaks</div></div>
           </div>
         </div>
       </section>
@@ -66,6 +70,15 @@ export default function Home() {
             <p className="q">We&apos;re building the foundation for the <b>next generations of AI</b> — sustainably, and at a scale today&apos;s infrastructure can&apos;t reach.</p>
             <p className="meta">Stealth · founded 2025</p>
           </aside>
+        </div>
+      </section>
+
+      {/* PULL QUOTE */}
+      <section className="pull-quote">
+        <div className="wrap">
+          <blockquote className="reveal">
+            <p>AI is outgrowing the grid.<br />We&apos;re building the way out.</p>
+          </blockquote>
         </div>
       </section>
 
