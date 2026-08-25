@@ -26,7 +26,7 @@ main,header,footer{position:relative;z-index:2}
 
 /* nav */
 header{position:sticky;top:0;z-index:50;transition:background .3s,border-color .3s,backdrop-filter .3s;border-bottom:1px solid transparent}
-header.scrolled{backdrop-filter:blur(14px);background:rgba(10,10,10,.88);border-bottom:1px solid var(--line)}
+header.scrolled{-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);background:rgba(10,10,10,.88);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
 .logo{font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.5px;display:flex;align-items:center}
 .logo b{color:var(--cyan)}
