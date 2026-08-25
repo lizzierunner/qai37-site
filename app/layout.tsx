@@ -13,15 +13,16 @@ export const metadata: Metadata = {
     template: "%s — qAI37",
   },
   description:
-    "AI's hunger for power is growing 13× faster than the grid can feed it. qAI37 uses a hybrid quantum architecture to run AI at scale on a fraction of the power.",
+    "qAI37 is building the vendor-agnostic software access point between conventional AI and neutral-atom systems — the neutral route to post-silicon AI.",
   openGraph: {
-    title: "qAI37 — Quantum-native AI infrastructure",
+    title: "qAI37 — The Neutral Route to Post-Silicon AI",
     description:
-      "AI's hunger for power is growing 13× faster than the grid can feed it. qAI37 breaks that curve.",
+      "A new software layer for AI infrastructure. Building the vendor-agnostic access point between conventional AI and neutral-atom systems.",
     type: "website",
     url: "https://www.qai37.com",
+    images: [{ url: "https://www.qai37.com/qai37-site/images/qai37_logo.png", width: 212, height: 254, alt: "qAI37" }],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: { card: "summary_large_image", title: "qAI37 — The Neutral Route to Post-Silicon AI", description: "A new software layer for AI infrastructure." },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

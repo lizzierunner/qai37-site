@@ -15,15 +15,16 @@ export default function Home() {
       {/* HERO */}
       <section className="hero">
         <div className="wrap">
-          <h1 className="rise d1">A new software layer for AI infrastructure.</h1>
-          <p className="lede rise d2">
+          <span className="eyebrow rise d1">The neutral route to post-silicon AI</span>
+          <h1 className="rise d2">A new software layer for AI infrastructure.</h1>
+          <p className="lede rise d3">
             Every time you ask AI a question, it re-reads everything you&apos;ve given it
             before it answers. The more it knows, the slower and more expensive every
             answer gets, which is why AI stalls exactly where it becomes most valuable:
             long, live, complicated work. We&apos;re building the software layer that
             changes that math.
           </p>
-          <div className="rise d3">
+          <div className="rise d4">
             <SignupForm />
           </div>
         </div>
@@ -90,6 +91,19 @@ export default function Home() {
             </div>
           </div>
           <p className="pipeline-note reveal s3">One application integration · multiple target formats · classical fallback intact</p>
+        </div>
+      </section>
+
+      {/* POSITIONING */}
+      <section className="positioning">
+        <div className="wrap">
+          <span className="sec-eyebrow reveal">What qAI37 is not</span>
+          <div className="not-list">
+            <p className="not-item reveal">Not another quantum machine.</p>
+            <p className="not-item reveal s1">Not a replacement for the data center.</p>
+            <p className="not-item reveal s2">Not a bet that one hardware vendor wins.</p>
+            <p className="not-item reveal s3">Not a bet against silicon.</p>
+          </div>
         </div>
       </section>
 

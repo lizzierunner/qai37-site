@@ -102,9 +102,16 @@ svg.chart{width:100%;height:auto;display:block;overflow:visible}
 .cta-band .capture{margin:0 auto;justify-content:center}
 
 /* footer */
-footer{border-top:1px solid var(--line);padding:36px 0}
-.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--muted-2)}
-.foot a{color:var(--muted)}.foot a:hover{color:var(--text)}
+footer{border-top:1px solid var(--line);padding:56px 0 36px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;margin-bottom:40px;padding-bottom:36px;border-bottom:1px solid var(--line)}
+.foot-brand .foot-tagline{font-family:var(--font-display);font-style:italic;font-size:16px;color:var(--muted);margin-top:16px;margin-bottom:5px}
+.foot-brand .foot-meta{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2)}
+.foot-links{display:flex;flex-direction:column;gap:12px}
+.foot-links a{font-size:14px;color:var(--muted);transition:color .2s}.foot-links a:hover{color:var(--text)}
+.foot-contact{display:flex;flex-direction:column;gap:10px}
+.foot-email{font-family:var(--font-mono);font-size:12px;color:var(--muted);transition:color .2s}.foot-email:hover{color:var(--cyan)}
+.foot-copy{font-size:12px;color:var(--muted-2)}
+@media(max-width:700px){.foot-grid{grid-template-columns:1fr;gap:32px}}
 
 /* reveal */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .82s cubic-bezier(.22,1,.36,1),transform .82s cubic-bezier(.22,1,.36,1)}
@@ -150,6 +157,12 @@ footer{border-top:1px solid var(--line);padding:36px 0}
   .p-home .pipeline-connector{display:none}
 }
 
+/* ======================== POSITIONING ======================== */
+.p-home .positioning{border-top:1px solid var(--line);padding:80px 0}
+.p-home .not-list{margin-top:32px}
+.p-home .not-item{font-family:var(--font-display);font-style:italic;font-size:clamp(22px,3vw,36px);font-weight:400;color:var(--muted);padding:22px 0;border-bottom:1px solid var(--line);transition:color .25s,padding-left .3s;cursor:default}
+.p-home .not-item:hover{color:var(--text);padding-left:18px}
+
 /* ======================== HOMEPAGE ROSTER ======================== */
 .p-home .roster-section{border-top:1px solid var(--line);padding:80px 0}
 .p-home .roster{display:grid;grid-template-columns:repeat(2,1fr);margin-top:36px;border-top:1px solid var(--line)}
@@ -189,11 +202,22 @@ footer{border-top:1px solid var(--line);padding:36px 0}
 .p-news .news-kicker{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px}
 .p-news .news-title{font-size:clamp(18px,2vw,26px)}
 .p-news .news-desc{font-size:14px;color:var(--muted-2);line-height:1.65;max-width:72ch;margin-bottom:16px}
+.p-news .news-section-head{padding:40px 0 0;border-top:1px solid var(--line);margin-top:8px}
+.p-news .news-section-head:first-child{margin-top:0}
+.p-news .news-section-label{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);padding-bottom:0}
+.p-news .news-empty{padding:32px 0;border-bottom:1px solid var(--line);font-family:var(--font-mono);font-size:13px;color:var(--muted-2);letter-spacing:.06em}
 
 /* ======================== CONTACT ======================== */
 .p-contact .intro{padding:84px 0 100px}
-.p-contact .contact-email{font-family:var(--font-display);font-style:italic;font-size:clamp(28px,4vw,48px);color:var(--muted);display:inline-block;margin-top:32px;transition:color .25s}
+.p-contact .contact-grid{display:grid;grid-template-columns:1fr 1fr;margin-top:48px;border-top:1px solid var(--line)}
+.p-contact .contact-person{padding:44px 0;border-bottom:1px solid var(--line)}
+.p-contact .contact-person:nth-child(odd){padding-right:48px;border-right:1px solid var(--line)}
+.p-contact .contact-person:nth-child(even){padding-left:48px}
+.p-contact .contact-name{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--text);margin-bottom:5px}
+.p-contact .contact-role{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+.p-contact .contact-email{font-family:var(--font-display);font-style:italic;font-size:clamp(20px,2.6vw,30px);color:var(--muted);transition:color .25s;display:inline-block}
 .p-contact .contact-email:hover{color:var(--text)}
+@media(max-width:600px){.p-contact .contact-grid{grid-template-columns:1fr}.p-contact .contact-person:nth-child(odd){padding-right:0;border-right:none}.p-contact .contact-person:nth-child(even){padding-left:0}}
 .ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 0;position:relative;z-index:2}
 .ticker-track{display:inline-flex;white-space:nowrap;animation:ticker-scroll 50s linear infinite}
 .ticker-track:hover{animation-play-state:paused}
@@ -226,7 +250,7 @@ footer{border-top:1px solid var(--line);padding:36px 0}
 .p-home .eyebrow::before{width:0;animation:line 1s ease forwards .2s}
 @keyframes line{to{width:26px}}
 .p-home .rise{opacity:0;transform:translateY(20px);animation:rise .9s cubic-bezier(.22,1,.36,1) forwards}
-.p-home .rise.d1{animation-delay:.05s}.p-home .rise.d2{animation-delay:.17s}.p-home .rise.d3{animation-delay:.3s}
+.p-home .rise.d1{animation-delay:.05s}.p-home .rise.d2{animation-delay:.17s}.p-home .rise.d3{animation-delay:.3s}.p-home .rise.d4{animation-delay:.43s}
 @keyframes rise{to{opacity:1;transform:none}}
 .p-home .band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:transparent;padding:90px 0;text-align:center}
 .p-home .band .huge{font-family:var(--font-display);font-weight:700;font-size:clamp(80px,16vw,200px);line-height:.9;letter-spacing:-.04em;color:var(--text)}
