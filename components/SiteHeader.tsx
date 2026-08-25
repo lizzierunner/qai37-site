@@ -24,7 +24,10 @@ export default function SiteHeader() {
   return (
     <header className={scrolled ? "scrolled" : ""}>
       <div className="wrap nav">
-        <Link className="logo" href="/" aria-label="qAI37 home">qAI<b>37</b><span className="dot" /></Link>
+        <Link className="logo" href="/" aria-label="qAI37 home">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/qai37-site/images/qai37_logo.png" alt="qAI37" className="logo-img" />
+        </Link>
         <nav className="nav-links" aria-label="Primary">
           {LINKS.map((l) => (
             <Link key={l.href} href={l.href} className={pathname === l.href ? "active" : ""} aria-current={pathname === l.href ? "page" : undefined}>

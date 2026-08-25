@@ -4,7 +4,8 @@ export default function SiteFooter() {
   return (
     <footer>
       <div className="wrap foot">
-        <span className="logo" style={{ fontSize: 18 }}>qAI<b>37</b></span>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/qai37-site/images/qai37_logo.png" alt="qAI37" className="logo-img" style={{ height: 36 }} />
         <span className="mono">© {new Date().getFullYear()} qAI37 — All rights reserved</span>
         <span>
           <Link href="/">Home</Link> · <Link href="/mission">Mission</Link> · <Link href="/team">Team</Link>

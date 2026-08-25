@@ -27,6 +27,7 @@ header.scrolled{backdrop-filter:blur(14px);background:rgba(10,10,10,.88);border-
 .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
 .logo{font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.5px;display:flex;align-items:center}
 .logo b{color:var(--cyan)}
+.logo-img{height:44px;width:auto;display:block;border-radius:4px}
 .logo .dot{width:6px;height:6px;border-radius:50%;background:var(--text);margin-left:7px;animation:pulse 3s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
 .nav-links{display:flex;align-items:center;gap:30px}
