@@ -158,7 +158,7 @@ footer{border-top:1px solid var(--line);padding:36px 0}
 /* ======================== CONTACT ======================== */
 .p-contact .intro{padding:84px 0 100px}
 .p-contact .contact-email{font-family:var(--font-display);font-style:italic;font-size:clamp(28px,4vw,48px);color:var(--muted);display:inline-block;margin-top:32px;transition:color .25s}
-.p-contact .contact-email:hover{color:var(--text)} */
+.p-contact .contact-email:hover{color:var(--text)}
 .ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 0;position:relative;z-index:2}
 .ticker-track{display:inline-flex;white-space:nowrap;animation:ticker-scroll 50s linear infinite}
 .ticker-track:hover{animation-play-state:paused}
