@@ -1,4 +1,5 @@
 import SignupForm from "@/components/SignupForm";
+import HeroViz from "@/components/HeroViz";
 
 const ROSTER = [
   { name: "Ted Stockwell", role: "Founder & CEO" },
@@ -14,9 +15,10 @@ export default function Home() {
     <div className="p-home">
       {/* HERO */}
       <section className="hero">
-        <div className="wrap">
-          <span className="eyebrow rise d1">The neutral route to post-silicon AI</span>
-          <h1 className="rise d2">A new software layer for AI infrastructure.</h1>
+        <div className="wrap hero-inner">
+          <div className="hero-text">
+            <span className="eyebrow rise d1">The neutral route to post-silicon AI</span>
+            <h1 className="rise d2">A new software layer for AI infrastructure.</h1>
           <p className="lede rise d3">
             Every time you ask AI a question, it re-reads everything you&apos;ve given it
             before it answers. The more it knows, the slower and more expensive every
@@ -27,6 +29,8 @@ export default function Home() {
           <div className="rise d4">
             <SignupForm />
           </div>
+          </div>
+          <HeroViz />
         </div>
       </section>
 
