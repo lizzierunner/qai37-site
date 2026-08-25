@@ -129,19 +129,17 @@ footer{border-top:1px solid var(--line);padding:36px 0}
 .pull-quote blockquote p{margin:0}
 
 /* =========================== NEWS =========================== */
-.p-news .intro{padding:84px 0 56px}
-.p-news .news-list{padding:0 0 100px;border-top:1px solid var(--line)}
+.p-news .news-intro{padding:80px 0 60px}
+.p-news .news-list{padding:0 0 120px;border-top:1px solid var(--line)}
 .p-news .news-status{color:var(--muted);font-family:var(--font-mono);font-size:13px;padding:60px 0}
-.p-news .news-item{display:flex;align-items:baseline;gap:24px;padding:28px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:opacity .2s;color:var(--text)}
-.p-news .news-item:hover{opacity:.6}
-.p-news .news-item:hover .news-arrow{transform:translateX(5px)}
-.p-news .news-n{font-family:var(--font-mono);font-size:11px;color:var(--muted-2);min-width:26px;letter-spacing:.1em;flex-shrink:0;padding-top:3px}
-.p-news .news-body{flex:1;min-width:0}
-.p-news .news-title{font-family:var(--font-display);font-size:clamp(18px,2.4vw,24px);font-weight:500;color:var(--text);line-height:1.28;margin-bottom:8px}
-.p-news .news-meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--font-mono);font-size:10px;color:var(--muted-2);letter-spacing:.1em;text-transform:uppercase}
-.p-news .news-src{color:var(--muted)}
-.p-news .news-arrow{font-family:var(--font-mono);font-size:15px;color:var(--muted-2);transition:transform .2s;flex-shrink:0}
-@media(max-width:600px){.p-news .news-item{gap:14px}.p-news .news-n{display:none}}
+.p-news .news-item{display:block;padding:44px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--text)}
+.p-news .news-item:hover .news-title{color:var(--text)}
+.p-news .news-item:hover .news-arrow{transform:translateX(5px);color:var(--text)}
+.p-news .news-title{font-family:var(--font-display);font-style:italic;font-size:clamp(24px,3.2vw,38px);font-weight:400;color:var(--muted);line-height:1.28;margin-bottom:20px;transition:color .25s}
+.p-news .news-foot{display:flex;justify-content:space-between;align-items:center}
+.p-news .news-date{font-family:var(--font-mono);font-size:11px;color:var(--muted-2);letter-spacing:.18em;text-transform:uppercase}
+.p-news .news-arrow{font-family:var(--font-mono);font-size:16px;color:var(--muted-2);transition:transform .2s,color .25s}
+@media(max-width:600px){.p-news .news-item{padding:32px 0}.p-news .news-title{font-size:clamp(20px,5vw,28px)}}
 
 /* =========================== HOME =========================== */
 .p-home .hero{padding:84px 0 60px}

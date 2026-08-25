@@ -5,21 +5,13 @@ type HNStory = {
   objectID: string;
   title: string;
   url: string;
-  author: string;
   created_at: string;
-  points: number;
 };
 
-function hostname(url: string) {
-  try { return new URL(url).hostname.replace(/^www\./, ""); }
-  catch { return "news.ycombinator.com"; }
-}
-
-function timeAgo(date: string) {
-  const secs = Math.floor((Date.now() - new Date(date).getTime()) / 1000);
-  if (secs < 3600) return `${Math.floor(secs / 60)}m ago`;
-  if (secs < 86400) return `${Math.floor(secs / 3600)}h ago`;
-  return `${Math.floor(secs / 86400)}d ago`;
+function formatDate(date: string) {
+  return new Date(date)
+    .toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+    .toUpperCase();
 }
 
 export default function NewsFeed() {
@@ -44,7 +36,7 @@ export default function NewsFeed() {
 
   return (
     <>
-      {stories.map((s, i) => (
+      {stories.map((s) => (
         <a
           key={s.objectID}
           href={s.url || `https://news.ycombinator.com/item?id=${s.objectID}`}
@@ -52,16 +44,11 @@ export default function NewsFeed() {
           rel="noopener noreferrer"
           className="news-item reveal"
         >
-          <span className="news-n">{String(i + 1).padStart(2, "0")}</span>
-          <div className="news-body">
-            <p className="news-title">{s.title}</p>
-            <div className="news-meta">
-              <span className="news-src">{hostname(s.url)}</span>
-              <span>{timeAgo(s.created_at)}</span>
-              <span>{s.points} pts</span>
-            </div>
+          <p className="news-title">{s.title}</p>
+          <div className="news-foot">
+            <span className="news-date">{formatDate(s.created_at)}</span>
+            <span className="news-arrow" aria-hidden="true">→</span>
           </div>
-          <span className="news-arrow" aria-hidden="true">→</span>
         </a>
       ))}
     </>
