@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 
 const LINKS = [
   { href: "/", label: "Home" },
-  { href: "/mission", label: "Mission" },
   { href: "/team", label: "Team" },
   { href: "/news", label: "News" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function SiteHeader() {
@@ -27,7 +27,7 @@ export default function SiteHeader() {
       <div className="wrap nav">
         <Link className="logo" href="/" aria-label="qAI37 home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/qai37-site/images/qai37_logo.png" alt="qAI37" className="logo-img" />
+          <img src="/qai37-site/images/qai37_logo_transparent.jpg" alt="qAI37" className="logo-img" />
         </Link>
         <nav className="nav-links" aria-label="Primary">
           {LINKS.map((l) => (

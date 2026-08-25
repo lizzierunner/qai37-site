@@ -1,94 +1,156 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import MemberAvatar from "@/components/MemberAvatar";
 
 export const metadata: Metadata = {
   title: "Team",
   description:
-    "The people behind qAI37: leaders across quantum computing, AI, data-center infrastructure, and enterprise software building the next generation of AI infrastructure.",
+    "The people behind qAI37 — leaders in infrastructure software, processor architecture, quantum computing, and enterprise engineering.",
 };
 
-function LinkedIn() {
+type Member = {
+  name: string;
+  role: string;
+  bio: string;
+  img?: string;
+  initials: string;
+  li?: string;
+};
+type Advisor = { name: string; role: string };
+
+const TEAM: Member[] = [
+  {
+    name: "Ted Stockwell",
+    role: "Founder & CEO",
+    initials: "TS",
+    img: "/qai37-site/images/team/ted-stockwell.jpg",
+    bio: "Ted spent his career at Microsoft turning hard infrastructure problems into platform businesses, including building Bing as a Platform. He founded qAI37 to do the same for AI compute.",
+    li: "https://www.linkedin.com/in/jtedstockwell/",
+  },
+  {
+    name: "Michelle Holtmann",
+    role: "President & Chief Strategy Officer",
+    initials: "MH",
+    img: "/qai37-site/images/team/michelle-holtmann.jpg",
+    bio: "Michelle spent 25 years at Microsoft building infrastructure products at billions-of-devices scale, including Windows Genuine Advantage, its successor the Software Protection Platform, and the technical foundation behind Windows Defender. She joined qAI37 after extensive study of whether the approach was actually buildable, and designed the roadmap to prove it.",
+  },
+  {
+    name: "Steve Jahnke",
+    role: "Chief Technical Officer",
+    initials: "SJ",
+    img: "/qai37-site/images/team/steve-jahnke.jpg",
+    bio: "Steve spent 30 years at Intel, Altera, and TI building processor architecture and systems software. He leads qAI37's technical architecture.",
+  },
+  {
+    name: "Laverne Masaki",
+    role: "Chief People Officer",
+    initials: "LM",
+    img: "/qai37-site/images/team/laverne-masaki.jpg",
+    bio: "Laverne spent her career as an executive recruiter at Microsoft and Google, building senior technical teams for complex programs. She leads people and organizational strategy at qAI37.",
+    li: "https://www.linkedin.com/in/laverne-masaki/",
+  },
+  {
+    name: "Rick Jahnke",
+    role: "Principal Engineer",
+    initials: "RJ",
+    bio: "Rick has over 30 years in embedded systems engineering, including as Director of Engineering at Galixsys Networks. He's a named inventor on embedded network patents.",
+  },
+  {
+    name: "Ruben Marroquin",
+    role: "Senior Engineer",
+    initials: "RM",
+    bio: "Ruben is an FPGA and embedded systems engineer with experience at Intel and Altera and holds a BS in Electrical Engineering from Rice University.",
+  },
+  {
+    name: "Vicki Mitchell",
+    role: "Chief Engineering Advisor",
+    initials: "VM",
+    img: "/qai37-site/images/team/vicki-mitchell.jpg",
+    bio: "Vicki has spent her career at the intersection of hardware and software as an engineering leader at Google, ARM, and Altera.",
+    li: "https://www.linkedin.com/in/vickibmitchell/",
+  },
+  {
+    name: "Vincent Elfving",
+    role: "Chief Quantum Advisor",
+    initials: "VE",
+    img: "/qai37-site/images/team/vincent-elfving.jpg",
+    bio: "Vincent was Head of Algorithms at Pasqal, where he led a team of researchers building AI workflows for neutral atom hardware. He's a Google Quantum AI alumnus.",
+  },
+];
+
+const ADVISORS: Advisor[] = [
+  { name: "Sethu Raman", role: "Technical Advisor" },
+  { name: "John Williams", role: "Strategic Advisor" },
+  { name: "Gregor Barry", role: "Advisor" },
+  { name: "Rupesh Srivastava", role: "Quantum Advisor" },
+];
+
+function LinkedInIcon() {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.2V9h3.4v1.6h.1c.5-.9 1.7-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 110-4.2 2.1 2.1 0 010 4.2zM7.1 20.4H3.5V9h3.6v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.9-.8-1.7-1.8-1.7z" /></svg>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.2V9h3.4v1.6h.1c.5-.9 1.7-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 110-4.2 2.1 2.1 0 010 4.2zM7.1 20.4H3.5V9h3.6v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.9-.8-1.7-1.8-1.7z" />
+    </svg>
   );
 }
 
-type Member = { name: string; role: string; initials: string; img: string; bio: string; li: string };
-
-const FOUNDER: Member = {
-  name: "Ted Stockwell", role: "CEO & Founder", initials: "TS",
-  img: "https://www.qai37.com/images/ted-stockwell.jpeg",
-  bio: "Technology leader and entrepreneur across AI, quantum computing, and enterprise software, with a track record of building companies and leading teams from zero to scale.",
-  li: "https://www.linkedin.com/in/jtedstockwell/",
-};
-
-const TEAM: Member[] = [
-  { name: "John Williams", role: "Chief Product Officer", initials: "JW", img: "https://www.qai37.com/images/john-williams.jpeg",
-    bio: "Product leader spanning enterprise and high-performance computing and data-center infrastructure, focused on solutions that disrupt markets and outpace what customers expect.",
-    li: "https://www.linkedin.com/in/johnwilliams68/" },
-  { name: "Rupesh Srivastava", role: "VP of Quantum Engineering", initials: "RS", img: "https://www.qai37.com/images/rupesh-srivastava.jpeg",
-    bio: "Quantum computing specialist developing the algorithms and architectures that bridge quantum mechanics and practical AI.",
-    li: "https://www.linkedin.com/in/rupesh-srivastava/" },
-  { name: "Vicki Mitchell", role: "VP of Software Engineering", initials: "VM", img: "https://www.qai37.com/images/vicki-mitchell.jpeg",
-    bio: "Engineering leader who builds and scales the teams that ship hard technology, with deep roots in software development and delivery.",
-    li: "https://www.linkedin.com/in/vickibmitchell/" },
-  { name: "Laverne Masaki", role: "Chief People Officer", initials: "LM", img: "https://www.qai37.com/images/laverne-masaki.jpeg",
-    bio: "People leader and executive recruiter who builds the culture and talent density that lets hard engineering happen — from org design to inclusive hiring.",
-    li: "https://www.linkedin.com/in/laverne-masaki/" },
-];
+function Avatar({ m }: { m: Member }) {
+  return (
+    <div className="bio-photo" data-initials={m.initials}>
+      {m.img && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={m.img}
+          alt={m.name}
+          onError={(e) =>
+            (e.currentTarget.parentElement as HTMLElement).classList.add("noimg")
+          }
+        />
+      )}
+    </div>
+  );
+}
 
 export default function Team() {
   return (
-    <div className="p-team">
-      <section className="intro">
+    <div className="p-team2">
+      <section className="bio-intro">
         <div className="wrap">
           <span className="eyebrow reveal">The team</span>
-          <h1 className="reveal s1">The people teaching AI to run on less.</h1>
-          <p className="lede reveal s2">qAI37 brings together leaders across quantum computing, artificial intelligence, and data-center infrastructure — the rare mix the problem actually demands.</p>
-          <div className="domains reveal s3">
-            <span className="domain"><b>Quantum</b> computing</span>
-            <span className="domain"><b>Artificial</b> intelligence</span>
-            <span className="domain"><b>Data-center</b> infrastructure</span>
-            <span className="domain"><b>Enterprise</b> software</span>
-          </div>
+          <h1 className="reveal s1">The people building it.</h1>
         </div>
       </section>
 
-      <section className="people">
-        <div className="wrap">
-          <div className="featured reveal">
-            <MemberAvatar src={FOUNDER.img} alt={FOUNDER.name} initials={FOUNDER.initials} />
-            <div>
-              <div className="role mono">{FOUNDER.role}</div>
-              <h2>{FOUNDER.name}</h2>
-              <p>{FOUNDER.bio}</p>
-              <Link className="li" href={FOUNDER.li} target="_blank" rel="noopener"><LinkedIn /> LinkedIn</Link>
-            </div>
-          </div>
-
-          <div className="grid">
-            {TEAM.map((m, i) => (
-              <article key={m.name} className={`card reveal${i % 2 ? " s1" : ""}`}>
-                <MemberAvatar src={m.img} alt={m.name} initials={m.initials} />
-                <div>
-                  <div className="role">{m.role}</div>
-                  <h3>{m.name}</h3>
-                  <p>{m.bio}</p>
-                  <Link className="li" href={m.li} target="_blank" rel="noopener"><LinkedIn /> LinkedIn</Link>
+      <section>
+        <div className="wrap bio-list">
+          {TEAM.map((m) => (
+            <div key={m.name} className="bio-row reveal">
+              <div className="bio-left">
+                <Avatar m={m} />
+                <div className="bio-meta">
+                  <p className="bio-name">{m.name}</p>
+                  <p className="bio-role">{m.role}</p>
+                  {m.li && (
+                    <a href={m.li} target="_blank" rel="noopener noreferrer" className="bio-li">
+                      <LinkedInIcon /> LinkedIn
+                    </a>
+                  )}
                 </div>
-              </article>
+              </div>
+              <p className="bio-body">{m.bio}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="advisory-section">
+        <div className="wrap">
+          <span className="eyebrow reveal">Advisory board</span>
+          <div className="advisory-list">
+            {ADVISORS.map((a) => (
+              <div key={a.name} className="advisory-item reveal">
+                <span className="advisory-name">{a.name}</span>
+                <span className="advisory-role">{a.role}</span>
+              </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="hire" id="join">
-        <div className="wrap">
-          <span className="eyebrow reveal">Join us</span>
-          <h2 className="reveal s1">We&apos;re hiring the people who&apos;ll build the rest of it.</h2>
-          <p className="reveal s2">If bending the power curve of AI sounds like your kind of problem, we&apos;d like to hear from you.</p>
-          <Link className="btn reveal s2" href="mailto:careers@qai37.com">See open roles</Link>
         </div>
       </section>
     </div>
