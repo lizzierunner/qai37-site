@@ -35,6 +35,18 @@ export default function SiteHeader() {
               {l.label}
             </Link>
           ))}
+          <button
+            type="button"
+            className="cmd-trigger-btn"
+            onClick={() => {
+              window.dispatchEvent(new KeyboardEvent("keydown", { key: "k", metaKey: true }));
+            }}
+            title="Open Search (Cmd + K)"
+            aria-label="Open search command palette"
+          >
+            <span className="cmd-trigger-text">Search</span>
+            <kbd className="cmd-trigger-kbd">⌘K</kbd>
+          </button>
           <Link className="btn" href="/#join">Get updates</Link>
         </nav>
       </div>

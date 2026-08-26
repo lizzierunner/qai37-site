@@ -1,3 +1,5 @@
+import posts from "../content/news-posts.json";
+
 export type NewsPost = {
   type: "company" | "industry";
   title: string;
@@ -7,53 +9,4 @@ export type NewsPost = {
 };
 
 // Reverse chronological order — newest first
-export const NEWS: NewsPost[] = [
-  {
-    type: "industry",
-    title: "Japan brings online its first full-stack neutral-atom quantum computer",
-    date: "August 24, 2026",
-    description:
-      "Japan's Institute for Molecular Science operationalized \"Shunkai,\" the country's first full-stack neutral-atom quantum computer, built with Hitachi and Infleqtion.",
-    url: "https://infleqtion.com/news",
-  },
-  {
-    type: "industry",
-    title: "Pasqal and Eleven Ventures form joint venture for the Middle East",
-    date: "August 24, 2026",
-    description:
-      "Pasqal and Saudi investment platform Eleven Ventures announced a joint venture to deploy and scale neutral-atom quantum systems across Saudi Arabia and the wider MENA region.",
-    url: "https://pasqal.com/news",
-  },
-  {
-    type: "industry",
-    title: "Oratomic closes $300M Series A",
-    date: "July 7, 2026",
-    description:
-      "Oratomic raised a $300M Series A to advance its fault-tolerant, neutral-atom approach to quantum computing.",
-    url: "https://www.oratomic.com/news/SeriesA",
-  },
-  {
-    type: "industry",
-    title: "Atom Computing raises $100M Series C, signs Department of Commerce letter of intent",
-    date: "June 16, 2026",
-    description:
-      "Atom Computing announced a $100M Series C round plus a signed $100M Letter of Intent with the U.S. Department of Commerce to accelerate its neutral-atom quantum computing work.",
-    url: "https://atom-computing.com/news",
-  },
-  {
-    type: "industry",
-    title: "Google Quantum AI adds neutral-atom hardware to its roadmap",
-    date: "March 24, 2026",
-    description:
-      "Google Quantum AI expanded its research program to include neutral-atom hardware, hiring physicist Adam Kaufman to lead a new team based in Boulder, Colorado.",
-    url: "https://quantumai.google",
-  },
-  {
-    type: "industry",
-    title: "Nvidia's Jensen Huang describes the \"inference inflection\"",
-    date: "March 16, 2026",
-    description:
-      "At Nvidia's GTC keynote, CEO Jensen Huang framed AI infrastructure economics around tokens produced per watt of power, describing a shift in AI compute demand from training to inference.",
-    url: "https://nvidianews.nvidia.com/news",
-  },
-];
+export const NEWS: NewsPost[] = posts as NewsPost[];

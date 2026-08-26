@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ContactButton from "@/components/ContactButton";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -17,12 +18,12 @@ export default function Contact() {
             <div className="contact-person">
               <p className="contact-name">Ted Stockwell</p>
               <p className="contact-role">Founder & CEO</p>
-              <span className="contact-email">Contact via qAI37</span>
+              <ContactButton />
             </div>
             <div className="contact-person">
               <p className="contact-name">Michelle Holtmann</p>
               <p className="contact-role">President & Chief Strategy Officer</p>
-              <span className="contact-email">Contact via qAI37</span>
+              <ContactButton />
             </div>
           </div>
         </div>

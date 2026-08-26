@@ -1,5 +1,6 @@
 import SignupForm from "@/components/SignupForm";
 import HeroViz from "@/components/HeroViz";
+import ContextVisualizer from "@/components/ContextVisualizer";
 
 const ROSTER = [
   { name: "Ted Stockwell", role: "Founder & CEO" },
@@ -60,6 +61,10 @@ export default function Home() {
                 <p className="thesis-body">The scientific foundation is decades old and peer-reviewed. The hardware that makes it work now exists.</p>
               </div>
             </div>
+          </div>
+
+          <div style={{ marginTop: 64 }}>
+            <ContextVisualizer />
           </div>
         </div>
       </section>

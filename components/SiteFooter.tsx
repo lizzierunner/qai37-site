@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ContactButton from "@/components/ContactButton";
 
 export default function SiteFooter() {
   return (
@@ -17,7 +18,7 @@ export default function SiteFooter() {
           <Link href="/contact">Contact</Link>
         </nav>
         <div className="foot-contact">
-          <span className="foot-email">Contact via qAI37</span>
+          <ContactButton className="foot-email" />
         </div>
       </div>
       <div className="wrap foot-copy">

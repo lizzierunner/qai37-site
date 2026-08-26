@@ -5,6 +5,7 @@ import Lattice from "@/components/Lattice";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveals from "@/components/Reveals";
+import CommandPalette from "@/components/CommandPalette";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.qai37.com"),
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
+        <CommandPalette />
         <Reveals />
       </body>
     </html>
