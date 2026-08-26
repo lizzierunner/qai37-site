@@ -64,17 +64,40 @@ const TEAM: Member[] = [
     li: "https://www.linkedin.com/in/laverne-masaki/",
   },
   {
-    name: "Rick Jahnke",
-    role: "Principal Engineer",
-    initials: "RJ",
-    bio: "Rick has over 30 years in embedded systems engineering, including as Director of Engineering at Galixsys Networks. He's a named inventor on embedded network patents.",
-  },
-  {
     name: "Ruben Marroquin",
     role: "Senior Engineer",
     initials: "RM",
     img: "/qai37-site/images/team/ruben-marroquin.jpg",
     bio: "Ruben is an FPGA and embedded systems engineer with experience at Intel and Altera and holds a BS in Electrical Engineering from Rice University.",
+  },
+];
+
+type ExtendedMember = {
+  name: string;
+  role: string;
+  bio: string;
+};
+
+const EXTENDED_TEAM: ExtendedMember[] = [
+  {
+    name: "Rupesh Srivastava",
+    role: "Quantum Advisor",
+    bio: "PhD in Physics, Royal Holloway, University of London. Five years developing the UK quantum-computing ecosystem at Oxford's Department of Physics (the NQIT and QCS national quantum technology hubs, 2016–2021). Chief Quantum Officer, Entangled Positions.",
+  },
+  {
+    name: "Gregor Barry",
+    role: "Advisor",
+    bio: "Managing Director, Accenture, Toronto — twelve years in enterprise relationships with Fortune 500 clients.",
+  },
+  {
+    name: "Rick Jahnke",
+    role: "Principal Engineer",
+    bio: "30+ years embedded systems engineering; Director of Engineering, Galixsys Networks; named inventor on embedded network patents.",
+  },
+  {
+    name: "Ruben Marroquin",
+    role: "Senior Engineer",
+    bio: "FPGA/embedded systems engineer, Intel and Altera; patent strategy and hardware applications engineering; BS EE, Rice University.",
   },
 ];
 
@@ -127,12 +150,15 @@ export default function Team() {
 
       <section className="advisory-section">
         <div className="wrap">
-          <span className="eyebrow reveal">Advisory board</span>
-          <div className="advisory-list">
-            {ADVISORS.map((a) => (
-              <div key={a.name} className="advisory-item reveal">
-                <span className="advisory-name">{a.name}</span>
-                <span className="advisory-role">{a.role}</span>
+          <span className="eyebrow reveal">Extended team & advisors</span>
+          <div className="extended-list" style={{ marginTop: 40, borderTop: "1px solid var(--line)" }}>
+            {EXTENDED_TEAM.map((m) => (
+              <div key={m.name} className="bio-row reveal" style={{ padding: "36px 0", borderBottom: "1px solid var(--line)" }}>
+                <div className="bio-meta">
+                  <p className="bio-name">{m.name}</p>
+                  <p className="bio-role">{m.role}</p>
+                </div>
+                <p className="bio-body">{m.bio}</p>
               </div>
             ))}
           </div>
