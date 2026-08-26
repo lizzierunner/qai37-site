@@ -185,23 +185,23 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px}
 @media(max-width:600px){.p-home .roster{grid-template-columns:1fr}.p-home .roster-item:nth-child(odd){padding-right:0;border-right:none}.p-home .roster-item:nth-child(even){padding-left:0}}
 
 /* ======================== TEAM PAGE BIOS ======================== */
-.p-team2 .bio-intro{padding:84px 0 56px}
-.p-team2 .bio-list{border-top:1px solid var(--line);padding-bottom:100px}
-.p-team2 .bio-row{display:grid;grid-template-columns:260px 1fr;gap:48px;padding:44px 0;border-bottom:1px solid var(--line)}
-.p-team2 .bio-left{display:flex;flex-direction:column;gap:16px}
-.p-team2 .bio-photo{width:140px;height:140px;border-radius:2px;overflow:hidden;background:var(--surface);border:1px solid var(--line);position:relative;flex-shrink:0}
-.p-team2 .bio-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
-.p-team2 .bio-photo img[src*="ted-stockwell"]{object-fit:contain;object-position:center; background:var(--ink)}
-.p-team2 .bio-photo img[src*="vicki-mitchell"]{filter:grayscale(1) contrast(1.08);}
+.p-team2 .bio-intro{padding:84px 0 52px}
+.p-team2 .bio-intro h1{max-width:12ch}
+.p-team2 .bio-list{border-top:1px solid var(--line);padding-bottom:96px}
+.p-team2 .bio-row{display:grid;grid-template-columns:260px 1fr;gap:40px;padding:38px 0;border-bottom:1px solid var(--line)}
+.p-team2 .bio-left{display:flex;flex-direction:column;gap:14px;align-self:start}
+.p-team2 .bio-photo{width:140px;height:140px;border-radius:2px;overflow:hidden;background:var(--surface);border:1px solid var(--line);position:relative;flex-shrink:0;box-shadow:0 20px 40px -28px rgba(0,0,0,.8)}
+.p-team2 .bio-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;filter:grayscale(1) contrast(1.08)}
+.p-team2 .bio-photo img[src*="ted-stockwell"]{object-fit:contain;object-position:center;background:var(--ink)}
 .p-team2 .bio-photo.noimg img{display:none}
 .p-team2 .bio-photo.noimg::after{content:attr(data-initials);position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-display);font-weight:600;font-size:1.4em;color:var(--muted)}
 .p-team2 .bio-meta{padding-top:2px}
-.p-team2 .bio-name{font-family:var(--font-display);font-size:20px;font-weight:600;letter-spacing:-.01em;color:var(--text);margin-bottom:5px}
+.p-team2 .bio-name{font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-.02em;color:var(--text);margin-bottom:6px;line-height:1.2}
 .p-team2 .bio-role{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
 .p-team2 .bio-li{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-family:var(--font-mono);font-size:11px;color:var(--muted);transition:color .2s}
 .p-team2 .bio-li:hover{color:var(--cyan)}
 .p-team2 .bio-li svg{width:13px;height:13px;fill:currentColor}
-.p-team2 .bio-body{font-size:16px;color:var(--muted);line-height:1.75;align-self:center}
+.p-team2 .bio-body{font-size:17px;color:var(--muted);line-height:1.72;align-self:center;max-width:68ch}
 .p-team2 .advisory-section{padding:72px 0 100px;border-top:1px solid var(--line)}
 .p-team2 .advisory-list{display:grid;grid-template-columns:repeat(2,1fr);margin-top:32px;border-top:1px solid var(--line)}
 .p-team2 .advisory-item{padding:20px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
