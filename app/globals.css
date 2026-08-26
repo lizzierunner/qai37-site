@@ -30,7 +30,8 @@ header.scrolled{-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);ba
 .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
 .logo{font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.5px;display:flex;align-items:center}
 .logo b{color:var(--cyan)}
-.logo-img{height:44px;width:auto;display:block;border-radius:4px}
+.logo-img{height:48px;width:auto;display:block;border-radius:4px;background:transparent;object-fit:contain;filter:drop-shadow(0 0 0 rgba(46,217,184,0)) drop-shadow(0 0 14px rgba(46,217,184,.18));transition:filter .2s ease,transform .2s ease}
+.logo:hover .logo-img{filter:drop-shadow(0 0 0 rgba(46,217,184,0)) drop-shadow(0 0 18px rgba(46,217,184,.32));transform:translateY(-1px)}
 .logo .dot{width:6px;height:6px;border-radius:50%;background:var(--text);margin-left:7px;animation:pulse 3s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
 .nav-links{display:flex;align-items:center;gap:30px}
@@ -190,6 +191,8 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px}
 .p-team2 .bio-left{display:flex;flex-direction:column;gap:16px}
 .p-team2 .bio-photo{width:140px;height:140px;border-radius:2px;overflow:hidden;background:var(--surface);border:1px solid var(--line);position:relative;flex-shrink:0}
 .p-team2 .bio-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
+.p-team2 .bio-photo img[src*="ted-stockwell"]{object-fit:contain;object-position:center; background:var(--ink)}
+.p-team2 .bio-photo img[src*="vicki-mitchell"]{filter:grayscale(1) contrast(1.08);}
 .p-team2 .bio-photo.noimg img{display:none}
 .p-team2 .bio-photo.noimg::after{content:attr(data-initials);position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-display);font-weight:600;font-size:1.4em;color:var(--muted)}
 .p-team2 .bio-meta{padding-top:2px}

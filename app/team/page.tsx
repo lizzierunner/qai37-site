@@ -41,26 +41,6 @@ const TEAM: Member[] = [
     bio: "Steve spent 30 years at Intel, Altera, and TI building processor architecture and systems software engineered to never go down. The translation-layer problem qAI37 is solving is the same class of problem Steve has spent his career solving in silicon.",
   },
   {
-    name: "Laverne Masaki",
-    role: "Chief People Officer",
-    initials: "LM",
-    img: "/qai37-site/images/team/laverne-masaki.jpg",
-    bio: "Former executive recruiter at Microsoft and Google, specializing in building senior technical teams for complex, high-stakes programs. Laverne's network and judgment are a core operational asset at a company whose execution depends entirely on assembling the right people at the right moment.",
-    li: "https://www.linkedin.com/in/laverne-masaki/",
-  },
-  {
-    name: "Rick Jahnke",
-    role: "Principal Engineer",
-    initials: "RJ",
-    bio: "Rick has over 30 years in embedded systems engineering, including as Director of Engineering at Galixsys Networks. He's a named inventor on embedded network patents.",
-  },
-  {
-    name: "Ruben Marroquin",
-    role: "Senior Engineer",
-    initials: "RM",
-    bio: "Ruben is an FPGA and embedded systems engineer with experience at Intel and Altera and holds a BS in Electrical Engineering from Rice University.",
-  },
-  {
     name: "Vicki Mitchell",
     role: "Chief Engineering Officer",
     initials: "VM",
@@ -74,6 +54,21 @@ const TEAM: Member[] = [
     initials: "VE",
     img: "/qai37-site/images/team/vincent-elfving.jpg",
     bio: "Former Head of Algorithms at Pasqal, where he led a team of over 40 researchers developing AI workflows for neutral atom hardware. Google Quantum AI alumnus and co-founder of Qu & Co (merged with Pasqal). PhD in Quantum Information Processing.",
+  },
+  {
+    name: "Laverne Masaki",
+    role: "Chief People Officer",
+    initials: "LM",
+    img: "/qai37-site/images/team/laverne-masaki.jpg",
+    bio: "Former executive recruiter at Microsoft and Google, specializing in building senior technical teams for complex, high-stakes programs. Laverne's network and judgment are a core operational asset at a company whose execution depends entirely on assembling the right people at the right moment.",
+    li: "https://www.linkedin.com/in/laverne-masaki/",
+  },
+  {
+    name: "Ruben Marroquin",
+    role: "Senior Engineer",
+    initials: "RM",
+    img: "/images/team/ruben-marroquin.jpg",
+    bio: "Ruben is an FPGA and embedded systems engineer with experience at Intel and Altera and holds a BS in Electrical Engineering from Rice University.",
   },
 ];
 
