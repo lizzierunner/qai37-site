@@ -17,12 +17,12 @@ export default function Contact() {
             <div className="contact-person">
               <p className="contact-name">Ted Stockwell</p>
               <p className="contact-role">Founder & CEO</p>
-              <a href="mailto:teds@qai37.com" className="contact-email">teds@qai37.com</a>
+              <span className="contact-email">Contact via qAI37</span>
             </div>
             <div className="contact-person">
               <p className="contact-name">Michelle Holtmann</p>
               <p className="contact-role">President & Chief Strategy Officer</p>
-              <a href="mailto:michelle@qai37.com" className="contact-email">michelle@qai37.com</a>
+              <span className="contact-email">Contact via qAI37</span>
             </div>
           </div>
         </div>
