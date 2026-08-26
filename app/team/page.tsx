@@ -67,7 +67,7 @@ const TEAM: Member[] = [
     name: "Ruben Marroquin",
     role: "Senior Engineer",
     initials: "RM",
-    img: "/images/team/ruben-marroquin.jpg",
+    img: "/qai37-site/images/team/ruben-marroquin.jpg",
     bio: "Ruben is an FPGA and embedded systems engineer with experience at Intel and Altera and holds a BS in Electrical Engineering from Rice University.",
   },
 ];
