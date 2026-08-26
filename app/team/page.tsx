@@ -64,6 +64,12 @@ const TEAM: Member[] = [
     li: "https://www.linkedin.com/in/laverne-masaki/",
   },
   {
+    name: "Rick Jahnke",
+    role: "Principal Engineer",
+    initials: "RJ",
+    bio: "Rick has over 30 years in embedded systems engineering, including as Director of Engineering at Galixsys Networks. He's a named inventor on embedded network patents.",
+  },
+  {
     name: "Ruben Marroquin",
     role: "Senior Engineer",
     initials: "RM",

@@ -27,6 +27,7 @@ const ITEMS: SearchItem[] = [
   { id: "team-vicki", category: "Team Member", title: "Vicki Mitchell", subtitle: "Chief Engineering Officer · Google, ARM, Altera", url: "/team" },
   { id: "team-vincent", category: "Team Member", title: "Vincent Elfving", subtitle: "Chief Quantum Advisor · Former Head of Algorithms Pasqal", url: "/team" },
   { id: "team-laverne", category: "Team Member", title: "Laverne Masaki", subtitle: "Chief People Officer · Microsoft, Google Recruiting", url: "/team" },
+  { id: "team-rick", category: "Team Member", title: "Rick Jahnke", subtitle: "Principal Engineer · 30+ years embedded systems", url: "/team" },
   { id: "team-ruben", category: "Team Member", title: "Ruben Marroquin", subtitle: "Senior Engineer · FPGA & Embedded Systems", url: "/team" },
 
   // Dynamic news
