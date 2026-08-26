@@ -150,15 +150,25 @@ export default function Team() {
 
       <section className="advisory-section">
         <div className="wrap">
-          <span className="eyebrow reveal">Extended team & advisors</span>
-          <div className="extended-list" style={{ marginTop: 40, borderTop: "1px solid var(--line)" }}>
+          <span className="eyebrow reveal">Extended team</span>
+          <div className="extended-list" style={{ marginTop: 24, borderTop: "1px solid var(--line)", marginBottom: 80 }}>
             {EXTENDED_TEAM.map((m) => (
-              <div key={m.name} className="bio-row reveal" style={{ padding: "36px 0", borderBottom: "1px solid var(--line)" }}>
+              <div key={m.name} className="bio-row reveal" style={{ padding: "32px 0", borderBottom: "1px solid var(--line)" }}>
                 <div className="bio-meta">
                   <p className="bio-name">{m.name}</p>
                   <p className="bio-role">{m.role}</p>
                 </div>
                 <p className="bio-body">{m.bio}</p>
+              </div>
+            ))}
+          </div>
+
+          <span className="eyebrow reveal">Advisory board</span>
+          <div className="advisory-list" style={{ marginTop: 24 }}>
+            {ADVISORS.map((a) => (
+              <div key={a.name} className="advisory-item reveal">
+                <span className="advisory-name">{a.name}</span>
+                <span className="advisory-role">{a.role}</span>
               </div>
             ))}
           </div>
