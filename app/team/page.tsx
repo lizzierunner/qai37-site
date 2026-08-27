@@ -15,8 +15,6 @@ type Member = {
   initials: string;
   li?: string;
 };
-type Advisor = { name: string; role: string };
-
 const TEAM: Member[] = [
   {
     name: "Ted Stockwell",
@@ -41,12 +39,12 @@ const TEAM: Member[] = [
     bio: "Steve spent 30 years at Intel, Altera, and TI building processor architecture and systems software engineered to never go down. The translation-layer problem qAI37 is solving is the same class of problem Steve has spent his career solving in silicon.",
   },
   {
-    name: "Vicki Mitchell",
-    role: "Chief Engineering Officer",
-    initials: "VM",
-    img: "/qai37-site/images/team/vicki-mitchell.jpg",
-    bio: "Former VP of Engineering at Google, ARM, and Altera, where she led large-scale silicon, systems, and infrastructure engineering programs across global organizations. Vicki has spent her career at the intersection of hardware and software — the precise boundary qAI37 is built to manage.",
-    li: "https://www.linkedin.com/in/vickibmitchell/",
+    name: "Laverne Masaki",
+    role: "Chief People Officer",
+    initials: "LM",
+    img: "/qai37-site/images/team/laverne-masaki.jpg",
+    bio: "Former executive recruiter at Microsoft and Google, specializing in building senior technical teams for complex, high-stakes programs. Laverne's network and judgment are a core operational asset at a company whose execution depends entirely on assembling the right people at the right moment.",
+    li: "https://www.linkedin.com/in/laverne-masaki/",
   },
   {
     name: "Vincent Elfving",
@@ -56,12 +54,11 @@ const TEAM: Member[] = [
     bio: "Former Head of Algorithms at Pasqal, where he led a team of over 40 researchers developing AI workflows for neutral atom hardware. Google Quantum AI alumnus and co-founder of Qu & Co (merged with Pasqal). PhD in Quantum Information Processing.",
   },
   {
-    name: "Laverne Masaki",
-    role: "Chief People Officer",
-    initials: "LM",
-    img: "/qai37-site/images/team/laverne-masaki.jpg",
-    bio: "Former executive recruiter at Microsoft and Google, specializing in building senior technical teams for complex, high-stakes programs. Laverne's network and judgment are a core operational asset at a company whose execution depends entirely on assembling the right people at the right moment.",
-    li: "https://www.linkedin.com/in/laverne-masaki/",
+    name: "Rick Jahnke",
+    role: "Principal Engineer",
+    initials: "RJ",
+    img: "/qai37-site/images/team/Team%20Photos/Rick.jpg",
+    bio: "Rick has 30 years of experience at the intersection of embedded systems, heterogeneous computing, and advanced system architecture. He was Director of Engineering at Galixsys Networks and holds 24 patents across heterogeneous computing, SoC design, and embedded systems.",
   },
   {
     name: "Ruben Marroquin",
@@ -80,32 +77,20 @@ type ExtendedMember = {
 
 const EXTENDED_TEAM: ExtendedMember[] = [
   {
-    name: "Rupesh Srivastava",
-    role: "Quantum Advisor",
-    bio: "PhD in Physics, Royal Holloway, University of London. Five years developing the UK quantum-computing ecosystem at Oxford's Department of Physics (the NQIT and QCS national quantum technology hubs, 2016–2021). Chief Quantum Officer, Entangled Positions.",
-  },
-  {
     name: "Gregor Barry",
     role: "Advisor",
     bio: "Managing Director, Accenture, Toronto — twelve years in enterprise relationships with Fortune 500 clients.",
   },
   {
-    name: "Rick Jahnke",
-    role: "Principal Engineer",
-    bio: "30+ years embedded systems engineering; Director of Engineering, Galixsys Networks; named inventor on embedded network patents.",
+    name: "Rupesh Srivastava",
+    role: "Quantum Advisor",
+    bio: "PhD in Physics, Royal Holloway, University of London. Five years developing the UK quantum-computing ecosystem at Oxford's Department of Physics (the NQIT and QCS national quantum technology hubs, 2016–2021). Chief Quantum Officer, Entangled Positions.",
   },
   {
-    name: "Ruben Marroquin",
-    role: "Senior Engineer",
-    bio: "FPGA/embedded systems engineer, Intel and Altera; patent strategy and hardware applications engineering; BS EE, Rice University.",
+    name: "John Williams",
+    role: "Strategic Advisor",
+    bio: "Strategic advisor to qAI37.",
   },
-];
-
-const ADVISORS: Advisor[] = [
-  { name: "Sethu Raman", role: "Technical Advisor" },
-  { name: "John Williams", role: "Strategic Advisor" },
-  { name: "Gregor Barry", role: "Advisor" },
-  { name: "Rupesh Srivastava", role: "Quantum Advisor" },
 ];
 
 function LinkedInIcon() {
@@ -159,16 +144,6 @@ export default function Team() {
                   <p className="bio-role">{m.role}</p>
                 </div>
                 <p className="bio-body">{m.bio}</p>
-              </div>
-            ))}
-          </div>
-
-          <span className="eyebrow reveal">Advisory board</span>
-          <div className="advisory-list" style={{ marginTop: 24 }}>
-            {ADVISORS.map((a) => (
-              <div key={a.name} className="advisory-item reveal">
-                <span className="advisory-name">{a.name}</span>
-                <span className="advisory-role">{a.role}</span>
               </div>
             ))}
           </div>

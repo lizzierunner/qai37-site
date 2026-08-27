@@ -86,7 +86,7 @@ export default function HeroViz() {
         ctx.save();
         ctx.setLineDash([6, 14]);
         ctx.lineDashOffset = -dashOffset;
-        ctx.strokeStyle = "rgba(46,217,184,0.06)";
+        ctx.strokeStyle = "rgba(8,184,230,0.06)";
         ctx.lineWidth = 0.6;
         ctx.beginPath();
         ctx.moveTo(cx + Math.cos(angle) * baseR * 1.8, cy + Math.sin(angle) * baseR * 1.8);
@@ -97,22 +97,22 @@ export default function HeroViz() {
 
       // Gateway outer ambient glow
       const outerGlow = ctx.createRadialGradient(cx, cy, 0, cx, cy, baseR * 3.5);
-      outerGlow.addColorStop(0, `rgba(46,217,184,${0.12 + pulse * 0.06})`);
-      outerGlow.addColorStop(1, "rgba(46,217,184,0)");
+      outerGlow.addColorStop(0, `rgba(8,184,230,${0.12 + pulse * 0.06})`);
+      outerGlow.addColorStop(1, "rgba(8,184,230,0)");
       ctx.fillStyle = outerGlow;
       ctx.beginPath(); ctx.arc(cx, cy, baseR * 3.5, 0, Math.PI * 2); ctx.fill();
 
       // Outer rings
-      ctx.strokeStyle = `rgba(46,217,184,${0.1 + pulse * 0.05})`;
+      ctx.strokeStyle = `rgba(8,184,230,${0.1 + pulse * 0.05})`;
       ctx.lineWidth = 0.8;
       ctx.beginPath(); ctx.arc(cx, cy, baseR * 2.8, 0, Math.PI * 2); ctx.stroke();
-      ctx.strokeStyle = `rgba(46,217,184,${0.18 + pulse * 0.09})`;
+      ctx.strokeStyle = `rgba(8,184,230,${0.18 + pulse * 0.09})`;
       ctx.lineWidth = 1;
       ctx.beginPath(); ctx.arc(cx, cy, baseR * 1.9, 0, Math.PI * 2); ctx.stroke();
 
       // Rotating dashed orbital
       ctx.save();
-      ctx.strokeStyle = "rgba(46,217,184,0.3)";
+      ctx.strokeStyle = "rgba(8,184,230,0.3)";
       ctx.lineWidth = 0.8;
       ctx.setLineDash([4, 7]);
       ctx.beginPath();
@@ -124,8 +124,8 @@ export default function HeroViz() {
       const ex = cx + Math.cos(orbit * 2) * baseR * 1.5 * Math.cos(orbit);
       const ey = cy + Math.sin(orbit * 2) * baseR * 0.5;
       const eg = ctx.createRadialGradient(ex, ey, 0, ex, ey, 5);
-      eg.addColorStop(0, "rgba(46,217,184,0.9)");
-      eg.addColorStop(1, "rgba(46,217,184,0)");
+      eg.addColorStop(0, "rgba(8,184,230,0.9)");
+      eg.addColorStop(1, "rgba(8,184,230,0)");
       ctx.fillStyle = eg;
       ctx.beginPath(); ctx.arc(ex, ey, 5, 0, Math.PI * 2); ctx.fill();
       ctx.fillStyle = "rgba(255,255,255,0.9)";
@@ -134,9 +134,9 @@ export default function HeroViz() {
       // Gateway core glow
       const core = ctx.createRadialGradient(cx, cy, 0, cx, cy, baseR * 1.6);
       core.addColorStop(0, "rgba(255,255,255,0.95)");
-      core.addColorStop(0.25, `rgba(46,217,184,${0.7 + pulse * 0.2})`);
-      core.addColorStop(0.7, `rgba(46,217,184,${0.2 + pulse * 0.1})`);
-      core.addColorStop(1, "rgba(46,217,184,0)");
+      core.addColorStop(0.25, `rgba(8,184,230,${0.7 + pulse * 0.2})`);
+      core.addColorStop(0.7, `rgba(8,184,230,${0.2 + pulse * 0.1})`);
+      core.addColorStop(1, "rgba(8,184,230,0)");
       ctx.fillStyle = core;
       ctx.beginPath(); ctx.arc(cx, cy, baseR * 1.6, 0, Math.PI * 2); ctx.fill();
 
@@ -171,7 +171,7 @@ export default function HeroViz() {
           particles.splice(i, 1); continue;
         }
 
-        const rgb = p.phase === 1 ? "46,217,184" : "240,236,230";
+        const rgb = p.phase === 1 ? "8,184,230" : "240,236,230";
         const a = p.alpha;
         // Glow
         const pg = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
@@ -191,8 +191,8 @@ export default function HeroViz() {
       const cx = W * 0.5, cy = H * 0.5;
       const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, 60);
       g.addColorStop(0, "rgba(255,255,255,0.8)");
-      g.addColorStop(0.4, "rgba(46,217,184,0.5)");
-      g.addColorStop(1, "rgba(46,217,184,0)");
+      g.addColorStop(0.4, "rgba(8,184,230,0.5)");
+      g.addColorStop(1, "rgba(8,184,230,0)");
       ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, 60, 0, Math.PI * 2); ctx.fill();
     };
 
