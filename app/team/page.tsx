@@ -33,7 +33,7 @@ const TEAM: Member[] = [
   },
   {
     name: "Steve Jahnke",
-    role: "Chief Technical Officer",
+    role: "CTO / Principal Architect",
     initials: "SJ",
     img: "/qai37-site/images/team/steve-jahnke.jpg",
     bio: "Steve spent 30 years at Intel, Altera, and TI building processor architecture and systems software engineered to never go down. The translation-layer problem qAI37 is solving is the same class of problem Steve has spent his career solving in silicon.",
@@ -47,7 +47,7 @@ const TEAM: Member[] = [
     li: "https://www.linkedin.com/in/laverne-masaki/",
   },
   {
-    name: "Vincent Elfving",
+    name: "Vincent E. Elfving",
     role: "Chief Quantum Advisor",
     initials: "VE",
     img: "/qai37-site/images/team/vincent-elfving.jpg",

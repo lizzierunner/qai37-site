@@ -1,12 +1,15 @@
 import SignupForm from "@/components/SignupForm";
 import HeroViz from "@/components/HeroViz";
 import ContextVisualizer from "@/components/ContextVisualizer";
+import ArchitectureExplainer from "@/components/ArchitectureExplainer";
+import RouteStory from "@/components/RouteStory";
 
 const ROSTER = [
   { name: "Ted Stockwell", role: "Founder & CEO" },
   { name: "Michelle Holtmann", role: "President & Chief Strategy Officer" },
-  { name: "Steve Jahnke", role: "Chief Technical Officer" },
+  { name: "Steve Jahnke", role: "CTO / Principal Architect" },
   { name: "Laverne Masaki", role: "Chief People Officer" },
+  { name: "Vincent E. Elfving", role: "Chief Quantum Advisor" },
   { name: "Rick Jahnke", role: "Principal Engineer" },
   { name: "Ruben Marroquin", role: "Senior Engineer" },
 ];
@@ -34,6 +37,8 @@ export default function Home() {
           <HeroViz />
         </div>
       </section>
+
+      <RouteStory />
 
       {/* THESIS */}
       <section className="thesis">
@@ -102,6 +107,8 @@ export default function Home() {
           <p className="pipeline-note reveal s3">One application integration · multiple target formats · classical fallback intact</p>
         </div>
       </section>
+
+      <ArchitectureExplainer />
 
       {/* POSITIONING */}
       <section className="positioning">

@@ -23,9 +23,9 @@ const ITEMS: SearchItem[] = [
   // Team
   { id: "team-ted", category: "Team Member", title: "Ted Stockwell", subtitle: "Founder & CEO · Bing as a Platform", url: "/team" },
   { id: "team-michelle", category: "Team Member", title: "Michelle Holtmann", subtitle: "President & CSO · 25 years Microsoft Infrastructure", url: "/team" },
-  { id: "team-steve", category: "Team Member", title: "Steve Jahnke", subtitle: "CTO · 30 years Intel, Altera, TI", url: "/team" },
+  { id: "team-steve", category: "Team Member", title: "Steve Jahnke", subtitle: "CTO / Principal Architect · 30 years Intel, Altera, TI", url: "/team" },
   { id: "team-laverne", category: "Team Member", title: "Laverne Masaki", subtitle: "Chief People Officer · Microsoft, Google Recruiting", url: "/team" },
-  { id: "team-vincent", category: "Team Member", title: "Vincent Elfving", subtitle: "Chief Quantum Advisor · Former Head of Algorithms Pasqal", url: "/team" },
+  { id: "team-vincent", category: "Team Member", title: "Vincent E. Elfving", subtitle: "Chief Quantum Advisor · Former Head of Algorithms Pasqal", url: "/team" },
   { id: "team-rick", category: "Team Member", title: "Rick Jahnke", subtitle: "Principal Engineer · 30+ years embedded systems", url: "/team" },
   { id: "team-ruben", category: "Team Member", title: "Ruben Marroquin", subtitle: "Senior Engineer · FPGA & Embedded Systems", url: "/team" },
   { id: "team-rupesh", category: "Team Member", title: "Rupesh Srivastava", subtitle: "Quantum Advisor · Oxford Quantum Ecosystem", url: "/team" },
