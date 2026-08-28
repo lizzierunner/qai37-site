@@ -11,6 +11,11 @@ body{background:var(--ink);color:var(--text);font-family:var(--font-body),system
 /* film grain overlay — gives premium tactile depth to the black background */
 body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.038;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px;animation:grain .45s steps(1) infinite}
 @keyframes grain{0%,100%{background-position:0 0}20%{background-position:20% -30%}40%{background-position:-10% 20%}60%{background-position:30% 10%}80%{background-position:-20% -10%}}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
 .mono{font-family:var(--font-mono),monospace}
 a{color:inherit;text-decoration:none}
 ::selection{background:var(--cyan);color:var(--ink)}
@@ -130,7 +135,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px}
 .p-home .thesis-list{margin-top:52px}
 .p-home .thesis-item{display:grid;grid-template-columns:140px 1fr;gap:32px;padding:44px 0;border-bottom:1px solid var(--line);align-items:start;transition:opacity .3s}
 .p-home .thesis-item:hover{opacity:.85}
-.p-home .thesis-n{font-family:var(--font-display);font-weight:700;font-size:clamp(72px,10vw,120px);line-height:.88;letter-spacing:-.05em;color:var(--cyan);opacity:.18;user-select:none;transition:opacity .4s}
+.p-home .thesis-n{font-family:var(--font-display);font-weight:700;font-size:clamp(72px,10vw,120px);line-height:.88;letter-spacing:-.05em;color:var(--cyan);opacity:.18;-webkit-user-select:none;user-select:none;transition:opacity .4s}
 .p-home .thesis-item:hover .thesis-n{opacity:.32}
 .p-home .thesis-head{font-family:var(--font-display);font-style:italic;font-size:clamp(26px,3.2vw,40px);font-weight:500;line-height:1.2;color:var(--text);margin-bottom:14px;letter-spacing:-.015em}
 .p-home .thesis-body{font-size:16px;color:var(--muted);max-width:58ch;line-height:1.75}
@@ -284,7 +289,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px}
 .cmd-trigger-btn:hover{border-color:var(--cyan);color:var(--text);background:rgba(8,184,230,.06)}
 .cmd-trigger-kbd{background:rgba(255,255,255,.08);padding:2px 5px;border-radius:3px;font-size:9px;letter-spacing:.05em}
 
-.cmd-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:9999;display:flex;align-items:flex-start;justify-content:center;padding-top:12vh}
+.cmd-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.75);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);z-index:9999;display:flex;align-items:flex-start;justify-content:center;padding-top:12vh}
 .cmd-dialog{background:#0c0d0e;border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 48px rgba(0,0,0,.8);border-radius:12px;width:90%;max-width:620px;overflow:hidden;animation:cmd-in .18s ease-out}
 @keyframes cmd-in{from{opacity:0;transform:scale(.96) translateY(-10px)}to{opacity:1;transform:scale(1) translateY(0)}}
 
