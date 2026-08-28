@@ -14,6 +14,7 @@ type Member = {
   img?: string;
   initials: string;
   li?: string;
+  signal: string;
 };
 const TEAM: Member[] = [
   {
@@ -22,6 +23,7 @@ const TEAM: Member[] = [
     initials: "TS",
     img: "/qai37-site/images/team/ted-stockwell.jpg",
     bio: "Former General Manager of Microsoft's Online Services Division. Created Bing as a Platform, transforming search into a programmable infrastructure layer across Microsoft. Ted has spent his career turning hard infrastructure problems into platform businesses — that is exactly the commercial motion qAI37 needs to execute.",
+    signal: "Microsoft · Online Services · Platform businesses",
     li: "https://www.linkedin.com/in/jtedstockwell/",
   },
   {
@@ -30,6 +32,7 @@ const TEAM: Member[] = [
     initials: "MH",
     img: "/qai37-site/images/team/michelle-holtmann.jpg",
     bio: "Michelle started her career as a software engineer at Boeing, then spent 25 years at Microsoft designing and building infrastructure products that hundreds of millions of people depend on every day — including Windows Genuine Advantage, the Software Protection Platform, and the technical foundation behind Windows Defender. She joined qAI37 after extensive study of whether the approach was actually buildable, and designed the roadmap to prove it.",
+    signal: "Boeing · Microsoft · Infrastructure products",
   },
   {
     name: "Steve Jahnke",
@@ -37,6 +40,7 @@ const TEAM: Member[] = [
     initials: "SJ",
     img: "/qai37-site/images/team/steve-jahnke.jpg",
     bio: "Steve spent 30 years at Intel, Altera, and TI building processor architecture and systems software engineered to never go down. The translation-layer problem qAI37 is solving is the same class of problem Steve has spent his career solving in silicon.",
+    signal: "Intel · Altera · TI · Processor architecture",
   },
   {
     name: "Laverne Masaki",
@@ -44,6 +48,7 @@ const TEAM: Member[] = [
     initials: "LM",
     img: "/qai37-site/images/team/laverne-masaki.jpg",
     bio: "Former executive recruiter at Microsoft and Google, specializing in building senior technical teams for complex, high-stakes programs. Laverne's network and judgment are a core operational asset at a company whose execution depends entirely on assembling the right people at the right moment.",
+    signal: "Microsoft · Google · Technical recruiting",
     li: "https://www.linkedin.com/in/laverne-masaki/",
   },
   {
@@ -52,6 +57,7 @@ const TEAM: Member[] = [
     initials: "VE",
     img: "/qai37-site/images/team/vincent-elfving.jpg",
     bio: "Former Head of Algorithms at Pasqal, where he led a team of over 40 researchers developing AI workflows for neutral atom hardware. Google Quantum AI alumnus and co-founder of Qu & Co (merged with Pasqal). PhD in Quantum Information Processing.",
+    signal: "Pasqal · Google Quantum AI · PhD",
   },
   {
     name: "Rick Jahnke",
@@ -59,6 +65,7 @@ const TEAM: Member[] = [
     initials: "RJ",
     img: "/qai37-site/images/team/Team%20Photos/Rick.jpg",
     bio: "Rick has 30 years of experience at the intersection of embedded systems, heterogeneous computing, and advanced system architecture. He was Director of Engineering at Galixsys Networks and holds 24 patents across heterogeneous computing, SoC design, and embedded systems.",
+    signal: "30 years · 24 patents · Heterogeneous computing",
   },
   {
     name: "Ruben Marroquin",
@@ -66,6 +73,7 @@ const TEAM: Member[] = [
     initials: "RM",
     img: "/qai37-site/images/team/ruben-marroquin.jpg",
     bio: "Ruben is an FPGA and embedded systems engineer with experience at Intel and Altera and holds a BS in Electrical Engineering from Rice University.",
+    signal: "Intel · Altera · Rice University",
   },
 ];
 
@@ -120,6 +128,7 @@ export default function Team() {
                 <div className="bio-meta">
                   <p className="bio-name">{m.name}</p>
                   <p className="bio-role">{m.role}</p>
+                  <p className="bio-signal">{m.signal}</p>
                   {m.li && (
                     <a href={m.li} target="_blank" rel="noopener noreferrer" className="bio-li">
                       <LinkedInIcon /> LinkedIn

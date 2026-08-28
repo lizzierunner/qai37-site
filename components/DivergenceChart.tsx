@@ -7,6 +7,7 @@ type Props = {
   subtitle?: string;
   counter?: boolean;
   caption?: string;
+  sourceUrl?: string;
 };
 
 export default function DivergenceChart({
@@ -14,6 +15,7 @@ export default function DivergenceChart({
   subtitle = "SRC · Decadal Plan for Semiconductors",
   counter = false,
   caption = "the gap between what AI needs and what the grid can give — and widening.",
+  sourceUrl = "https://www.src.org/",
 }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
   const counterRef = useRef<HTMLSpanElement>(null);
@@ -93,6 +95,13 @@ export default function DivergenceChart({
           <span className="cap">{caption}</span>
         </div>
       )}
+      <details className="chart-evidence">
+        <summary>Method and source</summary>
+        <div className="chart-evidence-body">
+          <p>The comparison uses the annualized growth rates cited in the SRC Decadal Plan: approximately 26% for compute energy demand and 2% for energy supply. The 13× figure is their ratio, not a forecast of total power consumption.</p>
+          <a href={sourceUrl} target="_blank" rel="noopener noreferrer">Read the source <span aria-hidden="true">↗</span></a>
+        </div>
+      </details>
     </div>
   );
 }

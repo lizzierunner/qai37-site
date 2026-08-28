@@ -43,6 +43,7 @@ export default function ArchitectureExplainer() {
 
         <div className="architecture-shell reveal s2">
           <div className="architecture-diagram" aria-label="qAI37 three-layer architecture">
+            <div className="architecture-signal" aria-hidden="true"><span className="architecture-signal-dot" /> ACTIVE ROUTE <span className="architecture-signal-line" /></div>
             {LAYERS.map((item, index) => (
               <button
                 type="button"
@@ -64,6 +65,7 @@ export default function ArchitectureExplainer() {
             <span className="architecture-detail-kicker">Selected layer · {layer.number}</span>
             <h3>{layer.title}</h3>
             <p>{layer.description}</p>
+            <div className="architecture-detail-state"><span>ROUTE STATE</span><strong>{active === 1 ? "TRANSLATION READY" : "OBSERVING LAYER"}</strong></div>
           </div>
         </div>
       </div>
