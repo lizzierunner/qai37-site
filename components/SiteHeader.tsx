@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { BASE_PATH } from "@/lib/basePath";
 
 const LINKS = [
   { href: "/", label: "Home" },
@@ -27,7 +28,7 @@ export default function SiteHeader() {
       <div className="wrap nav">
         <Link className="logo" href="/" aria-label="qAI37 home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/qai37-site/images/qai37_logo.png" alt="qAI37" className="logo-img" />
+          <img src={`${BASE_PATH}/images/qai37_logo.png`} alt="qAI37" className="logo-img" />
         </Link>
         <nav className="nav-links" aria-label="Primary">
           {LINKS.map((l) => (

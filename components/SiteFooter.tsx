@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ContactButton from "@/components/ContactButton";
+import { BASE_PATH } from "@/lib/basePath";
 
 export default function SiteFooter() {
   return (
@@ -7,7 +8,7 @@ export default function SiteFooter() {
       <div className="wrap foot-grid">
         <div className="foot-brand">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/qai37-site/images/qai37_logo.png" alt="qAI37" className="logo-img" style={{ height: 40 }} />
+          <img src={`${BASE_PATH}/images/qai37_logo.png`} alt="qAI37" className="logo-img" style={{ height: 40 }} />
           <p className="foot-tagline">The neutral route to post-silicon AI</p>
           <p className="foot-meta">Founded 2025 · Stealth</p>
         </div>

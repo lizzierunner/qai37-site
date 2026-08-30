@@ -21,7 +21,7 @@ export const metadata: Metadata = {
       "A new software layer for AI infrastructure. Building the vendor-agnostic access point between conventional AI and neutral-atom systems.",
     type: "website",
     url: "https://www.qai37.com",
-    images: [{ url: "https://www.qai37.com/qai37-site/images/qai37_logo.png", width: 212, height: 254, alt: "qAI37" }],
+    images: [{ url: "https://www.qai37.com/images/qai37_logo.png", width: 212, height: 254, alt: "qAI37" }],
   },
   twitter: { card: "summary_large_image", title: "qAI37 — The Neutral Route to Post-Silicon AI", description: "A new software layer for AI infrastructure." },
 };
