@@ -14,6 +14,7 @@ export default function SiteFooter() {
         </div>
         <nav className="foot-links" aria-label="Footer">
           <Link href="/">Home</Link>
+          <Link href="/wiki">Wiki</Link>
           <Link href="/team">Team</Link>
           <Link href="/news">News</Link>
           <Link href="/contact">Contact</Link>

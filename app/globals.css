@@ -296,6 +296,37 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px}
 /* ======================== 404 PAGE ======================== */
 .p-notfound .intro{padding:120px 0 140px;min-height:55vh;display:flex;align-items:center}
 
+/* ======================== WIKI ======================== */
+.p-wiki .wiki-hero{padding:92px 0 66px;border-bottom:1px solid var(--line)}
+.p-wiki .wiki-hero h1{margin-bottom:18px}
+.p-wiki .wiki-content{padding:0 0 110px}
+.wiki-layout{display:grid;grid-template-columns:190px minmax(0,1fr);gap:84px}
+.wiki-index{position:sticky;top:132px;height:max-content;padding:38px 0;border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.wiki-index-label{font-family:var(--font-mono);font-size:10px;color:var(--muted-2);letter-spacing:.16em;text-transform:uppercase;margin-bottom:7px}
+.wiki-index a{font-size:13px;color:var(--muted);transition:color .2s}
+.wiki-index a:hover{color:var(--cyan)}
+.wiki-articles{min-width:0}
+.wiki-entry{padding:68px 0;border-bottom:1px solid var(--line);scroll-margin-top:130px}
+.wiki-entry h2{font-size:clamp(28px,3.5vw,42px);max-width:19ch;margin-bottom:24px}
+.wiki-entry>p{color:var(--muted);font-size:16px;line-height:1.8;max-width:65ch;margin-top:16px}
+.wiki-flow{list-style:none;border-top:1px solid var(--line);max-width:760px;counter-reset:wiki-flow}
+.wiki-flow li{counter-increment:wiki-flow;display:grid;grid-template-columns:70px minmax(130px,.55fr) 1.45fr;gap:22px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.wiki-flow li::before{content:"0" counter(wiki-flow);font-family:var(--font-mono);font-size:11px;color:var(--cyan);letter-spacing:.12em}
+.wiki-flow strong{font-family:var(--font-display);font-size:20px;color:var(--text);font-weight:600}
+.wiki-flow span,.wiki-terms dd,.wiki-questions p{color:var(--muted);font-size:14px;line-height:1.7}
+.wiki-terms{border-top:1px solid var(--line);max-width:760px}
+.wiki-terms>div{display:grid;grid-template-columns:minmax(160px,.6fr) 1.4fr;gap:28px;padding:24px 0;border-bottom:1px solid var(--line)}
+.wiki-terms dt{font-family:var(--font-display);font-size:20px;color:var(--text);font-weight:600;line-height:1.3}
+.wiki-terms dd{margin:0}
+.wiki-questions{max-width:760px;border-top:1px solid var(--line)}
+.wiki-questions details{border-bottom:1px solid var(--line);padding:20px 0}
+.wiki-questions summary{cursor:pointer;color:var(--text);font-family:var(--font-display);font-size:20px;font-weight:600;padding-right:30px;position:relative;list-style:none}
+.wiki-questions summary::-webkit-details-marker{display:none}
+.wiki-questions summary::after{content:"+";position:absolute;right:3px;color:var(--cyan);font-family:var(--font-mono);font-weight:400}
+.wiki-questions details[open] summary::after{content:"-"}
+.wiki-questions p{margin-top:14px;max-width:62ch}
+@media(max-width:800px){.p-wiki .wiki-hero{padding:64px 0 42px}.p-wiki .wiki-content{padding-bottom:72px}.wiki-layout{display:block}.wiki-index{position:static;border-right:0;border-bottom:1px solid var(--line);padding:24px 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px}.wiki-index-label{grid-column:1/-1}.wiki-entry{padding:48px 0}.wiki-flow li{grid-template-columns:42px 1fr;gap:10px 16px}.wiki-flow span{grid-column:2}.wiki-terms>div{grid-template-columns:1fr;gap:8px}.wiki-questions summary{font-size:18px}}
+
 /* ======================== COMMAND PALETTE ======================== */
 .cmd-trigger-btn{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:6px;color:var(--muted);font-family:var(--font-mono);font-size:11px;cursor:pointer;transition:border-color .2s,color .2s,background .2s;margin-right:8px}
 .cmd-trigger-btn:hover{border-color:var(--cyan);color:var(--text);background:rgba(8,184,230,.06)}

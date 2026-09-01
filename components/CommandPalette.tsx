@@ -16,6 +16,7 @@ type SearchItem = {
 const ITEMS: SearchItem[] = [
   // Navigation
   { id: "nav-home", category: "Navigation", title: "Home", subtitle: "A new software layer for AI infrastructure", url: "/" },
+  { id: "nav-wiki", category: "Navigation", title: "Wiki", subtitle: "qAI37 terms, architecture, and common questions", url: "/wiki" },
   { id: "nav-team", category: "Navigation", title: "Team", subtitle: "Leadership, engineers, and scientific advisors", url: "/team" },
   { id: "nav-news", category: "Navigation", title: "News", subtitle: "Company announcements & neutral-atom industry updates", url: "/news" },
   { id: "nav-contact", category: "Navigation", title: "Contact", subtitle: "Get in touch with the qAI37 founding team", url: "/contact" },

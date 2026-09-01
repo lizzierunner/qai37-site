@@ -7,6 +7,7 @@ import { BASE_PATH } from "@/lib/basePath";
 
 const LINKS = [
   { href: "/", label: "Home" },
+  { href: "/wiki", label: "Wiki" },
   { href: "/team", label: "Team" },
   { href: "/news", label: "News" },
   { href: "/contact", label: "Contact" },
