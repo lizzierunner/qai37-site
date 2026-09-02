@@ -91,6 +91,11 @@ const EXTENDED_TEAM: ExtendedMember[] = [
     bio: "Managing Director, Accenture, Toronto — twelve years in enterprise relationships with Fortune 500 clients.",
   },
   {
+    name: "Vicki Mitchell",
+    role: "Advisor",
+    bio: "Advisor to qAI37.",
+  },
+  {
     name: "Rupesh Srivastava",
     role: "Quantum Advisor",
     bio: "PhD in Physics, Royal Holloway, University of London. Five years developing the UK quantum-computing ecosystem at Oxford's Department of Physics (the NQIT and QCS national quantum technology hubs, 2016–2021). Chief Quantum Officer, Entangled Positions.",
