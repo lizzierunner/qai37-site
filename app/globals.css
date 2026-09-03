@@ -276,6 +276,13 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px}
 .p-contact .contact-name{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--text);margin-bottom:5px}
 .p-contact .contact-role{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
 .p-contact .contact-email{font-family:var(--font-display);font-style:italic;font-size:clamp(20px,2.6vw,30px);color:var(--muted);transition:color .25s;display:inline-block}
+
+/* ======================== CAREERS ======================== */
+.p-careers .intro{padding:84px 0 120px}
+.p-careers .careers-contact{margin-top:48px;padding-top:40px;border-top:1px solid var(--line)}
+.p-careers .careers-contact .contact-role{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.p-careers .careers-contact .contact-email{font-family:var(--font-display);font-style:italic;font-size:clamp(22px,3vw,34px);color:var(--muted);transition:color .25s;display:inline-block}
+.p-careers .careers-contact .contact-email:hover{color:var(--cyan)}
 /* ======================== 404 PAGE ======================== */
 .p-notfound .intro{padding:120px 0 140px;min-height:55vh;display:flex;align-items:center}
 

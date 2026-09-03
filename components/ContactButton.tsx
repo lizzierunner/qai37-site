@@ -2,12 +2,20 @@
 
 import { useState } from "react";
 
-export default function ContactButton({ label = "Contact via qAI37", className = "contact-email" }: { label?: string; className?: string }) {
+export default function ContactButton({
+  label = "Contact via qAI37",
+  className = "contact-email",
+  email = "contact@qai37.com",
+}: {
+  label?: string;
+  className?: string;
+  email?: string;
+}) {
   const [toast, setToast] = useState(false);
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    navigator.clipboard?.writeText("contact@qai37.com");
+    navigator.clipboard?.writeText(email);
     setToast(true);
     setTimeout(() => setToast(false), 2800);
   };
@@ -21,7 +29,7 @@ export default function ContactButton({ label = "Contact via qAI37", className =
       {toast && (
         <div className="toast-notice" role="status">
           <span className="toast-icon">✓</span>
-          <span>Contact endpoint copied to clipboard (<code className="mono">contact@qai37.com</code>)</span>
+          <span>Contact endpoint copied to clipboard (<code className="mono">{email}</code>)</span>
         </div>
       )}
     </>
