@@ -35,8 +35,8 @@ header.scrolled{-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);ba
 .nav{display:flex;align-items:center;justify-content:space-between;height:104px}
 .logo{font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.5px;display:flex;align-items:center}
 .logo b{color:var(--cyan)}
-.logo-img{height:96px;width:auto;max-width:126px;display:block;border-radius:4px;background:transparent;object-fit:contain;filter:drop-shadow(0 0 0 rgba(8,184,230,0)) drop-shadow(0 0 14px rgba(8,184,230,.18));transition:filter .2s ease,transform .2s ease}
-.logo:hover .logo-img{filter:drop-shadow(0 0 0 rgba(8,184,230,0)) drop-shadow(0 0 18px rgba(8,184,230,.32));transform:translateY(-1px)}
+.logo-img{height:96px;width:auto;max-width:126px;display:block;border-radius:4px;background:transparent;object-fit:contain;filter:drop-shadow(0 0 3px rgba(8,184,230,.35)) drop-shadow(0 0 8px rgba(8,184,230,.18));transition:transform .15s,filter .25s ease}
+.logo:hover .logo-img{filter:brightness(1.25) saturate(1.4) drop-shadow(0 0 4px rgba(8,184,230,.75)) drop-shadow(0 0 12px rgba(8,184,230,.5)) drop-shadow(0 8px 22px rgba(8,184,230,.4));transform:translateY(-1px)}
 .logo .dot{width:6px;height:6px;border-radius:50%;background:var(--text);margin-left:7px;animation:pulse 3s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
 .nav-links{display:flex;align-items:center;gap:30px}
@@ -523,7 +523,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px}
 }
 .btn:active,.cmd-trigger-btn:active{transform:translateY(1px)}
 .btn:focus-visible,.cmd-trigger-btn:focus-visible{box-shadow:0 0 0 3px var(--cyan-soft),0 0 18px rgba(8,184,230,.2)}
-header.scrolled .logo-img{filter:drop-shadow(0 0 0 rgba(8,184,230,0)) drop-shadow(0 0 16px rgba(8,184,230,.28))}
+header.scrolled .logo-img{filter:drop-shadow(0 0 3px rgba(8,184,230,.32)) drop-shadow(0 0 8px rgba(8,184,230,.16))}
 .capture-feedback{animation:feedback-in .28s cubic-bezier(.22,1,.36,1)}
 @keyframes feedback-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.capture-feedback{animation:none}}
