@@ -93,7 +93,7 @@ const EXTENDED_TEAM: ExtendedMember[] = [
   {
     name: "Vicki Mitchell",
     role: "Advisor",
-    bio: "Advisor to qAI37.",
+    bio: "Former VP of Engineering at Google, ARM, Altera, and Intel, where she led large-scale silicon, systems, and infrastructure engineering programs across global organizations. Featured in the inaugural Top 100 List of senior women leaders in engineering, Vicki has spent her career at the intersection of hardware and software, including instruction sets, programmable hardware, and full-stack infrastructure engineering.",
   },
   {
     name: "Rupesh Srivastava",
