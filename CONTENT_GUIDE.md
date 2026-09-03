@@ -18,7 +18,7 @@ Open `content/news-posts.json` and add a new block at the **top of the array**:
     "title": "qAI37 emerges from stealth with post-silicon memory architecture",
     "date": "September 15, 2026",
     "description": "qAI37 announced its vendor-agnostic software access point connecting conventional inference models directly to neutral-atom quantum memory states.",
-    "url": "https://www.qai37.com/news"
+    "url": "/"
   },
   ...
 ]
@@ -29,7 +29,7 @@ Open `content/news-posts.json` and add a new block at the **top of the array**:
 - **`title`**: Headline of the post.
 - **`date`**: Publication date string (e.g., `"August 24, 2026"`).
 - **`description`**: 1-2 sentence description.
-- **`url`**: Direct URL link.
+- **`url`**: Direct URL link. For `"company"` posts without a dedicated article yet, use an internal path like `"/"` — an external `qai37.com` URL will 404 until that domain is live. For `"industry"` posts, use the real external article URL.
 
 ---
 
