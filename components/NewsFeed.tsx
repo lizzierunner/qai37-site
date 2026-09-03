@@ -18,6 +18,9 @@ export default function NewsFeed() {
         ))}
         <span className="news-count" aria-live="polite">{visible.length} {visible.length === 1 ? "signal" : "signals"}</span>
       </div>
+      {visible.length === 0 && (
+        <p className="news-empty reveal">No {filter} signals yet — check back soon.</p>
+      )}
       {visible.map((post, i) => {
         const isExternal = /^https?:\/\//.test(post.url);
         const content = (

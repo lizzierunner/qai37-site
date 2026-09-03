@@ -15,9 +15,9 @@ Open `content/news-posts.json` and add a new block at the **top of the array**:
 [
   {
     "type": "company",
-    "title": "qAI37 emerges from stealth with post-silicon memory architecture",
+    "title": "Your announcement headline here",
     "date": "September 15, 2026",
-    "description": "qAI37 announced its vendor-agnostic software access point connecting conventional inference models directly to neutral-atom quantum memory states.",
+    "description": "One to two sentences summarizing the announcement.",
     "url": "/"
   },
   ...
