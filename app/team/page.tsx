@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import TeamAvatar from "@/components/TeamAvatar";
 import { BASE_PATH } from "@/lib/basePath";
 
+const TEAM_INTRO =
+  "The people behind qAI37 — leaders in infrastructure software, processor architecture, quantum computing, and enterprise engineering.";
+
 export const metadata: Metadata = {
   title: "Team",
-  description:
-    "The people behind qAI37 — leaders in infrastructure software, processor architecture, quantum computing, and enterprise engineering.",
+  description: TEAM_INTRO,
 };
 
 type Member = {
@@ -82,28 +84,45 @@ type ExtendedMember = {
   name: string;
   role: string;
   bio: string;
+  img?: string;
+  initials?: string;
 };
 
 const EXTENDED_TEAM: ExtendedMember[] = [
   {
+    name: "Richard Wood",
+    role: "Advisor",
+    initials: "RW",
+    img: `${BASE_PATH}/images/team/Team%20Photos/Richard%20Wood.jpeg`,
+    bio: "Advisor to qAI37.",
+  },
+  {
     name: "Gregor Barry",
     role: "Advisor",
+    initials: "GB",
+    img: `${BASE_PATH}/images/team/gregor-barry.jpg`,
     bio: "Managing Director, Accenture, Toronto — twelve years in enterprise relationships with Fortune 500 clients.",
   },
   {
     name: "Vicki Mitchell",
     role: "Advisor",
+    initials: "VM",
+    img: `${BASE_PATH}/images/team/vicki-mitchell.jpg`,
     bio: "Former VP of Engineering at Google, ARM, Altera, and Intel, where she led large-scale silicon, systems, and infrastructure engineering programs across global organizations. Featured in the inaugural Top 100 List of senior women leaders in engineering, Vicki has spent her career at the intersection of hardware and software, including instruction sets, programmable hardware, and full-stack infrastructure engineering.",
   },
   {
     name: "Rupesh Srivastava",
     role: "Quantum Advisor",
+    initials: "RS",
+    img: `${BASE_PATH}/images/team/rupesh-srivastava.jpg`,
     bio: "PhD in Physics, Royal Holloway, University of London. Five years developing the UK quantum-computing ecosystem at Oxford's Department of Physics (the NQIT and QCS national quantum technology hubs, 2016–2021). Chief Quantum Officer, Entangled Positions.",
   },
   {
     name: "John Williams",
     role: "Strategic Advisor",
-    bio: "Strategic advisor to qAI37.",
+    initials: "JW",
+    img: `${BASE_PATH}/images/team/Team%20Photos/john-williams.jpeg`,
+    bio: "Product leader with extensive experience in data center infrastructure and systems spanning enterprise and high-performance computing. John specializes in delivering innovative solutions that disrupt markets and exceed customer's needs.",
   },
 ];
 
@@ -122,43 +141,60 @@ export default function Team() {
         <div className="wrap">
           <span className="eyebrow reveal">The team</span>
           <h1 className="reveal s1">The people building it.</h1>
+          <p className="lede reveal s2">{TEAM_INTRO}</p>
         </div>
       </section>
 
       <section>
         <div className="wrap bio-list">
-          {TEAM.map((m) => (
-            <div key={m.name} className="bio-row reveal">
-              <div className="bio-left">
-                <TeamAvatar img={m.img} name={m.name} initials={m.initials} />
-                <div className="bio-meta">
-                  <p className="bio-name">{m.name}</p>
-                  <p className="bio-role">{m.role}</p>
-                  <p className="bio-signal">{m.signal}</p>
-                  {m.li && (
-                    <a href={m.li} target="_blank" rel="noopener noreferrer" className="bio-li">
-                      <LinkedInIcon /> LinkedIn
-                    </a>
-                  )}
+          {TEAM.map((m, i) => {
+            const index = String(i + 1).padStart(2, "0");
+            const tags = m.signal.split(" · ");
+            return (
+              <div key={m.name} className="bio-row reveal">
+                <div className="bio-left">
+                  <div className="bio-photo-frame">
+                    <TeamAvatar img={m.img} name={m.name} initials={m.initials} />
+                    <span className="bio-index" aria-hidden="true">
+                      {index}
+                    </span>
+                  </div>
+                  <div className="bio-meta">
+                    <p className="bio-name">{m.name}</p>
+                    <p className="bio-role">{m.role}</p>
+                    <ul className="bio-tags">
+                      {tags.map((tag) => (
+                        <li key={tag}>{tag}</li>
+                      ))}
+                    </ul>
+                    {m.li && (
+                      <a href={m.li} target="_blank" rel="noopener noreferrer" className="bio-li">
+                        <LinkedInIcon /> LinkedIn
+                      </a>
+                    )}
+                  </div>
                 </div>
+                <p className="bio-body">{m.bio}</p>
               </div>
-              <p className="bio-body">{m.bio}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
       <section className="advisory-section">
         <div className="wrap">
           <span className="eyebrow reveal">Extended team</span>
-          <div className="extended-list">
+          <div className="advisor-grid">
             {EXTENDED_TEAM.map((m) => (
-              <div key={m.name} className="bio-row reveal">
-                <div className="bio-meta">
-                  <p className="bio-name">{m.name}</p>
-                  <p className="bio-role">{m.role}</p>
+              <div key={m.name} className="advisor-card reveal">
+                <div className="advisor-top">
+                  {m.img && <TeamAvatar img={m.img} name={m.name} initials={m.initials ?? ""} />}
+                  <div className="advisor-meta">
+                    <p className="advisor-name">{m.name}</p>
+                    <p className="advisor-role">{m.role}</p>
+                  </div>
                 </div>
-                <p className="bio-body">{m.bio}</p>
+                <p className="advisor-bio">{m.bio}</p>
               </div>
             ))}
           </div>
