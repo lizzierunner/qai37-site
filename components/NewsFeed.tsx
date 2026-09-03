@@ -1,12 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { NEWS } from "@/lib/news-data";
 
 export default function NewsFeed() {
   const [filter, setFilter] = useState<"all" | "company" | "industry">("all");
   const visible = filter === "all" ? NEWS : NEWS.filter((post) => post.type === filter);
+
+  // Filtering re-renders the list, which can leave items stuck invisible if the
+  // scroll-reveal observer already unobserved them — show them immediately instead.
+  useEffect(() => {
+    document.querySelectorAll(".news-item, .news-empty").forEach((el) => el.classList.add("in"));
+  }, [filter]);
 
   return (
     <>
