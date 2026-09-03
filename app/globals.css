@@ -119,6 +119,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;margin-bottom:40px;padding-bottom:36px;border-bottom:1px solid var(--line)}
 .foot-brand .foot-tagline{font-family:var(--font-display);font-style:italic;font-size:16px;color:var(--muted);margin-top:16px;margin-bottom:5px}
 .foot-brand .foot-meta{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2)}
+.foot-brand:hover .logo-img{filter:brightness(1.25) saturate(1.4) drop-shadow(0 0 4px rgba(8,184,230,.75)) drop-shadow(0 0 12px rgba(8,184,230,.5)) drop-shadow(0 8px 22px rgba(8,184,230,.4));transform:translateY(-1px)}
 .foot-links{display:flex;flex-direction:column;gap:12px}
 .foot-links a{font-size:14px;color:var(--muted);transition:color .2s}.foot-links a:hover{color:var(--text)}
 .foot-contact{display:flex;flex-direction:column;gap:10px}
