@@ -1,72 +1,63 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const LAYERS = [
-  {
-    label: "Application layer",
-    number: "01",
-    title: "The software teams already use",
-    description: "Existing AI applications and model interfaces stay in place. qAI37 does not ask teams to rewrite their stack to reach a new execution path.",
-    nodes: ["AI workload", "Model interface", "Agent state"],
-  },
-  {
-    label: "qAI37 layer",
-    number: "02",
-    title: "The translation and memory layer",
-    description: "qAI37 intercepts supported operations, retains working context, and translates the workload into inspectable instructions for the target backend.",
-    nodes: ["Intercept", "Remember", "Translate"],
-  },
-  {
-    label: "Hardware layer",
-    number: "03",
-    title: "Multiple paths beneath the interface",
-    description: "Neutral-atom and future hardware backends become interchangeable execution targets, with a classical fallback path intact.",
-    nodes: ["Neutral atom", "Vendor B", "Classical fallback"],
-  },
+const STAGES = [
+  { number: "01", title: "Intercept", description: "Identify the incoming AI workload and make it available to the qAI37 layer.", diagram: ["AI WORKLOAD", "qAI37"] },
+  { number: "02", title: "Qualify", description: "Determine how the workload can be handled within the available execution environment.", diagram: ["WORKLOAD", "QUALIFY", "PATH A  /  PATH B"] },
+  { number: "03", title: "Translate", description: "Map the appropriate operation into instructions understood by the underlying execution environment.", diagram: ["AI OPERATION", "qAI37 LAYER", "TARGET INSTRUCTIONS"] },
+  { number: "04", title: "Return", description: "Return the resulting output to the application.", diagram: ["EXECUTION", "RESULT", "APPLICATION"] },
 ];
 
 export default function ArchitectureExplainer() {
-  const [active, setActive] = useState(1);
-  const layer = LAYERS[active];
+  const [active, setActive] = useState(0);
+  const [following, setFollowing] = useState(false);
+  const [complete, setComplete] = useState(false);
+
+  useEffect(() => {
+    if (!following) return;
+    const timers = STAGES.map((_, index) => window.setTimeout(() => setActive(index), index * 650));
+    const finish = window.setTimeout(() => { setFollowing(false); setComplete(true); }, STAGES.length * 650);
+    return () => { timers.forEach(window.clearTimeout); window.clearTimeout(finish); };
+  }, [following]);
+
+  function followPath() {
+    if (following) return;
+    setComplete(false);
+    setActive(0);
+    setFollowing(true);
+  }
 
   return (
     <section className="architecture-section">
       <div className="wrap">
         <span className="sec-eyebrow reveal">The architecture</span>
         <div className="architecture-intro">
-          <div>
-            <h2 className="reveal s1">One interface.<br />A different path beneath it.</h2>
-          </div>
+          <div><h2 className="reveal s1">One interface.<br />A different path beneath it.</h2></div>
           <p className="sec-lede reveal s2">qAI37 is the access layer between the AI software teams already run and the hardware that makes the next order of scale possible.</p>
         </div>
-
-        <div className="architecture-shell reveal s2">
-          <div className="architecture-diagram" aria-label="qAI37 three-layer architecture">
-            <div className="architecture-signal" aria-hidden="true"><span className="architecture-signal-dot" /> ACTIVE ROUTE <span className="architecture-signal-line" /></div>
-            {LAYERS.map((item, index) => (
-              <button
-                type="button"
-                key={item.label}
-                className={`architecture-layer ${index === active ? "active" : ""}`}
-                onClick={() => setActive(index)}
-                aria-pressed={index === active}
-              >
-                <span className="architecture-layer-number">{item.number}</span>
-                <span className="architecture-layer-label">{item.label}</span>
-                <span className="architecture-nodes">
-                  {item.nodes.map((node) => <span key={node}>{node}</span>)}
-                </span>
-              </button>
+        <div className={`architecture-flow reveal s2 ${following ? "is-following" : ""}`} aria-label="Conceptual qAI37 workload architecture">
+          <div className="architecture-app architecture-app-start"><span>AI Application</span><i aria-hidden="true" /></div>
+          <div className="architecture-stages">
+            {STAGES.map((stage, index) => (
+              <div className="architecture-stage-wrap" key={stage.title}>
+                <button type="button" className={`architecture-stage ${active === index ? "active" : ""}`} onClick={() => setActive(index)} onFocus={() => setActive(index)} onMouseEnter={() => setActive(index)} aria-pressed={active === index} aria-label={`${stage.number} ${stage.title}: ${stage.description}`}>
+                  <span className="architecture-stage-number">{stage.number}</span>
+                  <span className="architecture-stage-title">{stage.title}</span>
+                  <span className="architecture-stage-description">{stage.description}</span>
+                  <span className={`architecture-mini-diagram stage-${index + 1}`} aria-hidden="true">
+                    {stage.diagram.map((label, diagramIndex) => <span key={label}>{label}{diagramIndex < stage.diagram.length - 1 && <i />}</span>)}
+                  </span>
+                </button>
+                {index < STAGES.length - 1 && <span className={`architecture-connector ${active === index || active === index + 1 ? "active" : ""}`} aria-hidden="true"><i /></span>}
+              </div>
             ))}
           </div>
-
-          <div className="architecture-detail" aria-live="polite">
-            <span className="architecture-detail-kicker">Selected layer · {layer.number}</span>
-            <h3>{layer.title}</h3>
-            <p>{layer.description}</p>
-            <div className="architecture-detail-state"><span>ROUTE STATE</span><strong>{active === 1 ? "TRANSLATION READY" : "OBSERVING LAYER"}</strong></div>
-          </div>
+          <div className="architecture-app architecture-app-end"><i aria-hidden="true" /><span>AI Application</span></div>
+        </div>
+        <div className="architecture-actions reveal s3">
+          <button type="button" className="architecture-follow" onClick={followPath} disabled={following}>{following ? "Following Path..." : "Follow the Path"}</button>
+          <p className="architecture-caption" aria-live="polite">{complete ? "Conceptual architecture - showing the flow of a workload through the qAI37 layer." : "Select a stage to explore the conceptual workload flow."}</p>
         </div>
       </div>
     </section>

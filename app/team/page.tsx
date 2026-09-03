@@ -151,9 +151,9 @@ export default function Team() {
       <section className="advisory-section">
         <div className="wrap">
           <span className="eyebrow reveal">Extended team</span>
-          <div className="extended-list" style={{ marginTop: 24, borderTop: "1px solid var(--line)", marginBottom: 80 }}>
+          <div className="extended-list">
             {EXTENDED_TEAM.map((m) => (
-              <div key={m.name} className="bio-row reveal" style={{ padding: "32px 0", borderBottom: "1px solid var(--line)" }}>
+              <div key={m.name} className="bio-row reveal">
                 <div className="bio-meta">
                   <p className="bio-name">{m.name}</p>
                   <p className="bio-role">{m.role}</p>

@@ -1,7 +1,9 @@
 import SignupForm from "@/components/SignupForm";
 import HeroViz from "@/components/HeroViz";
 import ContextVisualizer from "@/components/ContextVisualizer";
+import ThesisExplorer from "@/components/ThesisExplorer";
 import ArchitectureExplainer from "@/components/ArchitectureExplainer";
+import PositioningExplorer from "@/components/PositioningExplorer";
 import RouteStory from "@/components/RouteStory";
 
 const ROSTER = [
@@ -44,29 +46,7 @@ export default function Home() {
       <section className="thesis">
         <div className="wrap">
           <span className="eyebrow reveal">The thesis</span>
-          <div className="thesis-list">
-            <div className="thesis-item reveal">
-              <span className="thesis-n" aria-hidden="true">01</span>
-              <div>
-                <p className="thesis-head">A different kind of AI on a different kind of machine.</p>
-                <p className="thesis-body">Not a faster chip — a fundamentally different execution path. The software interface stays familiar; the execution changes beneath it.</p>
-              </div>
-            </div>
-            <div className="thesis-item reveal s1">
-              <span className="thesis-n" aria-hidden="true">02</span>
-              <div>
-                <p className="thesis-head">It remembers, so every response improves with context.</p>
-                <p className="thesis-body">The machine holds working memory the way a person does, instead of re-reading the entire history before every answer.</p>
-              </div>
-            </div>
-            <div className="thesis-item reveal s2">
-              <span className="thesis-n" aria-hidden="true">03</span>
-              <div>
-                <p className="thesis-head">A proven idea that is, for the first time, applicable.</p>
-                <p className="thesis-body">The scientific foundation is decades old and peer-reviewed. The hardware that makes it work now exists.</p>
-              </div>
-            </div>
-          </div>
+          <ThesisExplorer />
 
           <div style={{ marginTop: 64 }}>
             <ContextVisualizer />
@@ -114,12 +94,7 @@ export default function Home() {
       <section className="positioning">
         <div className="wrap">
           <span className="sec-eyebrow reveal">What qAI37 is not</span>
-          <div className="not-list">
-            <p className="not-item reveal">Not another quantum machine.</p>
-            <p className="not-item reveal s1">Not a replacement for the data center.</p>
-            <p className="not-item reveal s2">Not a bet that one hardware vendor wins.</p>
-            <p className="not-item reveal s3">Not a bet against silicon.</p>
-          </div>
+          <PositioningExplorer />
         </div>
       </section>
 

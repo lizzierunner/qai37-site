@@ -62,11 +62,13 @@ export default function Lattice() {
     };
 
     const activate = (i: number) => {
-      nodes[i].glow = 1;
-      nodes[i].ringR = 2; nodes[i].ringA = 0.6;
+      const node = nodes[i];
+      if (!node) return;
+      node.glow = 1;
+      node.ringR = 2; node.ringA = 0.6;
       for (let j = 0; j < nodes.length; j++) {
         if (j === i) continue;
-        const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
+        const dx = node.x - nodes[j].x, dy = node.y - nodes[j].y;
         const d = Math.sqrt(dx * dx + dy * dy);
         if (d < CONNECT) {
           const delay = (d / CONNECT) * 500 + Math.random() * 200;
@@ -78,7 +80,7 @@ export default function Lattice() {
     const frame = (now: number) => {
       ctx.clearRect(0, 0, W, H);
 
-      if (now > nextPulse && pulses.length < 30) {
+      if (nodes.length > 0 && now > nextPulse && pulses.length < 30) {
         activate(Math.floor(Math.random() * nodes.length));
         nextPulse = now + 1600 + Math.random() * 2000;
       }
@@ -131,6 +133,7 @@ export default function Lattice() {
       // Advance + draw pulses
       pulses = pulses.filter(p => p.t <= 1);
       for (const p of pulses) {
+        if (!nodes[p.a] || !nodes[p.b]) continue;
         p.t += p.speed;
         if (p.t >= 1) {
           nodes[p.b].glow = Math.min(1, nodes[p.b].glow + 0.7);
