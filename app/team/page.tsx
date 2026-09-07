@@ -78,6 +78,14 @@ const TEAM: Member[] = [
     bio: "Ruben is an FPGA and embedded systems engineer with experience at Intel and Altera and holds a BS in Electrical Engineering from Rice University.",
     signal: "Intel · Altera · Rice University",
   },
+  {
+    name: "Rupesh Srivastava",
+    role: "Quantum Advisor",
+    initials: "RS",
+    img: `${BASE_PATH}/images/team/rupesh-srivastava.jpg`,
+    bio: "PhD in Physics, Royal Holloway, University of London. Five years developing the UK quantum-computing ecosystem at Oxford's Department of Physics (the NQIT and QCS national quantum technology hubs, 2016–2021). Chief Quantum Officer, Entangled Positions.",
+    signal: "Oxford · UK Quantum Ecosystem · PhD",
+  },
 ];
 
 type ExtendedMember = {
@@ -95,13 +103,6 @@ const EXTENDED_TEAM: ExtendedMember[] = [
     initials: "RW",
     img: `${BASE_PATH}/images/team/Team%20Photos/Richard%20Wood.jpeg`,
     bio: "Richard has more than 30 years of investment banking experience spanning both boutique and middle market firms. He co-founded First Hill Partners in 2010.",
-  },
-  {
-    name: "Rupesh Srivastava",
-    role: "Quantum Advisor",
-    initials: "RS",
-    img: `${BASE_PATH}/images/team/rupesh-srivastava.jpg`,
-    bio: "PhD in Physics, Royal Holloway, University of London. Five years developing the UK quantum-computing ecosystem at Oxford's Department of Physics (the NQIT and QCS national quantum technology hubs, 2016–2021). Chief Quantum Officer, Entangled Positions.",
   },
   {
     name: "Vicki Mitchell",
