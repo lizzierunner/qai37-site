@@ -46,14 +46,6 @@ const TEAM: Member[] = [
     signal: "Intel · Altera · TI · Processor architecture",
   },
   {
-    name: "Rupesh Srivastava",
-    role: "Quantum Advisor",
-    initials: "RS",
-    img: `${BASE_PATH}/images/team/rupesh-srivastava.jpg`,
-    bio: "PhD in Physics, Royal Holloway, University of London. Five years developing the UK quantum-computing ecosystem at Oxford's Department of Physics (the NQIT and QCS national quantum technology hubs, 2016–2021). Chief Quantum Officer, Entangled Positions.",
-    signal: "Oxford · Quantum ecosystem · PhD",
-  },
-  {
     name: "Vincent E. Elfving",
     role: "Chief Quantum Advisor",
     initials: "VE",
@@ -97,13 +89,6 @@ type ExtendedMember = {
 };
 
 const EXTENDED_TEAM: ExtendedMember[] = [
-  {
-    name: "Gregor Barry",
-    role: "Advisor",
-    initials: "GB",
-    img: `${BASE_PATH}/images/team/gregor-barry.jpg`,
-    bio: "Managing Director, Accenture, Toronto — twelve years in enterprise relationships with Fortune 500 clients.",
-  },
   {
     name: "Richard Wood",
     role: "Advisor",
