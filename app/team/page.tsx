@@ -97,6 +97,13 @@ const EXTENDED_TEAM: ExtendedMember[] = [
     bio: "Richard has more than 30 years of investment banking experience spanning both boutique and middle market firms. He co-founded First Hill Partners in 2010.",
   },
   {
+    name: "Rupesh Srivastava",
+    role: "Quantum Advisor",
+    initials: "RS",
+    img: `${BASE_PATH}/images/team/rupesh-srivastava.jpg`,
+    bio: "PhD in Physics, Royal Holloway, University of London. Five years developing the UK quantum-computing ecosystem at Oxford's Department of Physics (the NQIT and QCS national quantum technology hubs, 2016–2021). Chief Quantum Officer, Entangled Positions.",
+  },
+  {
     name: "Vicki Mitchell",
     role: "Advisor",
     initials: "VM",
