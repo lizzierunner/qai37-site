@@ -9,7 +9,6 @@ const LINKS = [
   { href: "/", label: "Home" },
   { href: "/wiki", label: "Wiki" },
   { href: "/team", label: "Team" },
-  { href: "/careers", label: "Careers" },
   { href: "/news", label: "News" },
   { href: "/contact", label: "Contact" },
 ];
@@ -50,7 +49,6 @@ export default function SiteHeader() {
             <span className="cmd-trigger-text">Search</span>
             <kbd className="cmd-trigger-kbd">⌘K</kbd>
           </button>
-          <Link className="btn" href="/#join">Get updates</Link>
         </nav>
       </div>
     </header>

@@ -1,5 +1,19 @@
 [
   {
+    "type": "company",
+    "title": "qAI37 shares an early look at its approach to AI infrastructure",
+    "date": "September 2, 2026",
+    "description": "qAI37 gave a first glimpse of the software layer it is building between conventional AI inference and a new class of execution hardware.",
+    "url": "https://www.qai37.com/news"
+  },
+  {
+    "type": "company",
+    "title": "qAI37 opens its first engineering roles",
+    "date": "August 20, 2026",
+    "description": "qAI37 is assembling a small founding team to build a new layer of AI infrastructure.",
+    "url": "mailto:careers@qAI37.com"
+  },
+  {
     "type": "industry",
     "title": "Japan brings online its first full-stack neutral-atom quantum computer",
     "date": "August 24, 2026",
