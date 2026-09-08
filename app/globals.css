@@ -232,7 +232,9 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px}
 .p-team2 .bio-photo.noimg img{display:none}
 .p-team2 .bio-photo.noimg::after{content:attr(data-initials);position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-display);font-weight:600;font-size:clamp(38px,5vw,62px);color:var(--muted)}
 .p-team2 .team-card-copy{padding-top:18px}
-.p-team2 .team-card-name{font-family:var(--font-display);font-size:clamp(22px,2vw,29px);font-weight:600;letter-spacing:-.02em;color:var(--text);line-height:1.08;margin-bottom:8px}
+.p-team2 .team-card-name{position:relative;display:inline-block;font-family:var(--font-display);font-size:clamp(22px,2vw,29px);font-weight:600;letter-spacing:-.02em;color:var(--text);line-height:1.08;margin-bottom:8px}
+.p-team2 .team-card-name::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.p-team2 .team-card:hover .team-card-name::after{transform:scaleX(1)}
 .p-team2 .team-card-role{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);line-height:1.45;min-height:28px}
 .p-team2 .team-card-signal{font-family:var(--font-mono);font-size:10px;line-height:1.55;color:var(--muted-2);margin-top:12px;min-height:32px}
 .p-team2 .team-card-bio{font-size:14px;color:var(--muted);line-height:1.7;margin-top:16px}
@@ -240,7 +242,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px}
 .p-team2 .bio-li:hover{color:var(--cyan)}
 .p-team2 .bio-li svg{width:13px;height:13px;fill:currentColor}
 .p-team2 .extended-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
-@media(prefers-reduced-motion:reduce){.p-team2 .bio-photo,.p-team2 .bio-photo img,.p-team2 .team-card,.p-team2 .team-card::after{transition:none}}
+@media(prefers-reduced-motion:reduce){.p-team2 .bio-photo,.p-team2 .bio-photo img,.p-team2 .team-card,.p-team2 .team-card::after,.p-team2 .team-card-name::after{transition:none}}
 @media(max-width:1020px){.p-team2 .extended-grid,.p-team2 .team-card-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:760px){.p-team2 .bio-intro{padding:72px 0 46px}.p-team2 .team-hero-grid{grid-template-columns:1fr;gap:30px}.p-team2 .team-grid-section{padding:56px 0 70px}.p-team2 .team-section-head{align-items:flex-start;flex-direction:column;gap:10px}.p-team2 .extended-grid,.p-team2 .team-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.p-team2 .team-card{padding:14px 14px 18px}.p-team2 .team-card::after{left:14px;right:14px;top:14px}.p-team2 .team-card-bio{font-size:13px}}
 @media(max-width:540px){.p-team2 .team-sort{align-items:flex-start;flex-direction:column}.p-team2 .team-sort span{margin-right:0}.p-team2 .team-sort a{width:100%;text-align:center}.p-team2 .extended-grid,.p-team2 .team-card-grid{grid-template-columns:1fr}.p-team2 .team-card{padding:16px}.p-team2 .team-card-role,.p-team2 .team-card-signal{min-height:0}.p-team2 .bio-photo{max-height:420px}}
