@@ -186,7 +186,7 @@ export default function Team() {
         <div className="wrap">
           <div className="team-section-head reveal">
             <span className="team-section-label">Extended team</span>
-            <p>{EXTENDED_TEAM.length} advisors</p>
+            <p>{EXTENDED_TEAM.filter((m) => m.role.includes("Advisor")).length} advisors</p>
           </div>
           <div className="team-card-grid extended-grid">
             {EXTENDED_TEAM.map((m, i) => (
