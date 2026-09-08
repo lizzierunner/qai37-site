@@ -31,7 +31,7 @@ const TEAM: Member[] = [
   },
   {
     name: "Michelle Holtmann",
-    role: "President & Chief Strategy Officer",
+    role: "Founding Advisor, Product & Strategic Partnerships",
     initials: "MH",
     img: `${BASE_PATH}/images/team/michelle-holtmann.jpg`,
     bio: "Michelle started her career as a software engineer at Boeing, then spent 25 years at Microsoft designing and building infrastructure products that hundreds of millions of people depend on every day — including Windows Genuine Advantage, the Software Protection Platform, and the technical foundation behind Windows Defender. She joined qAI37 after extensive study of whether the approach was actually buildable, and designed the roadmap to prove it.",
