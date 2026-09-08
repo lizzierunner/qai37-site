@@ -227,6 +227,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px}
 .p-team2 .team-card:hover .bio-photo img{filter:grayscale(.45) contrast(1.08) brightness(.98);transform:scale(1.035)}
 .p-team2 .bio-photo img[src*="ted-stockwell"]{object-fit:contain;object-position:center;background:var(--ink)}
 .p-team2 .bio-photo img[src*="michelle-holtmann"]{object-position:center 15%;transform:scale(1.035)}
+.p-team2 .bio-photo img[src*="Lizzie%20Johnson"]{object-position:center 20%;transform:scale(1)}
 .p-team2 .bio-photo img[src*="Rick.jpg"]{object-position:center 34%;transform:scale(1.1)}
 .p-team2 .bio-photo.noimg img{display:none}
 .p-team2 .bio-photo.noimg::after{content:attr(data-initials);position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-display);font-weight:600;font-size:clamp(38px,5vw,62px);color:var(--muted)}

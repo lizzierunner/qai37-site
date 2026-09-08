@@ -118,6 +118,13 @@ const EXTENDED_TEAM: ExtendedMember[] = [
     img: `${BASE_PATH}/images/team/Team%20Photos/john-williams.jpeg`,
     bio: "Technical executive in product management and marketing in cloud computing, compute systems, semiconductors, and software.",
   },
+  {
+    name: "Lizzie Johnson",
+    role: "Web Engineering Intern",
+    initials: "LJ",
+    img: `${BASE_PATH}/images/team/Team%20Photos/Lizzie%20Johnson.jpeg`,
+    bio: "Lizzie Johnson is a Web Engineering Intern at qAI37 and a Full Stack Web Development student at Arizona State University passionate about web development, design, and creative problem-solving.",
+  },
 ];
 
 function LinkedInIcon() {
