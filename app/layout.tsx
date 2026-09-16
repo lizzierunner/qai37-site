@@ -6,6 +6,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveals from "@/components/Reveals";
 import CommandPalette from "@/components/CommandPalette";
+import ChatBot from "@/components/ChatBot";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.qai37.com"),
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main">{children}</main>
         <SiteFooter />
         <CommandPalette />
+        <ChatBot />
         <Reveals />
       </body>
     </html>
