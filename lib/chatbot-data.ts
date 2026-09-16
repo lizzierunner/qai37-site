@@ -10,7 +10,7 @@ export type ChatAnswer = {
 export const CHAT_ANSWERS: ChatAnswer[] = [
   {
     id: "what-is-qai37",
-    keywords: ["what", "qai37", "company", "about", "do", "does"],
+    keywords: ["qai37", "startup", "product"],
     answer:
       "qAI37 is building a vendor-agnostic software layer between conventional AI applications and neutral-atom quantum systems — the neutral route to post-silicon AI.",
     linkLabel: "Read the mission",
@@ -18,7 +18,7 @@ export const CHAT_ANSWERS: ChatAnswer[] = [
   },
   {
     id: "quantum-computer",
-    keywords: ["quantum", "computer", "building", "hardware", "build"],
+    keywords: ["quantum", "computer", "hardware"],
     answer:
       "No — qAI37 isn't building a quantum computer itself. We focus on the software access layer that connects AI workloads to suitable quantum hardware paths.",
     linkLabel: "See common questions",
@@ -34,7 +34,7 @@ export const CHAT_ANSWERS: ChatAnswer[] = [
   },
   {
     id: "hybrid",
-    keywords: ["hybrid", "replace", "existing", "stack", "disrupt", "integrate"],
+    keywords: ["hybrid", "disrupt", "integrate"],
     answer:
       "The model is hybrid by design: teams keep their existing software interfaces and conventional execution, while eligible work can take an alternate route through neutral-atom systems.",
     linkLabel: "See the execution model",
@@ -42,7 +42,7 @@ export const CHAT_ANSWERS: ChatAnswer[] = [
   },
   {
     id: "mission",
-    keywords: ["mission", "why", "energy", "power", "sustainable", "grid"],
+    keywords: ["mission", "energy", "sustainable", "grid"],
     answer:
       "AI compute demand is growing roughly 13x faster than energy supply. Our mission is unlimited, sustainable, cost-effective AI — bending the power curve with quantum-native infrastructure.",
     linkLabel: "Read the mission",
@@ -50,7 +50,7 @@ export const CHAT_ANSWERS: ChatAnswer[] = [
   },
   {
     id: "team",
-    keywords: ["team", "who", "founder", "ceo", "cto", "leadership", "people"],
+    keywords: ["team", "founder", "founders", "founded", "ceo", "cto", "leadership"],
     answer:
       "qAI37 is founded by Ted Stockwell (CEO), with Michelle Holtmann (President & Chief Strategy Officer), Steve Jahnke (CTO), and a team spanning Microsoft, Intel, Pasqal, and embedded-systems veterans.",
     linkLabel: "Meet the team",
@@ -58,21 +58,21 @@ export const CHAT_ANSWERS: ChatAnswer[] = [
   },
   {
     id: "contact",
-    keywords: ["contact", "email", "reach", "talk", "touch", "call"],
+    keywords: ["contact", "email", "reach", "touch"],
     answer: "You can reach the founding team directly at contact@qai37.com.",
     linkLabel: "Contact page",
     linkUrl: "/contact",
   },
   {
     id: "news",
-    keywords: ["news", "announcement", "press", "latest", "update"],
+    keywords: ["news", "announcement", "press"],
     answer: "Company announcements and neutral-atom industry news are posted on our News page.",
     linkLabel: "See News",
     linkUrl: "/news",
   },
   {
     id: "join",
-    keywords: ["join", "career", "job", "hiring", "work", "invest", "partner"],
+    keywords: ["career", "hiring", "invest", "partner"],
     answer:
       "We're building the foundation for the next generation of AI infrastructure. Reach out or sign up to be the first to know as things come to light.",
     linkLabel: "Join us",
@@ -80,7 +80,7 @@ export const CHAT_ANSWERS: ChatAnswer[] = [
   },
   {
     id: "wiki",
-    keywords: ["wiki", "glossary", "terms", "post-silicon", "context", "definition"],
+    keywords: ["wiki", "glossary", "post-silicon"],
     answer:
       "The Wiki has a plain-language map of qAI37's ideas, terms, and architecture — including \"post-silicon AI\" and \"working context.\"",
     linkLabel: "Open the Wiki",
@@ -96,20 +96,20 @@ export const CHAT_SUGGESTIONS = [
 ];
 
 export function findChatAnswer(input: string): ChatAnswer | undefined {
-  const normalized = input.toLowerCase();
+  const tokens: string[] = input.toLowerCase().match(/[a-z0-9']+/g) ?? [];
   let best: ChatAnswer | undefined;
-  let bestScore = 0;
+  let bestRatio = 0;
 
   for (const entry of CHAT_ANSWERS) {
-    const score = entry.keywords.reduce(
-      (count, keyword) => (normalized.includes(keyword) ? count + 1 : count),
-      0
-    );
-    if (score > bestScore) {
-      bestScore = score;
+    const matched = entry.keywords.filter((keyword) => tokens.includes(keyword)).length;
+    if (matched === 0) continue;
+    // Ratio, not raw count, so a short list of precise keywords can outrank a longer one.
+    const ratio = matched / entry.keywords.length;
+    if (ratio > bestRatio) {
+      bestRatio = ratio;
       best = entry;
     }
   }
 
-  return bestScore > 0 ? best : undefined;
+  return best;
 }
