@@ -34,7 +34,7 @@ export const CHAT_ANSWERS: ChatAnswer[] = [
   },
   {
     id: "hybrid",
-    keywords: ["hybrid", "disrupt", "integrate"],
+    keywords: ["hybrid", "disrupt", "disrupting", "integrate", "replace"],
     answer:
       "The model is hybrid by design: teams keep their existing software interfaces and conventional execution, while eligible work can take an alternate route through neutral-atom systems.",
     linkLabel: "See the execution model",
@@ -72,7 +72,7 @@ export const CHAT_ANSWERS: ChatAnswer[] = [
   },
   {
     id: "join",
-    keywords: ["career", "hiring", "invest", "partner"],
+    keywords: ["career", "hiring", "invest", "investors", "partner"],
     answer:
       "We're building the foundation for the next generation of AI infrastructure. Reach out or sign up to be the first to know as things come to light.",
     linkLabel: "Join us",
@@ -80,7 +80,7 @@ export const CHAT_ANSWERS: ChatAnswer[] = [
   },
   {
     id: "wiki",
-    keywords: ["wiki", "glossary", "post-silicon"],
+    keywords: ["wiki", "glossary", "post-silicon", "context"],
     answer:
       "The Wiki has a plain-language map of qAI37's ideas, terms, and architecture — including \"post-silicon AI\" and \"working context.\"",
     linkLabel: "Open the Wiki",
@@ -96,12 +96,21 @@ export const CHAT_SUGGESTIONS = [
 ];
 
 export function findChatAnswer(input: string): ChatAnswer | undefined {
-  const tokens: string[] = input.toLowerCase().match(/[a-z0-9']+/g) ?? [];
+  // Keep both the hyphenated token ("post-silicon") and its split parts ("neutral", "atom")
+  // so compound and separate-word keywords both still match.
+  const rawTokens = input.toLowerCase().match(/[a-z0-9'-]+/g) ?? [];
+  const tokens = new Set<string>();
+  for (const t of rawTokens) {
+    tokens.add(t);
+    for (const part of t.split("-")) {
+      if (part) tokens.add(part);
+    }
+  }
   let best: ChatAnswer | undefined;
   let bestRatio = 0;
 
   for (const entry of CHAT_ANSWERS) {
-    const matched = entry.keywords.filter((keyword) => tokens.includes(keyword)).length;
+    const matched = entry.keywords.filter((keyword) => tokens.has(keyword)).length;
     if (matched === 0) continue;
     // Ratio, not raw count, so a short list of precise keywords can outrank a longer one.
     const ratio = matched / entry.keywords.length;
