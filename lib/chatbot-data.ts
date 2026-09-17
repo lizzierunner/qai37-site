@@ -1,4 +1,6 @@
 // Client-side knowledge base for the "Ask qAI37" widget — no backend, no API keys.
+import { TEAM, EXTENDED_TEAM, TEAM_INTRO } from "./team-data";
+
 export type ChatAnswer = {
   id: string;
   keywords: string[];
@@ -6,6 +8,14 @@ export type ChatAnswer = {
   linkLabel?: string;
   linkUrl?: string;
 };
+
+const TEAM_ANSWERS: ChatAnswer[] = [...TEAM, ...EXTENDED_TEAM].map((member) => ({
+  id: `team-${member.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+  keywords: member.name.toLowerCase().match(/[a-z]{2,}/g) ?? [],
+  answer: `${member.name} is qAI37's ${member.role}. ${member.bio}`,
+  linkLabel: "Meet the team",
+  linkUrl: "/team",
+}));
 
 export const CHAT_ANSWERS: ChatAnswer[] = [
   {
@@ -51,8 +61,7 @@ export const CHAT_ANSWERS: ChatAnswer[] = [
   {
     id: "team",
     keywords: ["team", "founder", "founders", "founded", "ceo", "cto", "leadership"],
-    answer:
-      "qAI37 is founded by Ted Stockwell (CEO), with Michelle Holtmann (President & Chief Strategy Officer), Steve Jahnke (CTO), and a team spanning Microsoft, Intel, Pasqal, and embedded-systems veterans.",
+    answer: `${TEAM_INTRO} ${TEAM.map((member) => `${member.name} (${member.role})`).join("; ")}.`,
     linkLabel: "Meet the team",
     linkUrl: "/team",
   },
@@ -86,6 +95,7 @@ export const CHAT_ANSWERS: ChatAnswer[] = [
     linkLabel: "Open the Wiki",
     linkUrl: "/wiki",
   },
+  ...TEAM_ANSWERS,
 ];
 
 export const CHAT_SUGGESTIONS = [
@@ -98,13 +108,31 @@ export const CHAT_SUGGESTIONS = [
 export function findChatAnswer(input: string): ChatAnswer | undefined {
   // Keep both the hyphenated token ("post-silicon") and its split parts ("neutral", "atom")
   // so compound and separate-word keywords both still match.
-  const rawTokens = input.toLowerCase().match(/[a-z0-9'-]+/g) ?? [];
+  const rawTokens = input.toLowerCase().replace(/[’']/g, "'").replace(/'s\b/g, "").match(/[a-z0-9'-]+/g) ?? [];
   const tokens = new Set<string>();
   for (const t of rawTokens) {
     tokens.add(t);
     for (const part of t.split("-")) {
       if (part) tokens.add(part);
     }
+  }
+  const namedMembers = TEAM_ANSWERS.filter((entry) =>
+    entry.keywords.some((keyword) => tokens.has(keyword)),
+  );
+  if (namedMembers.length > 0) {
+    const mostMatches = Math.max(...namedMembers.map((entry) =>
+      entry.keywords.filter((keyword) => tokens.has(keyword)).length,
+    ));
+    const matches = namedMembers.filter((entry) =>
+      entry.keywords.filter((keyword) => tokens.has(keyword)).length === mostMatches,
+    );
+    return {
+      id: "team-members",
+      keywords: [],
+      answer: matches.map((entry) => entry.answer).join("\n\n"),
+      linkLabel: "Meet the team",
+      linkUrl: "/team",
+    };
   }
   let best: ChatAnswer | undefined;
   let bestRatio = 0;

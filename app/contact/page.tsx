@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import ContactButton from "@/components/ContactButton";
+import { TEAM } from "@/lib/team-data";
+
+const CONTACTS = TEAM.filter((member) =>
+  ["Ted Stockwell", "Michelle Holtmann"].includes(member.name),
+);
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -15,16 +20,13 @@ export default function Contact() {
           <h1 className="reveal s1">Contact</h1>
           <p className="lede reveal s2">Questions, partnerships, or press — reach us directly.</p>
           <div className="contact-grid reveal s3">
-            <div className="contact-person">
-              <p className="contact-name">Ted Stockwell</p>
-              <p className="contact-role">Founder & CEO</p>
-              <ContactButton />
-            </div>
-            <div className="contact-person">
-              <p className="contact-name">Michelle Holtmann</p>
-              <p className="contact-role">President & Chief Strategy Officer</p>
-              <ContactButton />
-            </div>
+            {CONTACTS.map((member) => (
+              <div className="contact-person" key={member.name}>
+                <p className="contact-name">{member.name}</p>
+                <p className="contact-role">{member.role}</p>
+                <ContactButton />
+              </div>
+            ))}
           </div>
         </div>
       </section>
