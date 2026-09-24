@@ -1,59 +1,42 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { NEWS } from "@/lib/news-data";
-
-type SearchItem = {
-  id: string;
-  category: "Navigation" | "Team Member" | "News";
-  title: string;
-  subtitle: string;
-  url: string;
-  isExternal?: boolean;
-};
-
-const ITEMS: SearchItem[] = [
-  // Navigation
-  { id: "nav-home", category: "Navigation", title: "Home", subtitle: "A new software layer for AI infrastructure", url: "/" },
-  { id: "nav-wiki", category: "Navigation", title: "Wiki", subtitle: "qAI37 terms, architecture, and common questions", url: "/wiki" },
-  { id: "nav-team", category: "Navigation", title: "Team", subtitle: "Leadership, engineers, and scientific advisors", url: "/team" },
-  { id: "nav-news", category: "Navigation", title: "News", subtitle: "Company announcements & neutral-atom industry updates", url: "/news" },
-  { id: "nav-contact", category: "Navigation", title: "Contact", subtitle: "Get in touch with the qAI37 founding team", url: "/contact" },
-
-  // Team
-  { id: "team-ted", category: "Team Member", title: "Ted Stockwell", subtitle: "Founder & CEO · Bing as a Platform", url: "/team" },
-  { id: "team-michelle", category: "Team Member", title: "Michelle Holtmann", subtitle: "Founding Advisor, Product & Strategic Partnerships · 25 years Microsoft Infrastructure", url: "/team" },
-  { id: "team-steve", category: "Team Member", title: "Steve Jahnke", subtitle: "CTO / Principal Architect · 30 years Intel, Altera, TI", url: "/team" },
-  { id: "team-laverne", category: "Team Member", title: "Laverne Masaki", subtitle: "Chief People Officer · Microsoft, Google Recruiting", url: "/team" },
-  { id: "team-vincent", category: "Team Member", title: "Vincent E. Elfving", subtitle: "Chief Quantum Advisor · Former Head of Algorithms Pasqal", url: "/team" },
-  { id: "team-rick", category: "Team Member", title: "Rick Jahnke", subtitle: "Principal Engineer · 30+ years embedded systems", url: "/team" },
-  { id: "team-ruben", category: "Team Member", title: "Ruben Marroquin", subtitle: "Senior Engineer · FPGA & Embedded Systems", url: "/team" },
-
-  // Dynamic news
-  ...NEWS.map((n, i) => ({
-    id: `news-${i}`,
-    category: "News" as const,
-    title: n.title,
-    subtitle: `${n.date} · ${n.type.toUpperCase()} NEWS`,
-    url: n.url,
-    isExternal: true,
-  })),
-];
+import { Search, X } from "lucide-react";
+import { searchSite, type SearchItem } from "@/lib/search-data";
 
 export default function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const selectedRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const returnFocusRef = useRef<HTMLElement | null>(null);
   const router = useRouter();
+
+  const closeSearch = () => {
+    dialogRef.current?.close();
+    setOpen(false);
+    returnFocusRef.current?.focus();
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
+        if (!document.activeElement?.closest(".cmd-dialog")) {
+          returnFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+        } else {
+          dialogRef.current?.close();
+          returnFocusRef.current?.focus();
+        }
         setOpen((prev) => !prev);
       }
       if (e.key === "Escape") {
+        if (dialogRef.current?.open) {
+          dialogRef.current.close();
+          returnFocusRef.current?.focus();
+        }
         setOpen(false);
       }
     };
@@ -61,22 +44,22 @@ export default function CommandPalette() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  const filtered = query.trim() === ""
-    ? ITEMS.slice(0, 8)
-    : ITEMS.filter(
-        (item) =>
-          item.title.toLowerCase().includes(query.toLowerCase()) ||
-          item.subtitle.toLowerCase().includes(query.toLowerCase()) ||
-          item.category.toLowerCase().includes(query.toLowerCase())
-      );
+  const filtered = searchSite(query);
 
   useEffect(() => {
-    setSelectedIndex(0);
-  }, [query]);
+    const dialog = dialogRef.current;
+    if (open && dialog && !dialog.open) dialog.showModal();
+    return () => { if (dialog?.open) dialog.close(); };
+  }, [open]);
+
+  useEffect(() => {
+    if (open) selectedRef.current?.scrollIntoView({ block: "nearest", behavior: "instant" });
+  }, [open, selectedIndex, query]);
 
   const handleSelect = (item: SearchItem) => {
     setOpen(false);
     setQuery("");
+    setSelectedIndex(0);
     if (item.isExternal) {
       window.open(item.url, "_blank", "noopener,noreferrer");
     } else {
@@ -85,6 +68,7 @@ export default function CommandPalette() {
   };
 
   const handleKeyDownInMenu = (e: React.KeyboardEvent) => {
+    if (!(e.target instanceof HTMLInputElement)) return;
     if (e.key === "ArrowDown") {
       e.preventDefault();
       setSelectedIndex((i) => (i + 1) % Math.max(1, filtered.length));
@@ -100,30 +84,31 @@ export default function CommandPalette() {
   if (!open) return null;
 
   return (
-    <div className="cmd-backdrop" onClick={() => setOpen(false)}>
+    <dialog ref={dialogRef} className="cmd-backdrop" aria-label="Site search" onCancel={(event) => { event.preventDefault(); closeSearch(); }} onClick={closeSearch}>
       <div className="cmd-dialog" onClick={(e) => e.stopPropagation()} onKeyDown={handleKeyDownInMenu}>
         <div className="cmd-search-wrap">
-          <svg className="cmd-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
+          <Search className="cmd-search-icon" aria-hidden="true" />
           <input
             type="text"
             className="cmd-input"
-            placeholder="Search pages, team bios, industry news... (ESC to close)"
+            placeholder="Search qAI37..."
+            aria-label="Search pages, guides, people, and news"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => { setQuery(e.target.value); setSelectedIndex(0); }}
             autoFocus
           />
-          <span className="cmd-kbd">ESC</span>
+          <button type="button" className="cmd-close" aria-label="Close search" title="Close search" onClick={closeSearch}><X size={18} aria-hidden="true" /></button>
         </div>
 
         <div className="cmd-results">
           {filtered.length === 0 ? (
-            <div className="cmd-empty">No results found for &quot;{query}&quot;</div>
+            <div className="cmd-empty" role="status">No results found for &quot;{query}&quot;</div>
           ) : (
             filtered.map((item, i) => (
               <button
                 key={item.id}
+                type="button"
+                ref={i === selectedIndex ? selectedRef : undefined}
                 className={`cmd-item ${i === selectedIndex ? "selected" : ""}`}
                 onClick={() => handleSelect(item)}
                 onMouseEnter={() => setSelectedIndex(i)}
@@ -144,6 +129,6 @@ export default function CommandPalette() {
           <span><kbd className="cmd-mini-kbd">esc</kbd> close</span>
         </div>
       </div>
-    </div>
+    </dialog>
   );
 }

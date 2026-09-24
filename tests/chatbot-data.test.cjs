@@ -128,3 +128,18 @@ test("dynamic suggestions resolve and do not repeat the current answer", () => {
     }
   }
 });
+
+test("walkthrough discovery stays conceptual and links to the homepage example", () => {
+  for (const question of ["Show me the walkthrough", "Explain the architecture", "What is qAI37's architecture?"]) {
+    const reply = findChatAnswer(question);
+    assert.equal(reply.id, "request-walkthrough", question);
+    assert.equal(reply.linkUrl, "/#request-walkthrough");
+    assert.ok(reply.answer.includes("not a live computation or benchmark"));
+    assert.ok(reply.answer.includes("conventional fallback"));
+  }
+  for (const question of ["How does the hybrid model work?", "Explain post-silicon AI"]) {
+    const context = findChatAnswer(question);
+    assert.ok(getChatSuggestions(context).includes("Show me the walkthrough"));
+    assert.equal(findChatAnswer("Tell me more", context).id, "request-walkthrough");
+  }
+});

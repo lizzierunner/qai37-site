@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { RotateCcw, Send, X } from "lucide-react";
 import { findChatAnswer, getChatSuggestions, type ChatAnswer } from "@/lib/chatbot-data";
 import AtomIcon from "@/components/AtomIcon";
 
@@ -31,6 +32,8 @@ export default function ChatBot() {
   const [typing, setTyping] = useState(false);
   const [context, setContext] = useState<ChatAnswer>();
   const scrollRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const replyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const suggestions = getChatSuggestions(context);
 
@@ -39,8 +42,28 @@ export default function ChatBot() {
   }, []);
 
   useEffect(() => {
-    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
+    if (open) inputRef.current?.focus();
+  }, [open]);
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: reducedMotion ? "instant" : "smooth" });
   }, [messages, typing]);
+
+  const closeChat = () => {
+    setOpen(false);
+    triggerRef.current?.focus();
+  };
+
+  const clearConversation = () => {
+    if (replyTimer.current !== null) clearTimeout(replyTimer.current);
+    replyTimer.current = null;
+    setMessages([GREETING]);
+    setInput("");
+    setTyping(false);
+    setContext(undefined);
+    inputRef.current?.focus();
+  };
 
   const ask = (question: string) => {
     const trimmed = question.trim();
@@ -69,23 +92,43 @@ export default function ChatBot() {
     <>
       <button
         type="button"
+        ref={triggerRef}
         className="chat-trigger"
         onClick={() => setOpen((prev) => !prev)}
+        onKeyDown={(event) => {
+          if (open && event.key === "Escape") {
+            event.preventDefault();
+            event.stopPropagation();
+            closeChat();
+          }
+        }}
         aria-expanded={open}
+        aria-controls={open ? "qai37-chat" : undefined}
         aria-label={open ? "Close chat assistant" : "Open chat assistant"}
       >
         {open ? (
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+          <X aria-hidden="true" />
         ) : (
           <AtomIcon />
         )}
       </button>
 
       {open && (
-        <div className="chat-panel" role="dialog" aria-label="qAI37 chat assistant">
+        <div className="chat-panel" id="qai37-chat" role="dialog" aria-label="qAI37 chat assistant" onKeyDown={(event) => {
+          if (event.key === "Escape") {
+            event.preventDefault();
+            event.stopPropagation();
+            closeChat();
+          }
+        }}>
           <div className="chat-head">
-            <span className="chat-head-title">Ask qAI37</span>
-            <span className="chat-head-sub">Answers from our site content</span>
+            <div className="chat-head-copy">
+              <span className="chat-head-title">Ask qAI37</span>
+              <span className="chat-head-sub">Answers from our site content</span>
+            </div>
+            <button type="button" className="chat-reset" onClick={clearConversation} disabled={messages.length === 1 && !input && !typing} aria-label="Clear conversation" title="Clear conversation">
+              <RotateCcw size={17} aria-hidden="true" />
+            </button>
           </div>
 
           <div className="chat-body" ref={scrollRef} role="log" aria-label="Conversation" aria-live="polite">
@@ -100,7 +143,7 @@ export default function ChatBot() {
               </div>
             ))}
             {typing && (
-              <div className="chat-msg chat-msg-bot chat-typing">
+              <div className="chat-msg chat-msg-bot chat-typing" role="status" aria-label="Preparing an answer">
                 <span /><span /><span />
               </div>
             )}
@@ -115,13 +158,15 @@ export default function ChatBot() {
           <form className="chat-input-wrap" onSubmit={handleSubmit}>
             <input
               type="text"
+              ref={inputRef}
+              aria-label="Your question"
               className="chat-input"
               placeholder="Ask a question..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />
             <button type="submit" className="chat-send" aria-label="Send" disabled={typing || !input.trim()}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" /></svg>
+              <Send aria-hidden="true" />
             </button>
           </form>
         </div>

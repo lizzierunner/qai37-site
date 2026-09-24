@@ -10,9 +10,31 @@ npm install
 npm run dev      # http://localhost:3000
 ```
 
-Build for production: `npm run build && npm start`.
+Build for production: `npm run build`. This site uses static export; deploy the
+generated `out/` directory to a static host. `next start` does not serve this export.
 
-No extra UI dependencies — fonts (`next/font`) and styling (global CSS) are built in.
+For a deployment under `/qai37-site`, use `npm run build:github-pages` instead.
+The existing deployment workflow builds for a root-domain deployment.
+
+The site uses Next.js 15.5.26 with React 18, Lucide icons, `next/font`, and global CSS.
+Use Node.js 20 or newer. Install reproducibly with `npm ci`.
+
+## Verification
+
+```bash
+npm test
+npx tsc --noEmit --incremental false
+npm audit
+npm run build
+```
+
+The PostCSS override in `package.json` pins a patched 8.x version because Next.js
+15 pins an older vulnerable release. Reassess the override when upgrading Next.js.
+The dependency audit and static export were verified with this override.
+
+The homepage request walkthrough is conceptual, not a live hardware integration or
+benchmark. Search and chatbot answers link to it and to the Wiki execution model.
+Team search entries and chatbot bios both use the shared roster in `lib/team-data.ts`.
 
 ## Structure
 

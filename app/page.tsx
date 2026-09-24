@@ -1,6 +1,7 @@
 import HeroViz from "@/components/HeroViz";
 import ThesisExplorer from "@/components/ThesisExplorer";
 import PositioningExplorer from "@/components/PositioningExplorer";
+import ArchitectureExplainer from "@/components/ArchitectureExplainer";
 
 export default function Home() {
   return (
@@ -38,6 +39,8 @@ export default function Home() {
           <PositioningExplorer />
         </div>
       </section>
+
+      <ArchitectureExplainer />
 
       {/* CAREERS */}
       <section className="careers-section" id="careers">
