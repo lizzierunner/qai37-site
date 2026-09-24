@@ -7,14 +7,17 @@ export type ChatAnswer = {
   answer: string;
   linkLabel?: string;
   linkUrl?: string;
+  memberNames?: string[];
 };
 
-const TEAM_ANSWERS: ChatAnswer[] = [...TEAM, ...EXTENDED_TEAM].map((member) => ({
+const MEMBERS = [...TEAM, ...EXTENDED_TEAM];
+const TEAM_ANSWERS: ChatAnswer[] = MEMBERS.map((member) => ({
   id: `team-${member.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
   keywords: member.name.toLowerCase().match(/[a-z]{2,}/g) ?? [],
   answer: `${member.name} is qAI37's ${member.role}. ${member.bio}`,
   linkLabel: "Meet the team",
   linkUrl: "/team",
+  memberNames: [member.name],
 }));
 
 export const CHAT_ANSWERS: ChatAnswer[] = [
@@ -105,7 +108,34 @@ export const CHAT_SUGGESTIONS = [
   "How do I get in touch?",
 ];
 
-export function findChatAnswer(input: string): ChatAnswer | undefined {
+const FOLLOW_UP_SUGGESTIONS: Record<string, string[]> = {
+  "what-is-qai37": ["How does the hybrid model work?", "What is the mission?"],
+  "quantum-computer": ["What are neutral atoms?", "How does the hybrid model work?"],
+  "neutral-atom": ["How does the hybrid model work?", "Explain post-silicon AI"],
+  hybrid: ["What are neutral atoms?", "What is the mission?"],
+  mission: ["What is qAI37?", "How does the hybrid model work?"],
+  team: ["Who is Ted Stockwell?", "Who is Michelle Holtmann?", "Who is Steve Jahnke?"],
+  contact: ["Who's on the team?", "Are you hiring?"],
+  news: ["What is the mission?", "How do I get in touch?"],
+  join: ["Who's on the team?", "How do I get in touch?"],
+  wiki: ["What are neutral atoms?", "How does the hybrid model work?"],
+};
+
+export function getChatSuggestions(context?: ChatAnswer): string[] {
+  if (context?.memberNames?.length === 1) {
+    return [
+      context.id === "team-member-background" ? "What is their role?" : "What's their background?",
+      "Who's on the team?",
+      "How do I get in touch?",
+    ];
+  }
+  if (context?.memberNames?.length) {
+    return context.memberNames.map((name) => `Who is ${name}?`);
+  }
+  return [...(FOLLOW_UP_SUGGESTIONS[context?.id ?? ""] ?? CHAT_SUGGESTIONS)];
+}
+
+export function findChatAnswer(input: string, context?: ChatAnswer): ChatAnswer | undefined {
   // Keep both the hyphenated token ("post-silicon") and its split parts ("neutral", "atom")
   // so compound and separate-word keywords both still match.
   const rawTokens = input.toLowerCase().replace(/[’']/g, "'").replace(/'s\b/g, "").match(/[a-z0-9'-]+/g) ?? [];
@@ -132,6 +162,7 @@ export function findChatAnswer(input: string): ChatAnswer | undefined {
       answer: matches.map((entry) => entry.answer).join("\n\n"),
       linkLabel: "Meet the team",
       linkUrl: "/team",
+      memberNames: matches.flatMap((entry) => entry.memberNames ?? []),
     };
   }
   let best: ChatAnswer | undefined;
@@ -148,5 +179,27 @@ export function findChatAnswer(input: string): ChatAnswer | undefined {
     }
   }
 
-  return best;
+  if (best) return best;
+
+  const question = input.toLowerCase().replace(/[’]/g, "'").trim().replace(/[?.!]+$/, "").trim();
+  const more = /^(?:tell me more|go on|how does (?:it|that) work|can you explain (?:it|that))$/.test(question);
+  const personDetail = /^(?:(?:what is|what's|what about|and) (?:his|her|their) (?:background|experience|role|title)|tell me about (?:his|her|their) (?:background|experience)|what does (?:he|she) do|what do they do|tell me more about (?:him|her|them))$/.test(question);
+  if (context?.memberNames?.length === 1 && (personDetail || question === "tell me more")) {
+    const member = MEMBERS.find((entry) => entry.name === context.memberNames?.[0]);
+    if (!member) return undefined;
+    const role = /\b(?:role|title|do)\b/.test(question);
+    return {
+      id: role ? "team-member-role" : "team-member-background",
+      keywords: [],
+      answer: role ? `${member.name} is qAI37's ${member.role}.` : `${member.name}: ${member.bio}`,
+      memberNames: [member.name],
+      linkLabel: "Meet the team",
+      linkUrl: "/team",
+    };
+  }
+  if (more && context && !context.memberNames?.length) {
+    const nextQuestion = FOLLOW_UP_SUGGESTIONS[context.id]?.[0];
+    return nextQuestion ? findChatAnswer(nextQuestion) : undefined;
+  }
+  return undefined;
 }

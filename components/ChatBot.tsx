@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { CHAT_SUGGESTIONS, findChatAnswer } from "@/lib/chatbot-data";
+import { findChatAnswer, getChatSuggestions, type ChatAnswer } from "@/lib/chatbot-data";
 import AtomIcon from "@/components/AtomIcon";
 
 type Message = {
@@ -29,7 +29,14 @@ export default function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([GREETING]);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
+  const [context, setContext] = useState<ChatAnswer>();
   const scrollRef = useRef<HTMLDivElement>(null);
+  const replyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const suggestions = getChatSuggestions(context);
+
+  useEffect(() => () => {
+    if (replyTimer.current !== null) clearTimeout(replyTimer.current);
+  }, []);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
@@ -37,17 +44,19 @@ export default function ChatBot() {
 
   const ask = (question: string) => {
     const trimmed = question.trim();
-    if (!trimmed) return;
+    if (!trimmed || replyTimer.current !== null) return;
     setMessages((prev) => [...prev, { role: "user", text: trimmed }]);
     setInput("");
     setTyping(true);
-    setTimeout(() => {
-      const match = findChatAnswer(trimmed);
+    replyTimer.current = setTimeout(() => {
+      const match = findChatAnswer(trimmed, context);
       const reply: Message = match
         ? { role: "bot", text: match.answer, linkLabel: match.linkLabel, linkUrl: match.linkUrl }
         : FALLBACK;
       setMessages((prev) => [...prev, reply]);
+      setContext(match);
       setTyping(false);
+      replyTimer.current = null;
     }, 400);
   };
 
@@ -79,7 +88,7 @@ export default function ChatBot() {
             <span className="chat-head-sub">Answers from our site content</span>
           </div>
 
-          <div className="chat-body" ref={scrollRef}>
+          <div className="chat-body" ref={scrollRef} role="log" aria-label="Conversation" aria-live="polite">
             {messages.map((m, i) => (
               <div key={i} className={`chat-msg chat-msg-${m.role}`}>
                 <p>{m.text}</p>
@@ -97,13 +106,11 @@ export default function ChatBot() {
             )}
           </div>
 
-          {messages.length <= 1 && (
-            <div className="chat-suggestions">
-              {CHAT_SUGGESTIONS.map((s) => (
-                <button key={s} type="button" onClick={() => ask(s)}>{s}</button>
-              ))}
-            </div>
-          )}
+          <div className="chat-suggestions" role="group" aria-label="Suggested questions">
+            {suggestions.map((suggestion) => (
+              <button key={suggestion} type="button" disabled={typing} onClick={() => ask(suggestion)}>{suggestion}</button>
+            ))}
+          </div>
 
           <form className="chat-input-wrap" onSubmit={handleSubmit}>
             <input
@@ -113,7 +120,7 @@ export default function ChatBot() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />
-            <button type="submit" className="chat-send" aria-label="Send">
+            <button type="submit" className="chat-send" aria-label="Send" disabled={typing || !input.trim()}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" /></svg>
             </button>
           </form>

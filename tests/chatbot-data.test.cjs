@@ -14,7 +14,7 @@ require.extensions[".ts"] = (module, filename) => {
   module._compile(outputText, filename);
 };
 
-const { findChatAnswer, CHAT_ANSWERS } = require("../lib/chatbot-data.ts");
+const { findChatAnswer, getChatSuggestions, CHAT_ANSWERS, CHAT_SUGGESTIONS } = require("../lib/chatbot-data.ts");
 const { TEAM, EXTENDED_TEAM } = require("../lib/team-data.ts");
 
 test("Michelle's title matches the current Team page data", () => {
@@ -76,4 +76,55 @@ test("existing topics and unknown-question fallback still work", () => {
   assert.equal(findChatAnswer(""), undefined);
   assert.equal(findChatAnswer("unknown question"), undefined);
   assert.equal(findChatAnswer("What is my title?"), undefined);
+});
+
+test("person follow-ups use the last named member's shared bio and role", () => {
+  for (const member of [...TEAM, ...EXTENDED_TEAM]) {
+    const context = findChatAnswer(`Who is ${member.name}?`);
+    for (const question of ["What's her background?", "What is his experience?", "What's their background?", "Tell me more"]) {
+      const reply = findChatAnswer(question, context);
+      assert.ok(reply.answer.includes(member.bio), question);
+      assert.deepEqual(reply.memberNames, [member.name]);
+      assert.equal(reply.linkUrl, "/team");
+      assert.equal(findChatAnswer("What is their role?", reply).answer, `${member.name} is qAI37's ${member.role}.`);
+    }
+  }
+});
+
+test("explicit subjects override context and uncertain follow-ups are not guessed", () => {
+  const michelle = findChatAnswer("Who is Michelle?");
+  assert.equal(findChatAnswer("What is the mission?", michelle).id, "mission");
+  assert.deepEqual(findChatAnswer("Who is Rick Jahnke?", michelle).memberNames, ["Rick Jahnke"]);
+  for (const question of ["What is my title?", "What is her salary?", "unknown question", ""]) {
+    assert.equal(findChatAnswer(question, michelle), undefined);
+  }
+  assert.equal(findChatAnswer("What's her background?"), undefined);
+  assert.equal(findChatAnswer("What's her background?", findChatAnswer("What is the mission?")), undefined);
+  assert.equal(findChatAnswer("What's their background?", findChatAnswer("Who is Jahnke?")), undefined);
+});
+
+test("topic follow-ups lead to related site content", () => {
+  const context = findChatAnswer("What is qAI37?");
+  for (const question of ["Tell me more", "How does it work?", "Can you explain that?"]) {
+    assert.equal(findChatAnswer(question, context).id, "hybrid");
+  }
+  assert.equal(findChatAnswer("Tell me more"), undefined);
+});
+
+test("dynamic suggestions resolve and do not repeat the current answer", () => {
+  assert.deepEqual(getChatSuggestions(), CHAT_SUGGESTIONS);
+  const contexts = [
+    ...CHAT_ANSWERS,
+    findChatAnswer("Who is Jahnke?"),
+    findChatAnswer("What's her background?", findChatAnswer("Who is Michelle?")),
+  ];
+  for (const context of contexts) {
+    const suggestions = getChatSuggestions(context);
+    assert.ok(suggestions.length >= 2 && suggestions.length <= 4);
+    for (const suggestion of suggestions) {
+      const reply = findChatAnswer(suggestion, context);
+      assert.ok(reply, `${context.id}: ${suggestion}`);
+      assert.notEqual(reply.answer, context.answer, suggestion);
+    }
+  }
 });
