@@ -26,7 +26,17 @@ npm test
 npx tsc --noEmit --incremental false
 npm audit
 npm run build
+npm run check:links
 ```
+
+The export checker validates local page links, HTML fragment targets, image `src`
+attributes, scripts, stylesheets, and media references in `out/`. External sites
+are not crawled; mail and phone links are checked for nonempty destinations only.
+For a subpath export, run `GITHUB_PAGES=true npm run check:links`.
+GitHub Actions runs the tests and export checker before uploading the site.
+
+The mobile header menu uses only the existing Home, Wiki, Team, News, and Contact
+destinations. No new public company information is introduced by the menu or checks.
 
 The PostCSS override in `package.json` pins a patched 8.x version because Next.js
 15 pins an older vulnerable release. Reassess the override when upgrading Next.js.

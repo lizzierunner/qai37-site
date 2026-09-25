@@ -35,6 +35,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Test and check exported links
+        run: npm test && npm run check:links
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
