@@ -15,12 +15,12 @@ type Message = {
 
 const GREETING: Message = {
   role: "bot",
-  text: "Hi — I'm the qAI37 assistant. Ask me about our mission, team, or how the neutral-atom access layer works.",
+  text: "Hi — I'm the qAI37 assistant. How can I help?",
 };
 
 const FALLBACK: Message = {
   role: "bot",
-  text: "I don't have a canned answer for that yet. For anything deeper, reach the founding team directly.",
+  text: "I don't have an answer for that here. Please contact the team directly.",
   linkLabel: "Contact us",
   linkUrl: "/contact",
 };

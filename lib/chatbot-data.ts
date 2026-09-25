@@ -84,11 +84,10 @@ export const CHAT_ANSWERS: ChatAnswer[] = [
   },
   {
     id: "join",
-    keywords: ["career", "hiring", "invest", "investors", "partner"],
-    answer:
-      "We're building the foundation for the next generation of AI infrastructure. Reach out or sign up to be the first to know as things come to light.",
-    linkLabel: "Join us",
-    linkUrl: "/mission#join",
+    keywords: ["career", "careers", "hiring", "job", "jobs", "apply", "application", "internship", "openings", "vacancies"],
+    answer: "For careers inquiries, email careers@qAI37.com.",
+    linkLabel: "Email careers",
+    linkUrl: "mailto:careers@qAI37.com",
   },
   {
     id: "wiki",
@@ -103,10 +102,40 @@ export const CHAT_ANSWERS: ChatAnswer[] = [
 
 export const CHAT_SUGGESTIONS = [
   "What is qAI37?",
-  "Are you building a quantum computer?",
+  "Careers",
   "Who's on the team?",
   "How do I get in touch?",
 ];
+
+const DISCLOSURE_RESPONSE: ChatAnswer = {
+  id: "disclosure-boundary",
+  keywords: [],
+  answer: "I can't provide or confirm those details here. Please contact the team directly.",
+  linkLabel: "Contact the team",
+  linkUrl: "/contact",
+};
+
+const CLARIFICATION_RESPONSE: ChatAnswer = {
+  id: "clarify-contact",
+  keywords: [],
+  answer: "Are you looking for general contact information or careers? Please reply with Contact or Careers.",
+};
+
+const ROUTING_ALIASES: Record<string, string> = {
+  contcat: "contact",
+  conact: "contact",
+  contacts: "contact",
+  emial: "email",
+  "e-mail": "email",
+  carrers: "careers",
+  carreers: "careers",
+  hirng: "hiring",
+  recruitment: "hiring",
+  recruiting: "hiring",
+  employment: "career",
+};
+
+const DISCLOSURE_TOPICS = /\b(?:architecture|walkthrough|implementation|proprietary|confidential|secret|secrets|private|internal|nda|roadmap|timeline|launch|release|unreleased|customer|customers|client|clients|funding|fundraising|funded|invest|investor|investors|investment|valuation|revenue|partner|partners|partnership|partnerships|patent|patents|benchmark|benchmarks|salary|salaries|compensation)\b|\b(?:source code|system prompt|who uses|who is using|who funds|who backs)\b|\bignore\b.*\b(?:instructions|rules|restrictions)\b/i;
 
 const FOLLOW_UP_SUGGESTIONS: Record<string, string[]> = {
   "what-is-qai37": ["How does the hybrid model work?", "What is the mission?"],
@@ -136,19 +165,37 @@ export function getChatSuggestions(context?: ChatAnswer): string[] {
 }
 
 export function findChatAnswer(input: string, context?: ChatAnswer): ChatAnswer | undefined {
+  const normalizedInput = input.normalize("NFKC");
+  if (DISCLOSURE_TOPICS.test(normalizedInput)) return DISCLOSURE_RESPONSE;
   // Keep both the hyphenated token ("post-silicon") and its split parts ("neutral", "atom")
   // so compound and separate-word keywords both still match.
-  const rawTokens = input.toLowerCase().replace(/[’']/g, "'").replace(/'s\b/g, "").match(/[a-z0-9'-]+/g) ?? [];
+  const rawTokens = normalizedInput.toLowerCase().replace(/[’']/g, "'").replace(/'s\b/g, "").match(/[a-z0-9'-]+/g) ?? [];
   const tokens = new Set<string>();
   for (const t of rawTokens) {
     tokens.add(t);
+    if (ROUTING_ALIASES[t]) tokens.add(ROUTING_ALIASES[t]);
     for (const part of t.split("-")) {
       if (part) tokens.add(part);
+    }
+  }
+  const careers = CHAT_ANSWERS.find((entry) => entry.id === "join")!;
+  const contact = CHAT_ANSWERS.find((entry) => entry.id === "contact")!;
+  const wantsCareers = careers.keywords.some((keyword) => tokens.has(keyword));
+  const wantsContact = contact.keywords.some((keyword) => tokens.has(keyword));
+  const asksRole = ["title", "role", "position"].some((keyword) => tokens.has(keyword));
+  if ((wantsCareers && wantsContact && tokens.has("or")) || /^(?:help|help me|can you help|how can you help)[?!.]*$/i.test(normalizedInput.trim())) return CLARIFICATION_RESPONSE;
+  for (const entry of TEAM_ANSWERS) {
+    for (const keyword of entry.keywords) {
+      if (tokens.has(`${keyword}s`)) tokens.add(keyword);
     }
   }
   const namedMembers = TEAM_ANSWERS.filter((entry) =>
     entry.keywords.some((keyword) => tokens.has(keyword)),
   );
+  if (!(asksRole && namedMembers.length > 0)) {
+    if (wantsCareers) return careers;
+    if (wantsContact) return contact;
+  }
   if (namedMembers.length > 0) {
     const mostMatches = Math.max(...namedMembers.map((entry) =>
       entry.keywords.filter((keyword) => tokens.has(keyword)).length,
@@ -159,7 +206,10 @@ export function findChatAnswer(input: string, context?: ChatAnswer): ChatAnswer 
     return {
       id: "team-members",
       keywords: [],
-      answer: matches.map((entry) => entry.answer).join("\n\n"),
+      answer: matches.map((entry) => {
+        const member = MEMBERS.find((candidate) => candidate.name === entry.memberNames?.[0]);
+        return asksRole && member ? `${member.name} is qAI37's ${member.role}.` : entry.answer;
+      }).join("\n\n"),
       linkLabel: "Meet the team",
       linkUrl: "/team",
       memberNames: matches.flatMap((entry) => entry.memberNames ?? []),

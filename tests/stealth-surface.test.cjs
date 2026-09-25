@@ -20,4 +20,8 @@ test("chat UI retains starter questions without proactive contextual suggestions
   assert.ok(source.includes("messages.length === 1"));
   assert.ok(!source.includes("getChatSuggestions"));
   assert.ok(source.includes("findChatAnswer(trimmed)"));
+  assert.ok(!source.includes("how the neutral-atom access layer works"));
+  for (const capability of ["localStorage", "sessionStorage", "fetch(", "sendBeacon", "WebSocket"]) {
+    assert.ok(!source.includes(capability), capability);
+  }
 });

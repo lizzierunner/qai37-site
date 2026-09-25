@@ -44,9 +44,18 @@ The dependency audit and static export were verified with this override.
 
 The request walkthrough has been withdrawn pending company disclosure approval.
 Search is limited to page navigation and existing news; it does not index individual
-team bios or technical section links. The chatbot uses its original starter questions
-without proactive follow-up suggestions. Existing Wiki content and team bios remain
+team bios or technical section links. The chatbot offers starter questions, including
+Careers, without proactive follow-up suggestions. Existing Wiki content and team bios remain
 public and require a separate company review if the disclosure policy changes.
+
+The chatbot stays deterministic and browser-only, with no transcript persistence or
+third-party AI requests. Contact/careers matching handles selected typos and synonyms;
+ambiguous help requests ask for clarification. Recognized sensitive topics take
+precedence over person and topic matching and receive a neutral contact handoff.
+These keyword checks are not a security boundary or a company-approved answer list:
+paraphrases can evade them, and all bundled answers are inspectable in client code.
+Existing general answers and roster data still require company disclosure review.
+Never place confidential information in this client-side knowledge base.
 
 ## Structure
 
