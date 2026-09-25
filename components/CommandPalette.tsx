@@ -92,7 +92,7 @@ export default function CommandPalette() {
             type="text"
             className="cmd-input"
             placeholder="Search qAI37..."
-            aria-label="Search pages, guides, people, and news"
+            aria-label="Search pages and news"
             value={query}
             onChange={(e) => { setQuery(e.target.value); setSelectedIndex(0); }}
             autoFocus

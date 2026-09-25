@@ -1,9 +1,8 @@
 import { NEWS } from "./news-data";
-import { TEAM, EXTENDED_TEAM } from "./team-data";
 
 export type SearchItem = {
   id: string;
-  category: "Navigation" | "Guide" | "Team Member" | "News";
+  category: "Navigation" | "News";
   title: string;
   subtitle: string;
   url: string;
@@ -17,24 +16,11 @@ export const SEARCH_ITEMS: SearchItem[] = [
   { id: "nav-team", category: "Navigation", title: "Team", subtitle: "Leadership, engineers, and scientific advisors", url: "/team" },
   { id: "nav-news", category: "Navigation", title: "News", subtitle: "Company announcements & neutral-atom industry updates", url: "/news" },
   { id: "nav-contact", category: "Navigation", title: "Contact", subtitle: "Get in touch with the qAI37 founding team", url: "/contact" },
-  { id: "guide-request", category: "Guide", title: "Follow one AI request", subtitle: "Conceptual walkthrough: eligible operation and conventional fallback", keywords: "architecture hybrid neutral atom routing example", url: "/#request-walkthrough" },
-  { id: "guide-execution", category: "Guide", title: "Execution model", subtitle: "Intercept, qualify, translate, execute, and return", keywords: "architecture hybrid software layer", url: "/wiki#execution" },
-  { id: "guide-terms", category: "Guide", title: "Key terms", subtitle: "Post-silicon AI, neutral-atom systems, working context, hybrid execution", keywords: "glossary definitions", url: "/wiki#terms" },
-  { id: "guide-questions", category: "Guide", title: "Common questions", subtitle: "Quantum hardware, existing AI stacks, and neutral atoms", keywords: "faq", url: "/wiki#questions" },
-  ...[...TEAM, ...EXTENDED_TEAM].map((member) => ({
-    id: `team-${member.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
-    category: "Team Member" as const,
-    title: member.name,
-    subtitle: member.role,
-    keywords: member.bio,
-    url: "/team",
-  })),
   ...NEWS.map((post, index) => ({
     id: `news-${index}`,
     category: "News" as const,
     title: post.title,
     subtitle: `${post.date} · ${post.type.toUpperCase()} NEWS`,
-    keywords: post.description,
     url: post.url,
     isExternal: true,
   })),

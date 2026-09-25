@@ -62,14 +62,6 @@ export const CHAT_ANSWERS: ChatAnswer[] = [
     linkUrl: "/mission",
   },
   {
-    id: "request-walkthrough",
-    keywords: ["walkthrough", "architecture"],
-    answer:
-      "The proposed flow is intercept, qualify, translate, execute, and return. Our illustrative project-summary request compares an eligible neutral-atom operation with a conventional fallback. It is a conceptual walkthrough, not a live computation or benchmark; hardware eligibility is assumed, not evaluated.",
-    linkLabel: "Follow one AI request",
-    linkUrl: "/#request-walkthrough",
-  },
-  {
     id: "team",
     keywords: ["team", "founder", "founders", "founded", "ceo", "cto", "leadership"],
     answer: `${TEAM_INTRO} ${TEAM.map((member) => `${member.name} (${member.role})`).join("; ")}.`,
@@ -120,14 +112,13 @@ const FOLLOW_UP_SUGGESTIONS: Record<string, string[]> = {
   "what-is-qai37": ["How does the hybrid model work?", "What is the mission?"],
   "quantum-computer": ["What are neutral atoms?", "How does the hybrid model work?"],
   "neutral-atom": ["How does the hybrid model work?", "Explain post-silicon AI"],
-  hybrid: ["Show me the walkthrough", "What are neutral atoms?", "What is the mission?"],
-  "request-walkthrough": ["How does the hybrid model work?", "What are neutral atoms?"],
+  hybrid: ["What are neutral atoms?", "What is the mission?"],
   mission: ["What is qAI37?", "How does the hybrid model work?"],
   team: ["Who is Ted Stockwell?", "Who is Michelle Holtmann?", "Who is Steve Jahnke?"],
   contact: ["Who's on the team?", "Are you hiring?"],
   news: ["What is the mission?", "How do I get in touch?"],
   join: ["Who's on the team?", "How do I get in touch?"],
-  wiki: ["Show me the walkthrough", "What are neutral atoms?", "How does the hybrid model work?"],
+  wiki: ["What are neutral atoms?", "How does the hybrid model work?"],
 };
 
 export function getChatSuggestions(context?: ChatAnswer): string[] {

@@ -32,9 +32,11 @@ The PostCSS override in `package.json` pins a patched 8.x version because Next.j
 15 pins an older vulnerable release. Reassess the override when upgrading Next.js.
 The dependency audit and static export were verified with this override.
 
-The homepage request walkthrough is conceptual, not a live hardware integration or
-benchmark. Search and chatbot answers link to it and to the Wiki execution model.
-Team search entries and chatbot bios both use the shared roster in `lib/team-data.ts`.
+The request walkthrough has been withdrawn pending company disclosure approval.
+Search is limited to page navigation and existing news; it does not index individual
+team bios or technical section links. The chatbot uses its original starter questions
+without proactive follow-up suggestions. Existing Wiki content and team bios remain
+public and require a separate company review if the disclosure policy changes.
 
 ## Structure
 

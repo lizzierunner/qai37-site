@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { RotateCcw, Send, X } from "lucide-react";
-import { findChatAnswer, getChatSuggestions, type ChatAnswer } from "@/lib/chatbot-data";
+import { CHAT_SUGGESTIONS, findChatAnswer } from "@/lib/chatbot-data";
 import AtomIcon from "@/components/AtomIcon";
 
 type Message = {
@@ -30,12 +30,10 @@ export default function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([GREETING]);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
-  const [context, setContext] = useState<ChatAnswer>();
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const replyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const suggestions = getChatSuggestions(context);
 
   useEffect(() => () => {
     if (replyTimer.current !== null) clearTimeout(replyTimer.current);
@@ -61,7 +59,6 @@ export default function ChatBot() {
     setMessages([GREETING]);
     setInput("");
     setTyping(false);
-    setContext(undefined);
     inputRef.current?.focus();
   };
 
@@ -72,12 +69,11 @@ export default function ChatBot() {
     setInput("");
     setTyping(true);
     replyTimer.current = setTimeout(() => {
-      const match = findChatAnswer(trimmed, context);
+      const match = findChatAnswer(trimmed);
       const reply: Message = match
         ? { role: "bot", text: match.answer, linkLabel: match.linkLabel, linkUrl: match.linkUrl }
         : FALLBACK;
       setMessages((prev) => [...prev, reply]);
-      setContext(match);
       setTyping(false);
       replyTimer.current = null;
     }, 400);
@@ -149,11 +145,13 @@ export default function ChatBot() {
             )}
           </div>
 
-          <div className="chat-suggestions" role="group" aria-label="Suggested questions">
-            {suggestions.map((suggestion) => (
-              <button key={suggestion} type="button" disabled={typing} onClick={() => ask(suggestion)}>{suggestion}</button>
-            ))}
-          </div>
+          {messages.length === 1 && (
+            <div className="chat-suggestions" role="group" aria-label="Suggested questions">
+              {CHAT_SUGGESTIONS.map((suggestion) => (
+                <button key={suggestion} type="button" disabled={typing} onClick={() => ask(suggestion)}>{suggestion}</button>
+              ))}
+            </div>
+          )}
 
           <form className="chat-input-wrap" onSubmit={handleSubmit}>
             <input

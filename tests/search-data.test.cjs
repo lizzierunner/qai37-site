@@ -19,32 +19,26 @@ const { searchSite, SEARCH_ITEMS } = require("../lib/search-data.ts");
 const { TEAM, EXTENDED_TEAM } = require("../lib/team-data.ts");
 const { NEWS } = require("../lib/news-data.ts");
 
-test("default results include navigation and the request walkthrough", () => {
+test("default results preserve page navigation without technical walkthroughs", () => {
   assert.equal(searchSite("").length, 8);
   assert.deepEqual(searchSite("   "), searchSite(""));
-  assert.ok(searchSite("").some((item) => item.id === "guide-request"));
+  assert.ok(searchSite("").some((item) => item.id === "nav-home"));
   assert.equal(new Set(SEARCH_ITEMS.map((item) => item.id)).size, SEARCH_ITEMS.length);
 });
 
-test("walkthrough and Wiki sections have direct destinations", () => {
+test("walkthrough and technical deep links are not indexed", () => {
   for (const query of ["walkthrough", "  WALKTHROUGH  ", "hybrid fallback", "neutral-atom routing"]) {
-    assert.equal(searchSite(query)[0].url, "/#request-walkthrough", query);
+    assert.deepEqual(searchSite(query), [], query);
   }
-  assert.equal(searchSite("execution model")[0].url, "/wiki#execution");
-  assert.equal(searchSite("glossary")[0].url, "/wiki#terms");
-  assert.equal(searchSite("faq")[0].url, "/wiki#questions");
+  assert.ok(SEARCH_ITEMS.every((item) => !item.url.includes("#")));
 });
 
-test("every team member's search result uses the current shared roster", () => {
+test("individual roster entries are not promoted through search", () => {
   for (const member of [...TEAM, ...EXTENDED_TEAM]) {
-    const result = searchSite(member.name)[0];
-    assert.equal(result.title, member.name);
-    assert.equal(result.subtitle, member.role);
-    assert.equal(result.url, "/team");
-    assert.ok(searchSite(`${member.name} ${member.role}`).some((item) => item.title === member.name));
+    assert.ok(!SEARCH_ITEMS.some((item) => item.title === member.name));
   }
-  assert.equal(searchSite("Michelle Microsoft")[0].title, "Michelle Holtmann");
-  assert.ok(!SEARCH_ITEMS.some((item) => item.subtitle.includes("President & Chief Strategy Officer")));
+  assert.ok(SEARCH_ITEMS.every((item) => item.category === "Navigation" || item.category === "News"));
+  assert.equal(searchSite("Team")[0].url, "/team");
 });
 
 test("exact titles rank first and unmatched terms do not broaden the query", () => {

@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Wiki",
@@ -76,21 +74,12 @@ export default function WikiPage() {
             <article className="wiki-entry reveal" id="execution">
               <span className="sec-eyebrow">02 / Execution model</span>
               <h2>Keep the interface familiar. Change the route beneath it.</h2>
-              <p>
-                This is the proposed execution model, not a demonstration of live hardware
-                integration or measured performance. Eligibility depends on the operation
-                and available target; conventional execution remains part of the design.
-              </p>
               <ol className="wiki-flow">
                 <li><strong>Intercept</strong><span>A supported inference call enters through an existing application interface.</span></li>
                 <li><strong>Qualify</strong><span>The layer determines whether the operation and target are eligible for the alternate route.</span></li>
                 <li><strong>Translate</strong><span>The work is mapped into inspectable instructions tailored to the selected backend.</span></li>
-                <li><strong>Execute</strong><span>Eligible work takes the selected hardware route; otherwise, the conventional path remains available.</span></li>
                 <li><strong>Return</strong><span>Results rejoin the conventional application flow, with a classical fallback remaining available.</span></li>
               </ol>
-              <Link href="/#request-walkthrough" className="request-reference">
-                Follow one AI request <ArrowRight size={16} aria-hidden="true" />
-              </Link>
             </article>
 
             <article className="wiki-entry reveal" id="terms">
