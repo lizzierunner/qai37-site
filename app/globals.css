@@ -276,6 +276,20 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px}
 .p-news .news-section-label{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);padding-bottom:0}
 .p-news .news-empty{padding:32px 0;border-bottom:1px solid var(--line);font-family:var(--font-mono);font-size:13px;color:var(--muted-2);letter-spacing:.06em}
 
+.p-news .reading-room{border-top:1px solid var(--line)}
+.p-news .reading-room h2{font-size:36px;letter-spacing:0;margin-bottom:16px}
+.p-news .reading-disclosure{max-width:65ch;color:var(--muted);font-size:14px;line-height:1.7}
+.p-news .reading-list{margin-top:32px;border-top:1px solid var(--line)}
+.p-news .reading-entry{padding:30px 0;border-bottom:1px solid var(--line)}
+.p-news .reading-title{font-family:var(--font-display);font-size:24px;font-weight:600;line-height:1.3;letter-spacing:0;max-width:48ch}
+.p-news .reading-title a{display:flex;align-items:flex-start;gap:16px;min-height:44px;padding-bottom:8px;overflow-wrap:break-word}
+.p-news .reading-title a:hover{color:var(--cyan)}
+.p-news .reading-title a span{min-width:0}
+.p-news .reading-title svg{flex-shrink:0;margin-top:5px}
+.p-news .reading-credit{font-family:var(--font-mono);font-size:11px;line-height:1.7;letter-spacing:0;color:var(--muted);margin:8px 0 14px}
+.p-news .reading-note{max-width:72ch;font-size:15px;line-height:1.7;color:var(--muted)}
+@media(max-width:640px){.p-news .reading-room h2{font-size:30px}.p-news .reading-title{font-size:21px}.p-news .reading-entry{padding:24px 0}}
+
 /* ======================== CONTACT ======================== */
 .p-contact .intro{padding:84px 0 100px}
 .p-contact .contact-grid{display:grid;grid-template-columns:1fr 1fr;margin-top:48px;border-top:1px solid var(--line)}

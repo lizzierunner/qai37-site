@@ -33,6 +33,12 @@ Open `content/news-posts.json` and add a new block at the **top of the array**:
 
 ---
 
+## Reading Room
+
+The separate Reading room section below News uses `content/reading-room.json`. Each entry has a unique `id`, the exact source `title`, `authors`, a display `date`, a `topic`, a direct HTTPS `url`, and a short original `note` explaining its relevance. Dates refer to the linked source, not when the entry was added.
+
+Verify sources and approve notes before publishing. Credit independent authors, distinguish experimental results from commercial capabilities, and do not imply affiliation or validation of qAI37's technology. Reading room entries stay separate from the news filters. Run `npm test` after changes and update the approved-source test when adding or replacing readings.
+
 ## 👥 Updating the Team Roster
 
 The team names, titles, and bios live in `lib/team-data.ts`. Update the `TEAM` array for core members or `EXTENDED_TEAM` for extended members. The Team page, Contact page, and chat widget all use this shared roster, so title and bio changes appear together in the next deployment.

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "paged-attention",
+    "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+    "authors": "Kwon et al.",
+    "date": "September 2023",
+    "topic": "AI systems",
+    "url": "https://arxiv.org/abs/2309.06180",
+    "note": "A concrete example of how memory management shapes AI serving efficiency. PagedAttention and vLLM show why systems software matters alongside the hardware."
+  },
+  {
+    "id": "logical-atom-arrays",
+    "title": "Logical quantum processor based on reconfigurable atom arrays",
+    "authors": "Bluvstein et al.",
+    "date": "December 2023",
+    "topic": "Neutral-atom research",
+    "url": "https://arxiv.org/abs/2312.03982",
+    "note": "An experimental milestone in logical quantum processing with neutral atoms. Useful background on error correction and control, not a demonstration of commercial AI advantage."
+  }
+]
