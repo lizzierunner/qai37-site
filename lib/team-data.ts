@@ -7,6 +7,7 @@ type Member = {
   name: string;
   role: string;
   bio: string;
+  experience: string[];
   img?: string;
   initials: string;
   li?: string;
@@ -16,6 +17,7 @@ type Member = {
 export const TEAM: Member[] = [
   {
     name: "Ted Stockwell",
+    experience: ["Former GM, Microsoft Online Services.", "Created Bing as a Platform."],
     role: "Founder & CEO",
     initials: "TS",
     img: `${BASE_PATH}/images/team/ted-stockwell.jpg`,
@@ -25,6 +27,7 @@ export const TEAM: Member[] = [
   },
   {
     name: "Michelle Holtmann",
+    experience: ["Software engineering at Boeing.", "25 years building Microsoft infrastructure products."],
     role: "Founding Advisor, Product & Strategic Partnerships",
     initials: "MH",
     img: `${BASE_PATH}/images/team/michelle-holtmann.jpg`,
@@ -33,6 +36,7 @@ export const TEAM: Member[] = [
   },
   {
     name: "Steve Jahnke",
+    experience: ["30 years across Intel, Altera, and TI.", "Processor architecture and systems software."],
     role: "CTO / Principal Architect",
     initials: "SJ",
     img: `${BASE_PATH}/images/team/steve-jahnke.jpg`,
@@ -41,6 +45,7 @@ export const TEAM: Member[] = [
   },
   {
     name: "Vincent E. Elfving",
+    experience: ["Former Head of Algorithms at Pasqal.", "Google Quantum AI alumnus.", "Co-founder of Qu & Co."],
     role: "Chief Quantum Advisor",
     initials: "VE",
     img: `${BASE_PATH}/images/team/vincent-elfving.jpg`,
@@ -49,6 +54,7 @@ export const TEAM: Member[] = [
   },
   {
     name: "Laverne Masaki",
+    experience: ["Former executive recruiter at Microsoft and Google.", "Senior technical team building."],
     role: "Chief People Officer",
     initials: "LM",
     img: `${BASE_PATH}/images/team/laverne-masaki.jpg`,
@@ -58,6 +64,7 @@ export const TEAM: Member[] = [
   },
   {
     name: "Rick Jahnke",
+    experience: ["Former Director of Engineering at Galixsys Networks.", "24 patents across heterogeneous computing, SoC design, and embedded systems."],
     role: "Principal Engineer",
     initials: "RJ",
     img: `${BASE_PATH}/images/team/Team%20Photos/Rick.jpg`,
@@ -66,6 +73,7 @@ export const TEAM: Member[] = [
   },
   {
     name: "Ruben Marroquin",
+    experience: ["FPGA and embedded systems experience at Intel and Altera.", "Electrical engineering degree from Rice University."],
     role: "Senior Engineer",
     initials: "RM",
     img: `${BASE_PATH}/images/team/ruben-marroquin.jpg`,
@@ -74,6 +82,7 @@ export const TEAM: Member[] = [
   },
   {
     name: "Rupesh Srivastava",
+    experience: ["Five years with Oxford's UK quantum technology hubs.", "Physics PhD from Royal Holloway."],
     role: "Quantum Advisor",
     initials: "RS",
     img: `${BASE_PATH}/images/team/rupesh-srivastava.jpg`,
@@ -86,6 +95,7 @@ type ExtendedMember = {
   name: string;
   role: string;
   bio: string;
+  experience: string[];
   img?: string;
   initials?: string;
 };
@@ -93,6 +103,7 @@ type ExtendedMember = {
 export const EXTENDED_TEAM: ExtendedMember[] = [
   {
     name: "Richard Wood",
+    experience: ["More than 30 years in investment banking.", "Co-founded First Hill Partners."],
     role: "Advisor",
     initials: "RW",
     img: `${BASE_PATH}/images/team/Team%20Photos/Richard%20Wood.jpeg`,
@@ -100,6 +111,7 @@ export const EXTENDED_TEAM: ExtendedMember[] = [
   },
   {
     name: "Vicki Mitchell",
+    experience: ["Former VP of Engineering at Google, ARM, Altera, and Intel.", "Global engineering leadership."],
     role: "Advisor",
     initials: "VM",
     img: `${BASE_PATH}/images/team/vicki-mitchell.jpg`,
@@ -107,6 +119,7 @@ export const EXTENDED_TEAM: ExtendedMember[] = [
   },
   {
     name: "John Williams",
+    experience: ["Product management and marketing across cloud computing, semiconductors, and software."],
     role: "Strategic Advisor",
     initials: "JW",
     img: `${BASE_PATH}/images/team/Team%20Photos/john-williams.jpeg`,
@@ -114,6 +127,7 @@ export const EXTENDED_TEAM: ExtendedMember[] = [
   },
   {
     name: "Lizzie Johnson",
+    experience: ["Web Engineering Intern at qAI37.", "Full Stack Web Development student at Arizona State University."],
     role: "Web Engineering Intern",
     initials: "LJ",
     img: `${BASE_PATH}/images/team/Team%20Photos/Lizzie%20Johnson.jpeg`,

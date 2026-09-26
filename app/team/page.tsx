@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import TeamAvatar from "@/components/TeamAvatar";
 import { TEAM, EXTENDED_TEAM, TEAM_INTRO } from "@/lib/team-data";
+import { ChevronDown } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Team",
@@ -12,6 +13,20 @@ function LinkedInIcon() {
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.2V9h3.4v1.6h.1c.5-.9 1.7-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 110-4.2 2.1 2.1 0 010 4.2zM7.1 20.4H3.5V9h3.6v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.9-.8-1.7-1.8-1.7z" />
     </svg>
+  );
+}
+
+function SelectedExperience({ name, items }: { name: string; items: string[] }) {
+  return (
+    <details className="team-experience">
+      <summary aria-label={`Selected experience for ${name}`}>
+        <span>Selected experience</span>
+        <ChevronDown size={16} aria-hidden="true" />
+      </summary>
+      <ul>
+        {items.map((item) => <li key={item}>{item}</li>)}
+      </ul>
+    </details>
   );
 }
 
@@ -50,6 +65,7 @@ export default function Team() {
                   <p className="team-card-role">{m.role}</p>
                   <p className="team-card-signal">{m.signal}</p>
                   <p className="team-card-bio">{m.bio}</p>
+                  <SelectedExperience name={m.name} items={m.experience} />
                   {m.li && (
                     <a href={m.li} target="_blank" rel="noopener noreferrer" className="bio-li">
                       <LinkedInIcon /> LinkedIn
@@ -76,6 +92,7 @@ export default function Team() {
                   <p className="team-card-name">{m.name}</p>
                   <p className="team-card-role">{m.role}</p>
                   <p className="team-card-bio">{m.bio}</p>
+                  <SelectedExperience name={m.name} items={m.experience} />
                 </div>
               </article>
             ))}

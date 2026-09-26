@@ -41,6 +41,8 @@ The chat widget recognizes first names, surnames, and full names, including ques
 
 Run `npm test` to check chat answers against the current roster before publishing.
 
+Each member also has an `experience` array containing one to three short highlights for the collapsible **Selected experience** section. Keep these grounded in approved public career or education details; do not include confidential work, product plans, or unverified claims. Existing biographies remain visible and are maintained separately.
+
 ---
 
 ## 🚀 Publishing Updates to Live Site
