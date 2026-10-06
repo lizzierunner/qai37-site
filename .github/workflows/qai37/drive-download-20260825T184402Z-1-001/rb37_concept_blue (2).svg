@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="800" viewBox="0 0 680 400">
+<rect x="0" y="0" width="680" height="400" rx="16" fill="#0A0A0A"/>
+<g fill="none" stroke="#333333" stroke-width="1">
+<ellipse cx="340" cy="190" rx="150" ry="45" transform="rotate(-20 340 190)"/>
+<ellipse cx="340" cy="190" rx="150" ry="45" transform="rotate(25 340 190)"/>
+<circle cx="340" cy="190" r="108" stroke-dasharray="3 6"/>
+</g>
+<circle cx="481" cy="139" r="11" fill="#08B8E6" opacity="0.25"/>
+<circle cx="481" cy="139" r="6" fill="#08B8E6"/>
+<circle cx="211" cy="254" r="3" fill="#555555"/>
+<circle cx="252" cy="105" r="3" fill="#555555"/>
+<circle cx="440" cy="252" r="3" fill="#555555"/>
+<line x1="340" y1="118" x2="340" y2="98" stroke="#08B8E6" stroke-width="2" stroke-linecap="round"/>
+<circle cx="340" cy="94" r="5" fill="#08B8E6"/>
+<circle cx="340" cy="190" r="72" fill="#1A1A1A" stroke="#08B8E6" stroke-width="1.5"/>
+<rect x="293" y="162" width="94" height="52" rx="24" fill="#0A0A0A"/>
+<circle cx="322" cy="184" r="7" fill="#08B8E6"/>
+<circle cx="358" cy="184" r="7" fill="#08B8E6"/>
+<path d="M327 198 Q340 206 353 198" fill="none" stroke="#08B8E6" stroke-width="2" stroke-linecap="round"/>
+<text x="340" y="322" text-anchor="middle" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#F0ECE6">RB37</text>
+<text x="340" y="346" text-anchor="middle" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="12" fill="#888888">One valence electron, always curious</text>
+</svg>
