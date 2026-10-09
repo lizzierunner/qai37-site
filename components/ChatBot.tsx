@@ -24,34 +24,30 @@ function RB37Mark({ compact = false }: { compact?: boolean }) {
       </defs>
       <g clipPath={`url(#${clipId})`}>
         <circle cx="150" cy="150" r="150" className="rb37-chat-face" />
-        <g fill="none" className="rb37-chat-atom-rings" strokeWidth="1.4">
-          <ellipse cx="150" cy="150" rx="103" ry="30" transform="rotate(-20 150 150)" />
-          <ellipse cx="150" cy="150" rx="103" ry="30" transform="rotate(25 150 150)" />
+
+        <g fill="none" className="rb37-chat-atom-rings" stroke="#333333" strokeWidth="1.2">
+          <ellipse cx="150" cy="150" rx="105" ry="31" transform="rotate(-20 150 150)" />
+          <ellipse cx="150" cy="150" rx="105" ry="31" transform="rotate(25 150 150)" />
           <circle cx="150" cy="150" r="82" strokeDasharray="3 6" />
         </g>
-        <circle cx="150" cy="150" r="60" className="rb37-chat-core-ring" />
-        <circle cx="150" cy="70" r="5" className="rb37-chat-electron" />
-        <line x1="150" y1="105" x2="150" y2="80" className="rb37-chat-orbit" />
-        <circle cx="48" cy="172" r="3" className="rb37-chat-node" />
-        <circle cx="96" cy="75" r="3" className="rb37-chat-node" />
-        <circle cx="204" cy="225" r="3" className="rb37-chat-node" />
-        <circle cx="240" cy="94" r="3" className="rb37-chat-node" />
-        <circle cx="150" cy="228" r="7" className="rb37-chat-body-light" />
-        <path d="M98 212 C98 198 116 188 150 188 C184 188 202 198 202 212 L202 226 C202 241 180 252 150 252 C120 252 98 241 98 226 Z" className="rb37-chat-body" />
-        <circle cx="72" cy="211" r="10" className="rb37-chat-arm" />
-        <circle cx="228" cy="211" r="10" className="rb37-chat-arm" />
-        <path d="M110 252 L123 252 L123 260 L110 260 Z" className="rb37-chat-foot" />
-        <path d="M177 252 L190 252 L190 260 L177 260 Z" className="rb37-chat-foot" />
-        <g transform="translate(0,-12) scale(1.06)">
-          <circle cx="110" cy="140" r="18" className="rb37-chat-eye" />
-          <circle cx="190" cy="140" r="18" className="rb37-chat-eye" />
-          <circle cx="104" cy="136" r="4.5" className="rb37-chat-eye-glint" />
-          <circle cx="184" cy="136" r="4.5" className="rb37-chat-eye-glint" />
-          <path d="M130 175 Q150 184 170 175" className="rb37-chat-smile" />
-          <circle cx="150" cy="152" r="4.5" className="rb37-chat-nose" />
-          <circle cx="83" cy="162" r="8" className="rb37-chat-cheek" />
-          <circle cx="217" cy="162" r="8" className="rb37-chat-cheek" />
-        </g>
+
+        <circle cx="220" cy="66" r="11" fill="rgba(8,184,230,.25)" />
+        <circle cx="220" cy="66" r="6" fill="#08B8E6" />
+
+        <circle cx="98" cy="205" r="3" fill="#555555" />
+        <circle cx="117" cy="44" r="3" fill="#555555" />
+        <circle cx="200" cy="211" r="3" fill="#555555" />
+
+        <line x1="150" y1="102" x2="150" y2="84" stroke="#08B8E6" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="150" cy="80" r="5" fill="#08B8E6" />
+
+        <circle cx="150" cy="150" r="72" fill="#1A1A1A" stroke="#08B8E6" strokeWidth="1.5" />
+
+        <rect x="113" y="124" width="74" height="45" rx="22" fill="#0A0A0A" />
+
+        <circle cx="130" cy="146" r="7" fill="#08B8E6" />
+        <circle cx="170" cy="146" r="7" fill="#08B8E6" />
+        <path d="M136 158 Q150 165 164 158" fill="none" stroke="#08B8E6" strokeWidth="2" strokeLinecap="round" />
       </g>
     </svg>
   );
