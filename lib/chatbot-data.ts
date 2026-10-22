@@ -7,14 +7,17 @@ export type ChatAnswer = {
   answer: string;
   linkLabel?: string;
   linkUrl?: string;
+  memberNames?: string[];
 };
 
-const TEAM_ANSWERS: ChatAnswer[] = [...TEAM, ...EXTENDED_TEAM].map((member) => ({
+const MEMBERS = [...TEAM, ...EXTENDED_TEAM];
+const TEAM_ANSWERS: ChatAnswer[] = MEMBERS.map((member) => ({
   id: `team-${member.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
   keywords: member.name.toLowerCase().match(/[a-z]{2,}/g) ?? [],
   answer: `${member.name} is qAI37's ${member.role}. ${member.bio}`,
   linkLabel: "Meet the team",
   linkUrl: "/team",
+  memberNames: [member.name],
 }));
 
 export const CHAT_ANSWERS: ChatAnswer[] = [
@@ -81,11 +84,10 @@ export const CHAT_ANSWERS: ChatAnswer[] = [
   },
   {
     id: "join",
-    keywords: ["career", "hiring", "invest", "investors", "partner"],
-    answer:
-      "We're building the foundation for the next generation of AI infrastructure. Reach out or sign up to be the first to know as things come to light.",
-    linkLabel: "Join us",
-    linkUrl: "/mission#join",
+    keywords: ["career", "careers", "hiring", "job", "jobs", "apply", "application", "internship", "openings", "vacancies"],
+    answer: "For careers inquiries, email careers@qAI37.com.",
+    linkLabel: "Email careers",
+    linkUrl: "mailto:careers@qAI37.com",
   },
   {
     id: "wiki",
@@ -105,20 +107,95 @@ export const CHAT_SUGGESTIONS = [
   "How do I get in touch?",
 ];
 
-export function findChatAnswer(input: string): ChatAnswer | undefined {
+const DISCLOSURE_RESPONSE: ChatAnswer = {
+  id: "disclosure-boundary",
+  keywords: [],
+  answer: "I can't provide or confirm those details here. Please contact the team directly.",
+  linkLabel: "Contact the team",
+  linkUrl: "/contact",
+};
+
+const CLARIFICATION_RESPONSE: ChatAnswer = {
+  id: "clarify-contact",
+  keywords: [],
+  answer: "Are you looking for general contact information or careers? Please reply with Contact or Careers.",
+};
+
+const ROUTING_ALIASES: Record<string, string> = {
+  contcat: "contact",
+  conact: "contact",
+  contacts: "contact",
+  emial: "email",
+  "e-mail": "email",
+  carrers: "careers",
+  carreers: "careers",
+  hirng: "hiring",
+  recruitment: "hiring",
+  recruiting: "hiring",
+  employment: "career",
+};
+
+const DISCLOSURE_TOPICS = /\b(?:architecture|walkthrough|implementation|proprietary|confidential|secret|secrets|private|internal|nda|roadmap|timeline|launch|release|unreleased|customer|customers|client|clients|funding|fundraising|funded|invest|investor|investors|investment|valuation|revenue|partner|partners|partnership|partnerships|patent|patents|benchmark|benchmarks|salary|salaries|compensation)\b|\b(?:source code|system prompt|who uses|who is using|who funds|who backs)\b|\bignore\b.*\b(?:instructions|rules|restrictions)\b/i;
+
+const FOLLOW_UP_SUGGESTIONS: Record<string, string[]> = {
+  "what-is-qai37": ["How does the hybrid model work?", "What is the mission?"],
+  "quantum-computer": ["What are neutral atoms?", "How does the hybrid model work?"],
+  "neutral-atom": ["How does the hybrid model work?", "Explain post-silicon AI"],
+  hybrid: ["What are neutral atoms?", "What is the mission?"],
+  mission: ["What is qAI37?", "How does the hybrid model work?"],
+  team: ["Who is Ted Stockwell?", "Who is Michelle Holtmann?", "Who is Steve Jahnke?"],
+  contact: ["Who's on the team?", "Are you hiring?"],
+  news: ["What is the mission?", "How do I get in touch?"],
+  join: ["Who's on the team?", "How do I get in touch?"],
+  wiki: ["What are neutral atoms?", "How does the hybrid model work?"],
+};
+
+export function getChatSuggestions(context?: ChatAnswer): string[] {
+  if (context?.memberNames?.length === 1) {
+    return [
+      context.id === "team-member-background" ? "What is their role?" : "What's their background?",
+      "Who's on the team?",
+      "How do I get in touch?",
+    ];
+  }
+  if (context?.memberNames?.length) {
+    return context.memberNames.map((name) => `Who is ${name}?`);
+  }
+  return [...(FOLLOW_UP_SUGGESTIONS[context?.id ?? ""] ?? CHAT_SUGGESTIONS)];
+}
+
+export function findChatAnswer(input: string, context?: ChatAnswer): ChatAnswer | undefined {
+  const normalizedInput = input.normalize("NFKC");
+  if (DISCLOSURE_TOPICS.test(normalizedInput)) return DISCLOSURE_RESPONSE;
   // Keep both the hyphenated token ("post-silicon") and its split parts ("neutral", "atom")
   // so compound and separate-word keywords both still match.
-  const rawTokens = input.toLowerCase().replace(/[’']/g, "'").replace(/'s\b/g, "").match(/[a-z0-9'-]+/g) ?? [];
+  const rawTokens = normalizedInput.toLowerCase().replace(/[’']/g, "'").replace(/'s\b/g, "").match(/[a-z0-9'-]+/g) ?? [];
   const tokens = new Set<string>();
   for (const t of rawTokens) {
     tokens.add(t);
+    if (ROUTING_ALIASES[t]) tokens.add(ROUTING_ALIASES[t]);
     for (const part of t.split("-")) {
       if (part) tokens.add(part);
+    }
+  }
+  const careers = CHAT_ANSWERS.find((entry) => entry.id === "join")!;
+  const contact = CHAT_ANSWERS.find((entry) => entry.id === "contact")!;
+  const wantsCareers = careers.keywords.some((keyword) => tokens.has(keyword));
+  const wantsContact = contact.keywords.some((keyword) => tokens.has(keyword));
+  const asksRole = ["title", "role", "position"].some((keyword) => tokens.has(keyword));
+  if ((wantsCareers && wantsContact && tokens.has("or")) || /^(?:help|help me|can you help|how can you help)[?!.]*$/i.test(normalizedInput.trim())) return CLARIFICATION_RESPONSE;
+  for (const entry of TEAM_ANSWERS) {
+    for (const keyword of entry.keywords) {
+      if (tokens.has(`${keyword}s`)) tokens.add(keyword);
     }
   }
   const namedMembers = TEAM_ANSWERS.filter((entry) =>
     entry.keywords.some((keyword) => tokens.has(keyword)),
   );
+  if (!(asksRole && namedMembers.length > 0)) {
+    if (wantsCareers) return careers;
+    if (wantsContact) return contact;
+  }
   if (namedMembers.length > 0) {
     const mostMatches = Math.max(...namedMembers.map((entry) =>
       entry.keywords.filter((keyword) => tokens.has(keyword)).length,
@@ -129,9 +206,13 @@ export function findChatAnswer(input: string): ChatAnswer | undefined {
     return {
       id: "team-members",
       keywords: [],
-      answer: matches.map((entry) => entry.answer).join("\n\n"),
+      answer: matches.map((entry) => {
+        const member = MEMBERS.find((candidate) => candidate.name === entry.memberNames?.[0]);
+        return asksRole && member ? `${member.name} is qAI37's ${member.role}.` : entry.answer;
+      }).join("\n\n"),
       linkLabel: "Meet the team",
       linkUrl: "/team",
+      memberNames: matches.flatMap((entry) => entry.memberNames ?? []),
     };
   }
   let best: ChatAnswer | undefined;
@@ -148,6 +229,28 @@ export function findChatAnswer(input: string): ChatAnswer | undefined {
     }
   }
 
-  return best;
+  if (best) return best;
+
+  const question = input.toLowerCase().replace(/[’]/g, "'").trim().replace(/[?!.]+$/, "").trim();
+  const more = /^(?:tell me more|go on|how does (?:it|that) work|can you explain (?:it|that))$/.test(question);
+  const personDetail = /^(?:(?:what is|what's|what about|and) (?:his|her|their) (?:background|experience|role|title)|tell me about (?:his|her|their) (?:background|experience)|what does (?:he|she) do|what do they do|tell me more about (?:him|her|them))$/.test(question);
+  if (context?.memberNames?.length === 1 && (personDetail || question === "tell me more")) {
+    const member = MEMBERS.find((entry) => entry.name === context.memberNames?.[0]);
+    if (!member) return undefined;
+    const role = /\b(?:role|title|do)\b/.test(question);
+    return {
+      id: role ? "team-member-role" : "team-member-background",
+      keywords: [],
+      answer: role ? `${member.name} is qAI37's ${member.role}.` : `${member.name}: ${member.bio}`,
+      memberNames: [member.name],
+      linkLabel: "Meet the team",
+      linkUrl: "/team",
+    };
+  }
+  if (more && context && !context.memberNames?.length) {
+    const nextQuestion = FOLLOW_UP_SUGGESTIONS[context.id]?.[0];
+    return nextQuestion ? findChatAnswer(nextQuestion) : undefined;
+  }
+  return undefined;
 }
 
