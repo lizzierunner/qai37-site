@@ -15,6 +15,13 @@
   },
   {
     "type": "industry",
+    "title": "AMD advances the hybrid future of quantum computing",
+    "date": "June 19, 2026",
+    "description": "AMD outlines how classical CPUs, GPUs, FPGAs and networking can support hybrid quantum-classical systems, from control and simulation to orchestration and error correction.",
+    "url": "https://www.amd.com/en/blogs/2026/amd-advances-the-hybrid-future-of-quantum-computing.html"
+  },
+  {
+    "type": "industry",
     "title": "Japan brings online its first full-stack neutral-atom quantum computer",
     "date": "August 24, 2026",
     "description": "Japan's Institute for Molecular Science operationalized \"Shunkai,\" the country's first full-stack neutral-atom quantum computer, built with Hitachi and Infleqtion.",
