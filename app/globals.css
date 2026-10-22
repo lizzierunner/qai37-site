@@ -380,12 +380,12 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px}
 
 /* ======================== CHAT ASSISTANT ======================== */
 /* Positioned bottom-left so it never overlaps the bottom-right toast-notice. */
-.chat-trigger{position:fixed;left:24px;bottom:24px;z-index:9998;width:112px;height:112px;border-radius:50%;background:#0A0A0A;border:1px solid rgba(8,184,230,.45);padding:0;display:grid;place-items:center;cursor:pointer;box-shadow:0 0 0 1px rgba(8,184,230,.12),0 12px 32px rgba(8,184,230,.22);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.chat-trigger{position:fixed;left:24px;bottom:24px;z-index:9998;width:76px;height:76px;border-radius:50%;background:#0A0A0A;border:1px solid rgba(8,184,230,.45);padding:0;display:grid;place-items:center;cursor:pointer;box-shadow:0 0 0 1px rgba(8,184,230,.12),0 12px 32px rgba(8,184,230,.22);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
 .chat-trigger:hover{transform:translateY(-3px) scale(1.03);border-color:rgba(8,184,230,.8);box-shadow:0 0 0 1px rgba(8,184,230,.18),0 16px 40px rgba(8,184,230,.3)}
-.chat-trigger .rb37-chat-mark{width:104px;height:104px;border-radius:50%}
-.chat-trigger svg{width:104px;height:104px}
+.chat-trigger .rb37-chat-mark{width:68px;height:68px;border-radius:50%}
+.chat-trigger svg{width:68px;height:68px}
 
-.chat-panel{position:fixed;left:24px;bottom:112px;z-index:9998;width:340px;max-width:calc(100vw - 48px);max-height:min(480px,calc(100vh - 140px));background:#0c0d0e;border:1px solid rgba(8,184,230,.2);border-radius:12px;box-shadow:0 24px 48px rgba(0,0,0,.8),0 0 0 1px rgba(8,184,230,.08);display:flex;flex-direction:column;overflow:hidden;animation:cmd-in .18s ease-out}
+.chat-panel{position:fixed;left:24px;bottom:96px;z-index:9998;width:320px;max-width:calc(100vw - 48px);max-height:min(440px,calc(100vh - 120px));background:#0c0d0e;border:1px solid rgba(8,184,230,.2);border-radius:12px;box-shadow:0 24px 48px rgba(0,0,0,.8),0 0 0 1px rgba(8,184,230,.08);display:flex;flex-direction:column;overflow:hidden;animation:cmd-in .18s ease-out}
 
 .chat-head{padding:10px 14px 10px 12px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:8px;flex-shrink:0}
 .chat-head-copy{min-width:0;display:flex;align-items:center;gap:10px}
@@ -454,7 +454,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px}
 .chat-input::placeholder{color:var(--muted-2)}
 .chat-send{flex:none;width:32px;height:32px;border-radius:50%;background:var(--cyan);color:#051F1A;border:none;display:grid;place-items:center;cursor:pointer}
 .chat-send svg{width:15px;height:15px}
-@media(max-width:480px){.chat-panel{left:12px;right:12px;width:auto;bottom:82px}.chat-trigger{left:16px;bottom:16px}}
+@media(max-width:480px){.chat-panel{left:12px;right:12px;width:auto;bottom:76px;max-height:calc(100vh - 96px)}.chat-trigger{left:16px;bottom:16px;width:64px;height:64px}.chat-trigger .rb37-chat-mark,.chat-trigger svg{width:58px;height:58px}}
 
 /* ======================== CONTEXT VISUALIZER ======================== */
 .context-viz-card{background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:4px;padding:40px;margin-top:48px;overflow:hidden}
