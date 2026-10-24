@@ -39,7 +39,7 @@ export const TEAM: Member[] = [
     experience: ["30 years across Intel, Altera, and TI.", "Processor architecture and systems software."],
     role: "CTO / Principal Architect",
     initials: "SJ",
-    img: `${BASE_PATH}/images/team/steve-jahnke.jpg`,
+    img: `${BASE_PATH}/images/team/steve-jahnke-new.jpg`,
     bio: "Steve spent 30 years at Intel, Altera, and TI building processor architecture and systems software engineered to never go down. The translation-layer problem qAI37 is solving is the same class of problem Steve has spent his career solving in silicon.",
     signal: "Intel · Altera · TI · Processor architecture",
   },
