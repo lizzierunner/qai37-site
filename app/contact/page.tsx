@@ -28,6 +28,17 @@ export default function Contact() {
               </div>
             ))}
           </div>
+          <div className="contact-social reveal s4">
+            <h2>Follow qAI37</h2>
+            <div className="contact-social-links">
+              <a href="https://www.linkedin.com/company/qai37/" target="_blank" rel="noopener noreferrer">
+                LinkedIn <span aria-hidden="true">↗</span>
+              </a>
+              <a href="https://qai37.substack.com/" target="_blank" rel="noopener noreferrer">
+                Substack <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </div>
