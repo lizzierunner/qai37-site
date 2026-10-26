@@ -11,12 +11,14 @@ const LINKS = [
   { href: "/wiki", label: "Wiki" },
   { href: "/team", label: "Team" },
   { href: "/news", label: "News" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 
 export default function SiteHeader() {
   const pathname = usePathname();
   const currentPath = pathname.replace(/\/$/, "") || "/";
+  const isCurrent = (href: string) => currentPath === href || (href === "/blog" && currentPath.startsWith("/blog/"));
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
@@ -63,7 +65,7 @@ export default function SiteHeader() {
         </Link>
         <nav className="nav-links" aria-label="Primary">
           {LINKS.map((l) => (
-            <Link key={l.href} href={l.href} className={currentPath === l.href ? "active" : ""} aria-current={currentPath === l.href ? "page" : undefined}>
+            <Link key={l.href} href={l.href} className={isCurrent(l.href) ? "active" : ""} aria-current={isCurrent(l.href) ? "page" : undefined}>
               {l.label}
             </Link>
           ))}
@@ -90,7 +92,7 @@ export default function SiteHeader() {
       }}>
         <div className="wrap">
           {LINKS.map((link) => (
-            <Link key={link.href} href={link.href} aria-current={currentPath === link.href ? "page" : undefined} onClick={() => setMenuOpen(false)}>{link.label}</Link>
+            <Link key={link.href} href={link.href} aria-current={isCurrent(link.href) ? "page" : undefined} onClick={() => setMenuOpen(false)}>{link.label}</Link>
           ))}
         </div>
       </nav>

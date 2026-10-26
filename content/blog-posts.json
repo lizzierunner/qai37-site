@@ -1,0 +1,164 @@
+[
+  {
+    "slug": "could-quantum-become-ai-accelerator",
+    "title": "Could Quantum Become an AI Accelerator?",
+    "subtitle": "The last big shift in AI hardware didn't start with AI. It started with a chip built for something else.",
+    "sections": [
+      {
+        "paragraphs": [
+          "Today's AI runs on a surprising piece of history. The graphics chips that power it were originally built to draw video game scenes. It took years, and a layer of software, before the industry realized they were also very good at the math behind AI.",
+          "That story is worth remembering, because it suggests a question: could the next accelerator for AI also come from somewhere unexpected?"
+        ]
+      },
+      {
+        "heading": "How accelerators actually arrive",
+        "paragraphs": [
+          "Specialized hardware rarely replaces what came before. It starts out good at one narrow kind of job. Then software makes it easy to use, and it gradually takes on the work it is best suited for, alongside the machines already in place.",
+          "The software layer is the part people tend to overlook. A powerful new machine that nobody can easily program stays a lab curiosity. One that fits into the tools teams already use can change an industry."
+        ]
+      },
+      {
+        "heading": "Why people are asking about quantum",
+        "paragraphs": [
+          "AI keeps running into practical limits: power, cooling, space and cost. Quantum processors work in a fundamentally different way from conventional chips, and for some kinds of problems that difference could matter a great deal. That is why more people are asking whether they might one day act as specialized accelerators for parts of the AI workload."
+        ]
+      },
+      {
+        "heading": "What still has to be proven",
+        "paragraphs": [
+          "We want to be honest here: nobody should claim this is solved. Real questions remain, including which parts of AI work would benefit, how large and reliable the machines need to be, and what has to be demonstrated before anyone can call it commercially viable. Those are exactly the questions worth working on in the open."
+        ]
+      },
+      {
+        "heading": "Where qAI37 fits",
+        "paragraphs": [
+          "We're not building a quantum machine. We're building the software layer that could let AI infrastructure reach one, vendor-agnostic and with the interface staying familiar, so teams don't have to start over to try something new.",
+          "If quantum does become an AI accelerator, that connecting layer is what will decide how smoothly it happens.",
+          "We're still early and still building mostly out of view. More soon."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "what-post-silicon-means",
+    "title": "What \"Post-Silicon\" Actually Means",
+    "subtitle": "It's not the end of today's AI infrastructure. It's what comes after it runs out of room.",
+    "sections": [
+      {
+        "paragraphs": [
+          "The phrase \"post-silicon\" sounds dramatic. It conjures images of data centers being torn down and replaced overnight. That's not what we mean by it, and it's not how this kind of shift happens."
+        ]
+      },
+      {
+        "heading": "Silicon isn't going anywhere soon",
+        "paragraphs": [
+          "The chips powering AI today are remarkable, and the industry has gotten extraordinarily good at squeezing performance out of them. But every generation brings the same tradeoffs: more power draw, more heat, more cooling, more space. Those are physical limits, not engineering oversights, and they get harder to work around each time.",
+          "\"Post-silicon\" simply acknowledges that there's an eventual ceiling on that approach, and asks what the industry does when it gets there."
+        ]
+      },
+      {
+        "heading": "What post-silicon is not",
+        "paragraphs": [
+          "It's not a single breakthrough that arrives one day. It's not a replacement for the infrastructure companies have already built. And it's not a bet on one specific piece of hardware.",
+          "Transitions like this tend to be gradual. New approaches start alongside the old ones, prove themselves in specific jobs, and take on more over time. The companies that handle those transitions best are usually the ones that didn't have to start over."
+        ]
+      },
+      {
+        "heading": "Where qAI37 fits",
+        "paragraphs": [
+          "We're building the software layer that makes that kind of gradual transition possible. It connects the AI infrastructure companies already run to neutral-atom quantum systems, while keeping the interface familiar. Teams keep working the way they work today. What changes is what happens underneath.",
+          "That's the idea behind our name for it: the neutral route to post-silicon AI. Neutral, because it doesn't tie anyone to a single hardware vendor. A route, because it's a path you can walk step by step rather than a leap you have to take all at once."
+        ]
+      },
+      {
+        "heading": "Why it matters now",
+        "paragraphs": [
+          "With AI capacity increasingly limited by power availability, the question of what comes after the current approach is no longer theoretical. It's a planning question for anyone building on AI over the next several years.",
+          "We don't think the answer is to abandon what works. We think it's to build a bridge to what's next, and make crossing it feel like an upgrade instead of a gamble.",
+          "We're still early and still building mostly out of view. More soon."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "why-ai-stalls",
+    "title": "Why AI Stalls Exactly Where It Matters Most",
+    "subtitle": "The more an AI system knows, the slower and more expensive every answer gets.",
+    "sections": [
+      {
+        "paragraphs": [
+          "Here's something that surprises people the first time they hear it. Every time you ask an AI a question, it re-reads everything you've given it before it answers.",
+          "Not once at the start of a project. Every time."
+        ]
+      },
+      {
+        "heading": "The cost of remembering",
+        "paragraphs": [
+          "For short, simple tasks, you'd never notice. A quick question gets a quick answer, and the re-reading takes no time at all.",
+          "But the picture changes as the work gets bigger. The more an AI system knows about your project, your documents and your history, the more it has to work through before it can respond. Answers get slower. Each one costs more. The more useful the context, the higher the price of using it."
+        ]
+      },
+      {
+        "heading": "Where it hurts most",
+        "paragraphs": [
+          "That's why AI tends to stall exactly where it would be most valuable: long, live, complicated work. A research project that runs for weeks. A large body of code. A conversation that needs to build on everything that came before it. These are the jobs where context matters most, and they're the jobs where the current approach strains the hardest.",
+          "Much of the industry's response has been to add more hardware: bigger clusters, more chips, more power. That helps with capacity. It doesn't question the pattern underneath it."
+        ]
+      },
+      {
+        "heading": "Changing the math",
+        "paragraphs": [
+          "We think the more interesting question is whether the work itself can be done differently.",
+          "That's what we're building at qAI37. It's a software layer that changes that math by connecting today's AI to a fundamentally different kind of machine, while the interface stays familiar. Teams keep working the way they work now. What changes is what happens underneath."
+        ]
+      },
+      {
+        "heading": "Why it matters",
+        "paragraphs": [
+          "If AI is going to be trusted with the biggest, longest and most complicated jobs, the cost of remembering can't keep climbing with every piece of context. Solving that is part of what turns AI from a handy assistant into dependable infrastructure.",
+          "We're still early and still building mostly out of view. More soon."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "why-neutral-atoms-are-interesting",
+    "title": "Why Neutral Atoms Are Worth Watching",
+    "subtitle": "Among the ways to build a quantum computer, this one has a few properties that stand out.",
+    "sections": [
+      {
+        "paragraphs": [
+          "There is more than one way to build a quantum computer. Different teams use superconducting circuits, trapped ions, photons and more. Each approach has its own strengths and tradeoffs, and it's too early to say which will win.",
+          "One approach has been getting a lot of attention lately: neutral atoms. Here is why it's interesting."
+        ]
+      },
+      {
+        "heading": "The basic idea",
+        "paragraphs": [
+          "A neutral-atom system uses individual atoms as its building blocks. Focused beams of light hold the atoms in place, and the same light is used to control them. The atoms are arranged in a grid, and that arrangement can be changed from one task to the next."
+        ]
+      },
+      {
+        "heading": "Why that stands out",
+        "paragraphs": [
+          "Atoms of the same kind are identical by nature. Nobody has to manufacture each one to a tight tolerance, because nature already did. That is a helpful starting point for building something that has to be consistent.",
+          "The layout is also flexible. Because the atoms are positioned with light, the arrangement can be reconfigured instead of being fixed at the factory. And the approach has shown promise at growing to larger numbers of atoms."
+        ]
+      },
+      {
+        "heading": "The honest caveats",
+        "paragraphs": [
+          "This is still a field in active development. Reliability, speed and scale all have more work ahead of them, and other approaches are progressing quickly too. We don't think anyone should treat the winner as decided."
+        ]
+      },
+      {
+        "heading": "Why that matters to us",
+        "paragraphs": [
+          "That uncertainty is exactly why we built qAI37 to be vendor-agnostic. We're building the software layer that connects today's AI infrastructure to neutral-atom quantum systems, and the same thinking applies whichever hardware proves itself. Teams shouldn't have to bet everything on one machine, and they shouldn't have to relearn their tools to try a new one.",
+          "We find neutral atoms interesting. We find a flexible software layer on top of them more interesting still.",
+          "We're still early and still building mostly out of view. More soon."
+        ]
+      }
+    ]
+  }
+]

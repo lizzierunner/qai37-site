@@ -1,5 +1,12 @@
 [
   {
+    "type": "industry",
+    "title": "Datacenter buildout is accelerating",
+    "date": "October 19, 2026",
+    "description": "SemiAnalysis forecasts about 50 GW of new datacenter capacity in a single year, with a large amount already under construction. Power is becoming the limiting factor for AI growth.",
+    "url": "https://newsletter.semianalysis.com/p/datacenters-2027-the-year-of-acceleration"
+  },
+  {
     "type": "company",
     "title": "qAI37 shares an early look at its approach to AI infrastructure",
     "date": "September 2, 2026",
@@ -15,10 +22,10 @@
   },
   {
     "type": "industry",
-    "title": "AMD advances the hybrid future of quantum computing",
+    "title": "AMD on the hybrid future of quantum computing",
     "date": "June 19, 2026",
-    "description": "AMD outlines how classical CPUs, GPUs, FPGAs and networking can support hybrid quantum-classical systems, from control and simulation to orchestration and error correction.",
-    "url": "https://www.amd.com/en/blogs/2026/amd-advances-the-hybrid-future-of-quantum-computing.html"
+    "description": "AMD argues quantum processors will work as specialized accelerators alongside CPUs and GPUs, not replace them.",
+    "url": "https://amd.com/en/blogs/2026/amd-advances-the-hybrid-future-of-quantum-computing.html"
   },
   {
     "type": "industry",
