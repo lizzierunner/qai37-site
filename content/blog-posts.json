@@ -1,5 +1,51 @@
 [
   {
+    "slug": "what-vendor-agnostic-means",
+    "title": "What \"Vendor-Agnostic\" Actually Means",
+    "subtitle": "It's a technical term that sounds like a marketing one. Here is why we build around it.",
+    "externalLink": {
+      "label": "Also published on our Substack",
+      "url": "https://qai37.substack.com/p/what-vendor-agnostic-actually-means"
+    },
+    "sections": [
+      {
+        "paragraphs": [
+          "\"Vendor-agnostic\" shows up in a lot of company descriptions, ours included. It can sound like a buzzword, so here is what we mean by it and why it matters in a field that is changing quickly."
+        ]
+      },
+      {
+        "heading": "The problem it solves",
+        "paragraphs": [
+          "When a team builds on one vendor's hardware, its software, tools and habits grow around that choice. Switching later means rewriting code, retraining people and rebuilding processes. That is lock-in, and it is expensive, even when the original choice was a good one.",
+          "That risk gets bigger when the technology underneath is still moving. In newer areas like quantum computing, several approaches are being developed at once, and it is too early to say which will prove best for which kinds of work."
+        ]
+      },
+      {
+        "heading": "What it looks like in practice",
+        "paragraphs": [
+          "For us, vendor-agnostic means three things:",
+          "One interface. Teams work through a familiar layer and do not have to learn a new system for every machine.",
+          "Choice underneath. The hardware can change without the work above it having to start over.",
+          "No bet on a single winner. If a better option appears, the software layer should be able to reach it."
+        ]
+      },
+      {
+        "heading": "What it is not",
+        "paragraphs": [
+          "It is not a promise that every machine will be equally good at every job. Different hardware has different strengths, and a good software layer should respect that rather than hide it. It also isn't a claim that the work is finished. It is a design choice about where to put the flexibility."
+        ]
+      },
+      {
+        "heading": "Why we build this way",
+        "paragraphs": [
+          "We are not building a quantum machine. We are building the software layer that connects today's AI infrastructure to neutral-atom quantum systems, in a way that stays familiar to the people using it. If the hardware landscape shifts, teams should be able to follow it without rebuilding everything.",
+          "That is the idea behind \"the neutral route to post-silicon AI.\" The route stays the same even if what is at the end of it changes.",
+          "We're still early and still building mostly out of view. More soon."
+        ]
+      }
+    ]
+  },
+  {
     "slug": "could-quantum-become-ai-accelerator",
     "title": "Could Quantum Become an AI Accelerator?",
     "subtitle": "The last big shift in AI hardware didn't start with AI. It started with a chip built for something else.",

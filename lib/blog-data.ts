@@ -10,6 +10,10 @@ export type BlogPost = {
   title: string;
   subtitle: string;
   sections: BlogSection[];
+  externalLink?: {
+    label: string;
+    url: string;
+  };
 };
 
 export const BLOG_POSTS = posts as BlogPost[];

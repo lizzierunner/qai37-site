@@ -41,6 +41,13 @@ export default async function BlogArticle({ params }: BlogArticleProps) {
               {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             </section>
           ))}
+          {post.externalLink && (
+            <p className="article-external-link">
+              <a href={post.externalLink.url} target="_blank" rel="noopener noreferrer">
+                {post.externalLink.label}
+              </a>
+            </p>
+          )}
           <p className="article-signoff">- The qAI37 team</p>
           <Link href="/blog" className="article-back article-back-bottom">← Back to all posts</Link>
         </div>

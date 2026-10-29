@@ -36,7 +36,7 @@ export default function SiteFooter() {
             );
           })}
           <p className="foot-latest-label">Blog</p>
-          {BLOG_POSTS.slice(0, 2).map((post) => (
+          {BLOG_POSTS.slice(0, 3).map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}>{post.title}</Link>
           ))}
         </div>
