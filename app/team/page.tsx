@@ -93,6 +93,11 @@ export default function Team() {
                   <p className="team-card-role">{m.role}</p>
                   <p className="team-card-bio">{m.bio}</p>
                   <SelectedExperience name={m.name} items={m.experience} />
+                  {m.li && (
+                    <a href={m.li} target="_blank" rel="noopener noreferrer" className="bio-li">
+                      <LinkedInIcon /> LinkedIn
+                    </a>
+                  )}
                 </div>
               </article>
             ))}
