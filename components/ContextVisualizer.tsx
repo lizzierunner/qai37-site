@@ -3,19 +3,15 @@
 import { useState } from "react";
 
 const STAGES = [
-  { label: "10K", explanation: "At smaller context sizes, the infrastructure requirements are more manageable." },
-  { label: "25K", explanation: "At smaller context sizes, the infrastructure requirements are more manageable." },
-  { label: "50K", explanation: "As context grows, systems must handle increasingly large amounts of information." },
-  { label: "100K", explanation: "As context grows, systems must handle increasingly large amounts of information." },
-  { label: "250K", explanation: "As context grows, systems must handle increasingly large amounts of information." },
-  { label: "500K", explanation: "As context grows, systems must handle increasingly large amounts of information." },
-  { label: "1M", explanation: "Large context windows can create significant memory and infrastructure demands." },
-  { label: "2M", explanation: "Large context windows can create significant memory and infrastructure demands." },
+  { label: "A moment", explanation: "Every request begins with some context." },
+  { label: "Growing", explanation: "Conversations can accumulate more history over time." },
+  { label: "Long-running", explanation: "Ongoing work can connect many details across a session." },
+  { label: "Over time", explanation: "The idea: keep relevant context available as work continues." },
 ];
 
 function ContextBars({ variant, index }: { variant: "traditional" | "memory"; index: number }) {
-  const traditionalWidths = [22, 31, 42, 56, 71, 84, 94, 100];
-  const rows = variant === "traditional" ? Math.min(6, 2 + Math.ceil(index / 2)) : 4;
+  const traditionalWidths = [24, 48, 74, 100];
+  const rows = variant === "traditional" ? 2 + index : 4;
   const width = variant === "traditional" ? traditionalWidths[index] : 38;
 
   return (
@@ -37,29 +33,29 @@ export default function ContextVisualizer() {
   const stage = STAGES[index];
 
   return (
-    <section className="context-viz-card reveal" aria-labelledby="context-viz-title">
+    <div className="context-viz-card reveal" role="region" aria-labelledby="context-viz-title">
       <div className="context-viz-header">
         <div>
-          <span className="context-viz-eyebrow">Interactive context model</span>
-          <h2 className="context-viz-title" id="context-viz-title">Context Changes Everything</h2>
-          <p className="context-viz-sub">As AI workloads grow, the amount of information systems need to work with grows with them.</p>
+          <span className="context-viz-eyebrow">A conceptual model</span>
+          <h2 className="context-viz-title" id="context-viz-title">When context keeps growing</h2>
+          <p className="context-viz-sub">Explore how persistent context changes the way we think about long-running work.</p>
         </div>
-        <div className="context-viz-token-badge" aria-label={`Selected context length: ${stage.label}`}>
-          <span className="context-viz-token-val">{stage.label}</span><span className="context-viz-token-unit">context</span>
+        <div className="context-viz-token-badge" aria-label={`Selected context stage: ${stage.label}`}>
+          <span className="context-viz-token-val">{stage.label}</span><span className="context-viz-token-unit">context stage</span>
         </div>
       </div>
       <div className="context-viz-slider-container">
-        <label className="context-viz-slider-label" htmlFor="context-length">Select context length</label>
+        <label className="context-viz-slider-label" htmlFor="context-length">Explore a work timeline</label>
         <input id="context-length" type="range" min="0" max={STAGES.length - 1} step="1" value={index} onChange={(event) => setIndex(Number(event.target.value))} className="context-viz-range" aria-valuetext={stage.label} />
-        <div className="context-viz-ticks" aria-label="Context length presets">
+        <div className="context-viz-ticks" aria-label="Work timeline stages">
           {STAGES.map((item, itemIndex) => <button type="button" key={item.label} onClick={() => setIndex(itemIndex)} className={`context-viz-tick ${itemIndex === index ? "active" : ""}`} aria-pressed={itemIndex === index}>{item.label}</button>)}
         </div>
       </div>
       <div className="context-viz-comparison" aria-label="Conceptual context handling comparison">
-        <article className="context-viz-col traditional"><header className="col-header"><span className="col-label">Traditional Context Handling</span><span className="col-indicator">Expanding load</span></header><p className="col-desc">More context means more information to repeatedly organize and work through.</p><ContextBars variant="traditional" index={index} /></article>
-        <article className="context-viz-col qai37"><header className="col-header"><span className="col-label">qAI37 Memory Layer</span><span className="col-indicator">Stable layer</span></header><p className="col-desc">A conceptual memory layer keeps the working structure visually stable as context grows.</p><ContextBars variant="memory" index={index} /></article>
+        <article className="context-viz-col traditional"><header className="col-header"><span className="col-label">Repeated context</span><span className="col-indicator">More to revisit</span></header><p className="col-desc">A simple illustration of history accumulating as work continues.</p><ContextBars variant="traditional" index={index} /></article>
+        <article className="context-viz-col qai37"><header className="col-header"><span className="col-label">Persistent context</span><span className="col-indicator">A different idea</span></header><p className="col-desc">A conceptual view of keeping relevant context close to ongoing work.</p><ContextBars variant="memory" index={index} /></article>
       </div>
-      <div className="context-viz-footer"><p className="context-viz-explanation" aria-live="polite">{stage.explanation}</p><p className="context-viz-caption">Conceptual comparison - illustrative, not a benchmark.</p></div>
-    </section>
+      <div className="context-viz-footer"><p className="context-viz-explanation" aria-live="polite">{stage.explanation}</p><p className="context-viz-caption">Illustrative concept only. Not a performance comparison.</p></div>
+    </div>
   );
 }

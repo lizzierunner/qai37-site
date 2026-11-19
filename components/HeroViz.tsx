@@ -26,9 +26,11 @@ export default function HeroViz() {
     let orbit = 0;
 
     const resize = () => {
-      W = c.offsetWidth; H = c.offsetHeight;
-      c.width = W * dpr; c.height = H * dpr;
-      c.style.width = W + "px"; c.style.height = H + "px";
+      const bounds = c.getBoundingClientRect();
+      W = bounds.width;
+      H = bounds.height;
+      c.width = Math.round(W * dpr);
+      c.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       particles = [];
     };
@@ -53,7 +55,7 @@ export default function HeroViz() {
       orbit += 0.007;
       const pulse = 0.5 + 0.5 * Math.sin(now * 0.0014);
       const cx = W * 0.5, cy = H * 0.5;
-      const baseR = 20 + pulse * 5;
+      const baseR = Math.min(20 + pulse * 5, Math.min(W, H) * 0.12);
 
       // Spawn
       if (now > nextSpawn && particles.length < 52) {

@@ -13,18 +13,18 @@ const MODES = {
   qai37: {
     label: "With qAI37",
     title: "Working memory stays close to the work",
-    description: "qAI37 preserves the familiar application interface while the translation layer retains working context and routes supported operations to the best available backend.",
+    description: "qAI37 preserves the familiar application interface while a software layer keeps working context close to the task.",
     steps: ["Request arrives", "State is remembered", "Operation is routed"],
     metric: "Interface stays → execution changes",
   },
 } as const;
 
 export default function RouteStory() {
-  const [mode, setMode] = useState<keyof typeof MODES>("qai37");
+  const [mode, setMode] = useState<keyof typeof MODES>("today");
   const story = MODES[mode];
 
   return (
-    <section className="route-story-section">
+    <section className="route-story-section" id="why-ai-stalls">
       <div className="wrap">
         <div className="route-story-head">
           <div>
@@ -40,7 +40,7 @@ export default function RouteStory() {
           </div>
         </div>
 
-        <div className={`route-story-panel ${mode}`} aria-live="polite">
+        <div key={mode} className={`route-story-panel ${mode}`} aria-live="polite">
           <div className="route-story-copy">
             <span className="route-story-kicker">{story.label}</span>
             <h3>{story.title}</h3>
