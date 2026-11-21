@@ -3,10 +3,12 @@ import ThesisExplorer from "@/components/ThesisExplorer";
 import PositioningExplorer from "@/components/PositioningExplorer";
 import RouteStory from "@/components/RouteStory";
 import ContextVisualizer from "@/components/ContextVisualizer";
+import HomeChapterRail from "@/components/HomeChapterRail";
 
 export default function Home() {
   return (
     <div className="p-home">
+      <HomeChapterRail />
       {/* HERO */}
       <section className="hero">
         <div className="wrap hero-inner">
@@ -61,7 +63,7 @@ export default function Home() {
       </section>
 
       {/* THESIS */}
-      <section className="thesis">
+      <section className="thesis" id="home-thesis">
         <div className="wrap">
           <span className="eyebrow reveal">The thesis</span>
           <ThesisExplorer />

@@ -148,6 +148,23 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px}
 @media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;gap:32px}}
 @media(max-width:700px){.foot-grid{grid-template-columns:1fr;gap:32px}}
 
+/* quiet homepage chapter navigation */
+.home-chapter-rail{display:none}
+@media(min-width:1500px){
+  .home-chapter-rail{position:fixed;z-index:40;left:24px;top:50%;width:126px;display:grid;transform:translateY(-50%) translateX(-8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s var(--ease-soft),transform .35s var(--ease-polished),visibility .35s;isolation:isolate}
+  .home-chapter-rail.is-visible{transform:translateY(-50%);opacity:1;visibility:visible;pointer-events:auto}
+  .home-chapter-track{position:absolute;z-index:-1;right:3px;top:19px;bottom:19px;width:1px;background:var(--line-strong)}
+  .home-chapter-track span{display:block;width:1px;background:var(--cyan);transition:height .35s var(--ease-polished)}
+  .home-chapter-link{display:flex;align-items:center;justify-content:flex-end;gap:10px;height:38px;color:var(--muted-2);font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;transition:color .25s}
+  .home-chapter-link:hover,.home-chapter-link.active{color:var(--text)}
+  .home-chapter-label{transition:color .25s}
+  .home-chapter-number{color:var(--muted-2);font-size:9px}
+  .home-chapter-link.active .home-chapter-number{color:var(--cyan)}
+  .home-chapter-dot{width:7px;height:7px;flex:none;border:1px solid var(--muted-2);border-radius:50%;background:var(--ink);transition:background .25s,border-color .25s,box-shadow .25s}
+  .home-chapter-link.active .home-chapter-dot{border-color:var(--cyan);background:var(--cyan);box-shadow:0 0 10px rgba(8,184,230,.45)}
+}
+@media(prefers-reduced-motion:reduce){.home-chapter-rail,.home-chapter-track span,.home-chapter-link,.home-chapter-label,.home-chapter-dot{transition:none}}
+
 /* reveal */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .82s var(--ease-polished),transform .82s var(--ease-polished)}
 .reveal.in{opacity:1;transform:none}
