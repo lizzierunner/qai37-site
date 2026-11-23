@@ -43,7 +43,7 @@ Verify sources and approve notes before publishing. Credit independent authors, 
 
 The team names, titles, and bios live in `lib/team-data.ts`. Update the `TEAM` array for core members or `EXTENDED_TEAM` for extended members. The Team page, Contact page, and chat widget all use this shared roster, so title and bio changes appear together in the next deployment.
 
-The chat widget recognizes first names, surnames, and full names, including questions such as "What is Steve's title?" It does not identify visitors, so include the person's name when asking about their role. Other topic answers are maintained in `lib/chatbot-data.ts` and should be reviewed when changing the Mission or Wiki copy.
+The chat widget recognizes first names, surnames, and full names, including questions such as "What is Michelle's title?" It does not identify visitors, so include the person's name when asking about their role. Other topic answers are maintained in `lib/chatbot-data.ts` and should be reviewed when changing the Mission or Wiki copy.
 
 Run `npm test` to check chat answers against the current roster before publishing.
 

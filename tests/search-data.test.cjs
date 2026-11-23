@@ -44,7 +44,7 @@ test("individual roster entries are not promoted through search", () => {
 test("exact titles rank first and unmatched terms do not broaden the query", () => {
   assert.equal(searchSite("Team")[0].id, "nav-team");
   assert.equal(searchSite("News")[0].id, "nav-news");
-  assert.deepEqual(searchSite("Steve nonexistentword"), []);
+  assert.deepEqual(searchSite("Michelle nonexistentword"), []);
   assert.deepEqual(searchSite("zzzzzzzz"), []);
 });
 

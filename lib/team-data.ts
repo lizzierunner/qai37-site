@@ -26,6 +26,16 @@ export const TEAM: Member[] = [
     li: "https://www.linkedin.com/in/jtedstockwell/",
   },
   {
+    name: "Michelle Holtmann",
+    experience: ["Software engineering at Boeing.", "25 years building Microsoft infrastructure products."],
+    role: "Founding Advisor, Product & Strategic Partnerships",
+    initials: "MH",
+    li: "https://www.linkedin.com/in/michelle-l-holtmann/",
+    img: `${BASE_PATH}/images/team/michelle-holtmann.jpg`,
+    bio: "Michelle started her career as a software engineer at Boeing, then spent 25 years at Microsoft designing and building infrastructure products that hundreds of millions of people depend on every day — including Windows Genuine Advantage, the Software Protection Platform, and the technical foundation behind Windows Defender. She joined qAI37 after extensive study of whether the approach was actually buildable, and designed the roadmap to prove it.",
+    signal: "Boeing · Microsoft · Infrastructure products",
+  },
+  {
     name: "Steve Jahnke",
     experience: ["30 years across Intel, Altera, and TI.", "Processor architecture and systems software."],
     role: "CTO / Principal Architect",
