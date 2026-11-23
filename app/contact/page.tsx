@@ -3,7 +3,7 @@ import ContactButton from "@/components/ContactButton";
 import { TEAM } from "@/lib/team-data";
 
 const CONTACTS = TEAM.filter((member) =>
-  ["Ted Stockwell", "Michelle Holtmann"].includes(member.name),
+  member.name === "Ted Stockwell",
 );
 
 export const metadata: Metadata = {

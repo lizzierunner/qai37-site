@@ -143,7 +143,7 @@ const FOLLOW_UP_SUGGESTIONS: Record<string, string[]> = {
   "neutral-atom": ["How does the hybrid model work?", "Explain post-silicon AI"],
   hybrid: ["What are neutral atoms?", "What is the mission?"],
   mission: ["What is qAI37?", "How does the hybrid model work?"],
-  team: ["Who is Ted Stockwell?", "Who is Michelle Holtmann?", "Who is Steve Jahnke?"],
+  team: ["Who is Ted Stockwell?", "Who is Steve Jahnke?", "Who is Vincent Elfving?"],
   contact: ["Who's on the team?", "Are you hiring?"],
   news: ["What is the mission?", "How do I get in touch?"],
   join: ["Who's on the team?", "How do I get in touch?"],
