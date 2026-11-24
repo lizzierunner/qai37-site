@@ -16,6 +16,11 @@ require.extensions[".ts"] = (module, filename) => {
 
 const { TEAM, EXTENDED_TEAM } = require("../lib/team-data.ts");
 
+test("Vincent is listed first in the extended team", () => {
+  assert.equal(EXTENDED_TEAM[0].name, "Vincent E. Elfving");
+  assert.equal(TEAM.some((member) => member.name === "Vincent E. Elfving"), false);
+});
+
 test("every core and extended team member has concise experience highlights", () => {
   for (const member of [...TEAM, ...EXTENDED_TEAM]) {
     assert.ok(member.experience.length >= 1 && member.experience.length <= 3, member.name);

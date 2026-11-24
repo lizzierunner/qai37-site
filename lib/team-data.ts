@@ -89,6 +89,15 @@ type ExtendedMember = {
 
 export const EXTENDED_TEAM: ExtendedMember[] = [
   {
+    name: "Vincent E. Elfving",
+    experience: ["Former Head of Algorithms at Pasqal.", "Google Quantum AI alumnus.", "Co-founder of Qu & Co."],
+    role: "Chief Quantum Advisor",
+    initials: "VE",
+    li: "https://www.linkedin.com/in/vincentelfving/",
+    img: `${BASE_PATH}/images/team/vincent-elfving.jpg`,
+    bio: "Former Head of Algorithms at Pasqal, where he led a team of over 40 researchers developing AI workflows for neutral atom hardware. Google Quantum AI alumnus and co-founder of Qu & Co (merged with Pasqal). PhD in Quantum Information Processing.",
+  },
+  {
     name: "Richard Wood",
     experience: ["More than 30 years in investment banking.", "Co-founded First Hill Partners."],
     role: "Advisor",
@@ -123,14 +132,5 @@ export const EXTENDED_TEAM: ExtendedMember[] = [
     li: "https://www.linkedin.com/in/lizzie-johnson-160874381/",
     img: `${BASE_PATH}/images/team/Team%20Photos/Lizzie%20Johnson.jpeg`,
     bio: "Lizzie Johnson is a Web Engineering Intern at qAI37 and a Full Stack Web Development student at Arizona State University passionate about web development, design, and creative problem-solving.",
-  },
-  {
-    name: "Vincent E. Elfving",
-    experience: ["Former Head of Algorithms at Pasqal.", "Google Quantum AI alumnus.", "Co-founder of Qu & Co."],
-    role: "Chief Quantum Advisor",
-    initials: "VE",
-    li: "https://www.linkedin.com/in/vincentelfving/",
-    img: `${BASE_PATH}/images/team/vincent-elfving.jpg`,
-    bio: "Former Head of Algorithms at Pasqal, where he led a team of over 40 researchers developing AI workflows for neutral atom hardware. Google Quantum AI alumnus and co-founder of Qu & Co (merged with Pasqal). PhD in Quantum Information Processing.",
   },
 ];
